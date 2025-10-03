@@ -54,7 +54,7 @@ async def init_db():
     try:
         # Import all models to ensure they're registered
         from models import Room, Quiz, Question, Choice, Player, Answer, Score
-        
+
         async with engine.begin() as conn:
             # Create all tables
             await conn.run_sync(Base.metadata.create_all)
