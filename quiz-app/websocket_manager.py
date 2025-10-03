@@ -3,6 +3,7 @@ WebSocket connection manager for the Kahoot-style quiz application.
 Manages active connections and room state.
 """
 
+
 import logging
 import json
 from typing import Dict, List, Optional, Tuple
@@ -59,7 +60,7 @@ class ConnectionManager:
     
     async def send_to_player(self, room_code: str, player_id: str, message):
         """Send message to specific player."""
-        if (room_code in self.player_connections and 
+        if (room_code in self.player_connections and
             player_id in self.player_connections[room_code]):
             try:
                 websocket, _ = self.player_connections[room_code][player_id]
