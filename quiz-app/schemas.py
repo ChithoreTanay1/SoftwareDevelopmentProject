@@ -26,7 +26,7 @@ class WSMessageType(str, Enum):
     LEADERBOARD_UPDATE = "leaderboard_update"
     PLAYER_JOINED = "player_joined"
     PLAYER_LEFT = "player_left"
-    
+
     # System messages
     ERROR = "error"
     CONNECTION_STATUS = "connection_status"

@@ -70,7 +70,7 @@ async def get_quiz(quiz_id: str, db: AsyncSession = Depends(get_db)):
     quiz = await handle_service_exceptions(
         QuizService.get_quiz, db, quiz_id
     )
-    
+
     return quiz
 
 
