@@ -10,7 +10,7 @@ from typing import Optional
 
 class Settings(BaseSettings):
     """Application settings with environment variable support."""
-    
+
     # Basic app settings
     app_name: str = "Kahoot-Style Quiz Game"
     debug: bool = False
