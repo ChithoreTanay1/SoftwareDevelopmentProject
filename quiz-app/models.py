@@ -125,7 +125,7 @@ class Answer(Base):
 class Score(Base):
     """Score model - aggregated scoring data."""
     __tablename__ = "scores"
-    
+
     id: Mapped[str] = mapped_column(String(50), primary_key=True)
     room_id: Mapped[str] = mapped_column(String(50), ForeignKey("rooms.id"), nullable=False)
     player_id: Mapped[str] = mapped_column(String(50), ForeignKey("players.id"), nullable=False)
