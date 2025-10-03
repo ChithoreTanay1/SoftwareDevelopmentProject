@@ -409,7 +409,7 @@ class ScoreService:
             total_players=len(players),
             last_updated=datetime.utcnow()
         )
-    
+
     @staticmethod
     async def get_question_results(db: AsyncSession, room_id: str, question_id: str) -> QuestionStats:
         """Get statistics for a specific question."""

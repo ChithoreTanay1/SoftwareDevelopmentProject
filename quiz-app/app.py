@@ -10,7 +10,7 @@ from contextlib import asynccontextmanager
 import logging
 import json
 
-# Local imports
+
 from database import init_db, close_db
 from routes import api_router
 from websocket_manager import connection_manager
@@ -18,7 +18,7 @@ from websocket_handler import websocket_handler, connection_event_handler  # Fix
 from schemas import WSMessage, APIResponse
 from config import settings
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -56,9 +56,9 @@ app.add_middleware(
 app.include_router(api_router)
 
 
-# ============================================================================
+
 # ROOT ENDPOINTS
-# ============================================================================
+
 
 @app.get("/", response_model=APIResponse)
 async def root():
@@ -66,9 +66,9 @@ async def root():
     return APIResponse(message="Kahoot-Style Quiz Game API is running")
 
 
-# ============================================================================
+
 # WEBSOCKET ENDPOINTS
-# ============================================================================
+
 
 @app.websocket("/ws/host/{room_code}")
 async def websocket_host(websocket: WebSocket, room_code: str):
@@ -130,9 +130,9 @@ async def websocket_player(websocket: WebSocket, room_code: str):
         await connection_event_handler.handle_player_disconnect(room_code, player_id)
 
 
-# ============================================================================
+
 # ERROR HANDLERS
-# ============================================================================
+
 
 @app.exception_handler(404)
 async def not_found_handler(request: Request, exc: Exception):
