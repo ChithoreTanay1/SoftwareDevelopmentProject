@@ -35,7 +35,7 @@ class WebSocketMessageHandler:
                 if not room or room.host_id != host_id:
                     logger.warning(f"Unauthorized host message from {host_id} in room {room_code}")
                     return
-                
+
                 handler_map = {
                     WSMessageType.START_GAME: WebSocketMessageHandler._handle_start_game,
                     WSMessageType.NEXT_QUESTION: WebSocketMessageHandler._handle_next_question,
