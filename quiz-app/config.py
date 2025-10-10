@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     port: int = 8000
     
     # Database settings
-    database_url: str = "postgresql+asyncpg://user:password@localhost:5432/quizgame"
+    database_url: str = "postgresql+asyncpg://quiz_user:Tomorkeny1@localhost:5432/quiz_game"
     
     # Security settings
     secret_key: str = "your-secret-key-change-in-production"
