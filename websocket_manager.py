@@ -1,7 +1,8 @@
-"""
-WebSocket connection manager for the Kahoot-style quiz application.
-Manages active connections and room state.
-"""
+#This file manages all the websoket connections for the kahoot style quiz
+#Basically keeps track of who(host or player) is connected to which room
+#we used class to make the code cleaner 
+
+""" WebSocket connection manager for the Kahoot-style quiz application. Manages active connections and room state. """
 
 import logging
 import json
@@ -15,7 +16,8 @@ logger = logging.getLogger(__name__)
 
 class ConnectionManager:
     """Manages WebSocket connections for hosts and players."""
-    
+
+    # using dict for host and nested dict for players
     def __init__(self):
         # Room code -> host WebSocket
         self.host_connections: Dict[str, WebSocket] = {}
@@ -24,12 +26,15 @@ class ConnectionManager:
     
     async def connect_host(self, websocket: WebSocket, room_code: str, host_id: str):
         """Connect a host to a room."""
+        #this accepts websocket connection requests from the host
         await websocket.accept()
         self.host_connections[room_code] = websocket
         logger.info(f"Host {host_id} connected to room {room_code}")
     
     async def connect_player(self, websocket: WebSocket, room_code: str, player_id: str, nickname: str):
         """Connect a player to a room."""
+        #Each player is identified by an ID an nickname
+        #Stores multiple players under one room
         await websocket.accept()
         self.player_connections[room_code][player_id] = (websocket, nickname)
         logger.info(f"Player {nickname} ({player_id}) connected to room {room_code}")
@@ -48,6 +53,7 @@ class ConnectionManager:
             del self.player_connections[room_code][player_id]
             return nickname
         return None
+        #when a player leaves or disconnects, they are removed from the list
     
     async def send_to_host(self, room_code: str, message):
         """Send message to host of a room."""
@@ -77,6 +83,7 @@ class ConnectionManager:
                 except Exception as e:
                     logger.error(f"Failed to broadcast to player {player_id}: {e}")
                     disconnected_players.append(player_id)
+                    #sends the same message to everyone in the room
             
             # Clean up disconnected players
             for player_id in disconnected_players:
@@ -106,6 +113,7 @@ class ConnectionManager:
             "player_count": player_count,
             "players": players_info
         }
+        #It shows how many players are connected and their nicknames
     
     def get_active_rooms(self) -> List[str]:
         """Get list of all active rooms."""
@@ -141,14 +149,14 @@ class ConnectionManager:
         })
 
 
-# Global connection manager instance
+# Global connection manager instance (can be used across the whole map)
 connection_manager = ConnectionManager()
 
 
 def get_connection_stats() -> dict:
     """Get connection statistics."""
     total_players = sum(len(players) for players in connection_manager.player_connections.values())
-    
+    # the host can see total rooms and players online
     return {
         "total_rooms": len(connection_manager.host_connections),
         "total_players": total_players,
