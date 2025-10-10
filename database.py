@@ -1,11 +1,11 @@
 """
 Database configuration and session management for the quiz application.
-Uses SQLAlchemy with async support.
+Uses SQLAlchemy with async support for PostgreSQL.
 """
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import String, DateTime, Boolean, Integer, Text, ForeignKey
+from sqlalchemy import String, DateTime, Boolean, Integer, Text, ForeignKey, func
 from utils import generate_unique_id, generate_room_code
 import logging
 from typing import AsyncGenerator
@@ -14,7 +14,7 @@ from config import settings, DATABASE_CONFIG
 
 logger = logging.getLogger(__name__)
 
-# Create async engine
+# Create async engine for PostgreSQL
 engine = create_async_engine(
     settings.database_url,
     **DATABASE_CONFIG
@@ -54,17 +54,16 @@ async def init_db():
     try:
         # Import all models to ensure they're registered
         from models import Room, Quiz, Question, Choice, Player, Answer, Score
-        
+
         async with engine.begin() as conn:
             # Create all tables
             await conn.run_sync(Base.metadata.create_all)
-            
+
         logger.info("✅ Database initialized successfully")
-        
         # Create sample data if in debug mode
         if settings.debug:
             await create_sample_data()
-            
+
     except Exception as e:
         logger.error(f"❌ Failed to initialize database: {e}")
         raise
@@ -92,7 +91,7 @@ async def create_sample_data():
             if result.first():
                 logger.info("Sample data already exists")
                 return
-            
+
             # Create sample quiz
             sample_quiz = Quiz(
                 id=generate_unique_id(),
@@ -101,10 +100,10 @@ async def create_sample_data():
                 created_by="system",
                 is_active=True
             )
-            
+
             db.add(sample_quiz)
             await db.flush()  # Get the quiz ID
-            
+
             # Sample questions
             questions_data = [
                 {
@@ -172,7 +171,7 @@ async def check_db_health() -> bool:
     """Check if database is accessible."""
     try:
         async with AsyncSessionLocal() as db:
-            await db.execute(func.now())
+            await db.execute(select(func.now()))
             return True
     except Exception as e:
         logger.error(f"Database health check failed: {e}")

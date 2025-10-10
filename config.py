@@ -17,8 +17,8 @@ class Settings(BaseSettings):
     host: str = "0.0.0.0"
     port: int = 8000
     
-    # Database settings
-    database_url: str = "sqlite+aiosqlite:///./quiz_game.db"
+    # Database settings - PostgreSQL
+    database_url: str = "postgresql+asyncpg://postgres:password@localhost:5432/quiz_game"
     
     # Security settings
     secret_key: str = "your-secret-key-change-in-production"
@@ -52,23 +52,15 @@ class Settings(BaseSettings):
 # Global settings instance
 settings = Settings()
 
-# Database configuration
-if settings.database_url.startswith("sqlite"):
-    # SQLite specific settings
-    DATABASE_CONFIG = {
-        "echo": settings.debug,
-        "future": True
-    }
-else:
-    # PostgreSQL/other databases
-    DATABASE_CONFIG = {
-        "echo": settings.debug,
-        "future": True,
-        "pool_size": 10,
-        "max_overflow": 20,
-        "pool_pre_ping": True,
-        "pool_recycle": 300
-    }
+# PostgreSQL database configuration
+DATABASE_CONFIG = {
+    "echo": settings.debug,
+    "future": True,
+    "pool_size": 10,
+    "max_overflow": 20,
+    "pool_pre_ping": True,
+    "pool_recycle": 300
+}
 
 # Environment-specific overrides
 if settings.debug:

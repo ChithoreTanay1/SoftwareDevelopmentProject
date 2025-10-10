@@ -75,7 +75,11 @@ async def websocket_host(websocket: WebSocket, room_code: str):
     """WebSocket endpoint for quiz hosts."""
     # Get host_id from query parameters
     from fastapi import Query
-    host_id = Query(...)
+    host_id = websocket.query_params.get("host_id")
+    
+    if not host_id:
+        await websocket.close(code=1008, reason="Host ID required")
+        return
     
     await connection_manager.connect_host(websocket, room_code, host_id)
     
@@ -103,9 +107,12 @@ async def websocket_host(websocket: WebSocket, room_code: str):
 async def websocket_player(websocket: WebSocket, room_code: str):
     """WebSocket endpoint for quiz players."""
     # Get player_id and nickname from query parameters
-    from fastapi import Query
-    player_id = Query(...)
-    nickname = Query(...)
+    player_id = websocket.query_params.get("player_id")
+    nickname = websocket.query_params.get("nickname")
+    
+    if not player_id or not nickname:
+        await websocket.close(code=1008, reason="Player ID and nickname required")
+        return
     
     await connection_manager.connect_player(websocket, room_code, player_id, nickname)
     
