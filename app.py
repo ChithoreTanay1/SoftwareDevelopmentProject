@@ -18,7 +18,7 @@ from websocket_handler import websocket_handler, connection_event_handler  # Fix
 from schemas import WSMessage, APIResponse
 from config import settings
 
-# Configure logging
+# Configure logging for easier debugging and monitoring
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
