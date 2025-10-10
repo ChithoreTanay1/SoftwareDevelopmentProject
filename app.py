@@ -1,5 +1,5 @@
 """
-Main FastAPI application for Kahoot-style quiz game.
+Main FastAPI application for Kahoot-style quiz game which can also be used for voting
 Combines all routes and WebSocket handlers into a single application.
 """
 
@@ -10,7 +10,7 @@ from contextlib import asynccontextmanager
 import logging
 import json
 
-# Local imports
+# Local imports, importing prepared files to the app.py
 from database import init_db, close_db
 from routes import api_router
 from websocket_manager import connection_manager
