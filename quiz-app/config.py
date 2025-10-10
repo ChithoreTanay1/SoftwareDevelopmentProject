@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     port: int = 8000
     
     # Database settings
-    database_url: str = "sqlite+aiosqlite:///./quiz_game.db"
+    database_url: str = "postgresql+asyncpg://user:password@localhost:5432/quizgame"
     
     # Security settings
     secret_key: str = "your-secret-key-change-in-production"
@@ -57,7 +57,11 @@ if settings.database_url.startswith("sqlite"):
     # SQLite specific settings
     DATABASE_CONFIG = {
         "echo": settings.debug,
-        "future": True
+        "future": True,
+        "pool_size": 10,
+        "max_overflow": 20,
+        "pool_pre_ping": True,
+        "pool_recycle": 300
     }
 else:
     # PostgreSQL/other databases

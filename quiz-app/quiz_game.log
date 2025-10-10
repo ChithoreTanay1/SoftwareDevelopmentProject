@@ -11,3 +11,12 @@
 2025-10-03 18:42:34,966 - app - INFO - Starting up Kahoot-style Quiz Game API
 2025-10-03 18:46:01,032 - app - INFO - Shutting down
 2025-10-03 18:46:01,039 - __main__ - INFO - Server stopped
+2025-10-08 18:01:00,053 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-10-08 18:01:00,053 - __main__ - INFO - Environment: Production
+2025-10-08 18:01:00,053 - __main__ - INFO - Server will run on 0.0.0.0:8000
+2025-10-08 18:01:02,280 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-10-08 18:09:45,543 - app - INFO - Shutting down
+2025-10-08 18:09:45,565 - __main__ - INFO - Server stopped
+2025-10-10 17:26:45,720 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-10-10 17:26:45,722 - __main__ - INFO - Environment: Production
+2025-10-10 17:26:45,722 - __main__ - INFO - Server will run on 0.0.0.0:8000
