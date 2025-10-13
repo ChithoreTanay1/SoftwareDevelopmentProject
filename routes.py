@@ -10,7 +10,7 @@ from typing import List
 
 from database import get_db
 from schemas import (
-    APIResponse, QuizCreate, QuizResponse, QuizSummary, 
+    APIResponse, QuizCreate, QuizResponse, QuizSummary,
     RoomCreate, RoomResponse, RoomJoin, PlayerResponse,
     LeaderboardResponse
 )
@@ -57,7 +57,7 @@ async def create_quiz(quiz_data: QuizCreate, db: AsyncSession = Depends(get_db))
     quiz = await handle_service_exceptions(
         QuizService.create_quiz, db, quiz_data
     )
-    
+
     return APIResponse(
         message="Quiz created successfully",
         data={"quiz_id": quiz.id, "title": quiz.title}
@@ -70,7 +70,7 @@ async def get_quiz(quiz_id: str, db: AsyncSession = Depends(get_db)):
     quiz = await handle_service_exceptions(
         QuizService.get_quiz, db, quiz_id
     )
-    
+
     return quiz
 
 
@@ -80,7 +80,7 @@ async def list_quizzes(limit: int = 50, db: AsyncSession = Depends(get_db)):
     quizzes = await handle_service_exceptions(
         QuizService.list_active_quizzes, db, limit
     )
-    
+
     # Convert to summary format
     quiz_summaries = []
     for quiz in quizzes:
@@ -94,7 +94,7 @@ async def list_quizzes(limit: int = 50, db: AsyncSession = Depends(get_db)):
             question_count=len(quiz.questions) if hasattr(quiz, 'questions') else 0
         )
         quiz_summaries.append(summary)
-    
+
     return quiz_summaries
 
 

@@ -13,12 +13,12 @@ class WSMessageType(str, Enum):
     """WebSocket message types."""
     # Host messages
     START_GAME = "start_game"
-    NEXT_QUESTION = "next_question" 
+    NEXT_QUESTION = "next_question"
     END_GAME = "end_game"
-    
+
     # Player messages
     ANSWER_SUBMITTED = "answer_submitted"
-    
+
     # Broadcast messages
     QUESTION_STARTED = "question_started"
     QUESTION_ENDED = "question_ended"
@@ -26,7 +26,7 @@ class WSMessageType(str, Enum):
     LEADERBOARD_UPDATE = "leaderboard_update"
     PLAYER_JOINED = "player_joined"
     PLAYER_LEFT = "player_left"
-    
+
     # System messages
     ERROR = "error"
     CONNECTION_STATUS = "connection_status"
@@ -83,14 +83,14 @@ class ChoiceCreate(ChoiceBase):
 class ChoiceResponse(ChoiceBase):
     """Schema for choice responses (without correct answer info)."""
     id: str
-    
+
     model_config = ConfigDict(from_attributes=True)
 
 
 class ChoiceWithAnswer(ChoiceResponse):
     """Schema for choices with correct answer info."""
     is_correct: bool
-    
+
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -124,7 +124,7 @@ class QuestionWithAnswers(QuestionBase):
     """Schema for questions with answer info (for hosts)."""
     id: str
     choices: List[ChoiceWithAnswer]
-    
+
     model_config = ConfigDict(from_attributes=True)
 
 
