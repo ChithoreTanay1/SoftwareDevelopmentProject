@@ -76,23 +76,23 @@ async def websocket_host(websocket: WebSocket, room_code: str):
     # Get host_id from query parameters
     from fastapi import Query
     host_id = websocket.query_params.get("host_id")
-    
+
     if not host_id:
         await websocket.close(code=1008, reason="Host ID required")
         return
-    
+
     await connection_manager.connect_host(websocket, room_code, host_id)
-    
+
     try:
         while True:
             # Receive messages from host
             data = await websocket.receive_text()
             message_data = json.loads(data)
             message = WSMessage(**message_data)
-            
+
             # Handle host commands
             await websocket_handler.handle_host_message(room_code, host_id, message)
-            
+
     except WebSocketDisconnect:
         connection_manager.disconnect_host(room_code)
         await connection_event_handler.handle_host_disconnect(room_code, host_id)
@@ -109,28 +109,28 @@ async def websocket_player(websocket: WebSocket, room_code: str):
     # Get player_id and nickname from query parameters
     player_id = websocket.query_params.get("player_id")
     nickname = websocket.query_params.get("nickname")
-    
+
     if not player_id or not nickname:
         await websocket.close(code=1008, reason="Player ID and nickname required")
         return
-    
+
     await connection_manager.connect_player(websocket, room_code, player_id, nickname)
-    
+
     try:
         while True:
             # Receive messages from player
             data = await websocket.receive_text()
             message_data = json.loads(data)
             message = WSMessage(**message_data)
-            
+
             # Handle player messages
             await websocket_handler.handle_player_message(room_code, player_id, message)
-            
+
     except WebSocketDisconnect:
         nickname = connection_manager.disconnect_player(room_code, player_id)
         await connection_event_handler.handle_player_disconnect(room_code, player_id)
         logger.info(f"Player {nickname} ({player_id}) disconnected from room {room_code}")
-                
+
     except Exception as e:
         logger.error(f"Player WebSocket error: {e}")
         connection_manager.disconnect_player(room_code, player_id)
