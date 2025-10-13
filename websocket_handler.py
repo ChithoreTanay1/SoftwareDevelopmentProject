@@ -11,7 +11,7 @@ from typing import Optional
 from database import AsyncSessionLocal
 from models import Room, Player
 from schemas import (
-    WSMessage, WSMessageType, PlayerAnswer, QuestionResponse, 
+    WSMessage, WSMessageType, PlayerAnswer, QuestionResponse,
     ChoiceResponse, PlayerAnswer
 )
 from services import RoomService, PlayerService, ScoreService
@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 class WebSocketMessageHandler:
     """Handles WebSocket messages for the quiz game."""
-    
+
     @staticmethod
     async def handle_host_message(room_code: str, host_id: str, message: WSMessage):
         """Handle messages from game host."""
@@ -35,26 +35,26 @@ class WebSocketMessageHandler:
                 if not room or room.host_id != host_id:
                     logger.warning(f"Unauthorized host message from {host_id} in room {room_code}")
                     return
-                
+
                 handler_map = {
                     WSMessageType.START_GAME: WebSocketMessageHandler._handle_start_game,
                     WSMessageType.NEXT_QUESTION: WebSocketMessageHandler._handle_next_question,
                     WSMessageType.END_GAME: WebSocketMessageHandler._handle_end_game
                 }
-                
+
                 handler = handler_map.get(message.type)
                 if handler:
                     await handler(db, room, room_code, message.data)
                 else:
                     logger.warning(f"Unknown host message type: {message.type}")
-                    
+
             except Exception as e:
                 logger.error(f"Error handling host message: {e}")
                 await connection_manager.send_to_host(room_code, WSMessage(
                     type=WSMessageType.ERROR,
                     data={"message": "Failed to process host message"}
                 ))
-    
+
     @staticmethod
     async def handle_player_message(room_code: str, player_id: str, message: WSMessage):
         """Handle messages from players."""
@@ -64,22 +64,22 @@ class WebSocketMessageHandler:
                 if not room:
                     logger.warning(f"Message from player {player_id} in non-existent room {room_code}")
                     return
-                
+
                 player = await PlayerService.get_player_in_room(db, room.id, player_id)
                 if not player:
                     logger.warning(f"Message from unknown player {player_id} in room {room_code}")
                     return
-                
+
                 handler_map = {
                     WSMessageType.ANSWER_SUBMITTED: WebSocketMessageHandler._handle_player_answer
                 }
-                
+
                 handler = handler_map.get(message.type)
                 if handler:
                     await handler(db, room, player, room_code, message.data)
                 else:
                     logger.warning(f"Unknown player message type: {message.type}")
-                    
+
             except Exception as e:
                 logger.error(f"Error handling player message: {e}")
                 await connection_manager.send_to_player(room_code, player_id, WSMessage(
@@ -92,16 +92,16 @@ class WebSocketMessageHandler:
         """Handle game start from host."""
         if room.status != "waiting":
             raise GameStateException("start game", room.status, "waiting")
-        
+
         success = await RoomService.start_game(db, room.id)
         if not success:
             logger.error(f"Failed to start game in room {room_code}")
             return
-        
+
         # Get updated room with first question
         updated_room = await RoomService.get_room(db, room.id)
         first_question = updated_room.quiz.questions[0]
-        
+
         # Prepare question data for players (without correct answers)
         question_data = QuestionResponse(
             id=first_question.id,
@@ -119,7 +119,7 @@ class WebSocketMessageHandler:
                 for choice in first_question.choices
             ]
         )
-        
+
         # Broadcast game start to all connections
         await connection_manager.broadcast_to_all(room_code, WSMessage(
             type=WSMessageType.QUESTION_STARTED,
@@ -129,9 +129,9 @@ class WebSocketMessageHandler:
                 "total_questions": len(updated_room.quiz.questions)
             }
         ))
-        
+
         logger.info(f"Game started in room {room_code}")
-    
+
     @staticmethod
     async def _handle_next_question(db: AsyncSession, room: Room, room_code: str, data: dict):
         """Handle moving to next question."""
