@@ -8,7 +8,7 @@ from typing import Optional, Any, Dict
 
 class QuizGameException(Exception):
     """Base exception for quiz game errors."""
-    
+
     def __init__(self, message: str, error_code: str = "QUIZ_GAME_ERROR", details: Optional[Dict[str, Any]] = None):
         self.message = message
         self.error_code = error_code
@@ -18,7 +18,7 @@ class QuizGameException(Exception):
 
 class ValidationException(QuizGameException):
     """Exception for validation errors."""
-    
+
     def __init__(self, message: str, field: Optional[str] = None, invalid_value: Any = None):
         super().__init__(message, "VALIDATION_ERROR")
         self.field = field
@@ -40,7 +40,6 @@ class ResourceNotFoundException(QuizGameException):
 
 class QuizNotFoundException(ResourceNotFoundException):
     """Exception for quiz not found errors."""
-    
     def __init__(self, quiz_id: str):
         super().__init__("Quiz", quiz_id)
 
