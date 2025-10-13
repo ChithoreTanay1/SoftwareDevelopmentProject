@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 class QuizService:
     """Service for quiz management operations."""
-    
+
     @staticmethod
     async def create_quiz(db: AsyncSession, quiz_data: QuizCreate) -> Quiz:
         """Create a new quiz with questions and choices."""
@@ -41,10 +41,10 @@ class QuizService:
                 created_by=quiz_data.created_by,
                 is_active=True
             )
-            
+
             db.add(quiz)
             await db.flush()  # Get the quiz ID
-            
+
             # Create questions and choices
             for q_data in quiz_data.questions:
                 question = Question(
@@ -56,7 +56,7 @@ class QuizService:
                     points=q_data.points,
                     order_index=q_data.order_index
                 )
-                
+
                 db.add(question)
                 await db.flush()
                 
