@@ -27,18 +27,18 @@ def generate_room_code(length: int = 6) -> str:
 def calculate_time_bonus(response_time: float, time_limit: int, max_bonus: float = 0.2) -> float:
     """
     Calculate time bonus for quick answers.
-    
+
     Args:
         response_time: Time taken to answer in seconds
         time_limit: Total time allowed for the question
         max_bonus: Maximum bonus percentage (0.2 = 20% bonus)
-    
+
     Returns:
         Bonus multiplier (0.0 to max_bonus)
     """
     if response_time >= time_limit:
         return 0.0
-    
+
     # Linear bonus: faster answers get higher bonus
     remaining_time = time_limit - response_time
     time_ratio = remaining_time / time_limit
@@ -49,22 +49,22 @@ def calculate_score(base_points: int, is_correct: bool, response_time: Optional[
                    time_limit: int = 30) -> int:
     """
     Calculate final score for a question answer.
-    
+
     Args:
         base_points: Base points for the question
         is_correct: Whether the answer is correct
         response_time: Time taken to answer (optional)
         time_limit: Time limit for the question
-    
+
     Returns:
         Final score
     """
     if not is_correct:
         return 0
-    
+
     if response_time is None:
         return base_points
-    
+
     time_bonus = calculate_time_bonus(response_time, time_limit)
     final_score = int(base_points * (1 + time_bonus))
     return final_score
@@ -73,24 +73,24 @@ def calculate_score(base_points: int, is_correct: bool, response_time: Optional[
 def sanitize_nickname(nickname: str) -> str:
     """
     Sanitize player nickname for display.
-    
+
     Args:
         nickname: Raw nickname input
-    
+
     Returns:
         Sanitized nickname
     """
     # Remove leading/trailing whitespace
     nickname = nickname.strip()
-    
+
     # Limit length
     if len(nickname) > 100:
         nickname = nickname[:100]
-    
+
     # Replace empty with default
     if not nickname:
         nickname = f"Player{random.randint(1000, 9999)}"
-    
+
     return nickname
 
 
