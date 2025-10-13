@@ -29,12 +29,12 @@ logger = logging.getLogger(__name__)
 
 class QuizGameServer:
     """Quiz game server with proper lifecycle management."""
-    
+
     def __init__(self):
         self.server = None
         self.shutdown_event = asyncio.Event()
         self.setup_signal_handlers()
-    
+
     def setup_signal_handlers(self):
         """Setup signal handlers for graceful shutdown."""
         if sys.platform != "win32":
@@ -60,7 +60,7 @@ class QuizGameServer:
             logger.info("Starting Kahoot-style Quiz Game API server...")
             logger.info(f"Environment: {'Development' if settings.debug else 'Production'}")
             logger.info(f"Server will run on {settings.host}:{settings.port}")
-            
+
             # Configure uvicorn
             config = uvicorn.Config(
                 "app:app",
