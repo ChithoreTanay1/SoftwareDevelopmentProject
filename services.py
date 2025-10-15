@@ -138,7 +138,7 @@ class RoomService:
             # Generates a unique room code
             room_code = generate_room_code()
             
-            # Check for code collision
+            
             existing = await db.execute(
                 select(Room).where(Room.room_code == room_code)
             )
@@ -148,7 +148,7 @@ class RoomService:
                     select(Room).where(Room.room_code == room_code)
                 )
             
-            # Create room
+            # Creates the room 
             room = Room(
                 id=generate_unique_id(),
                 room_code=room_code,
@@ -215,7 +215,7 @@ class RoomService:
         if room.status != "waiting":
             raise GameStateException("start game", room.status, "waiting")
         
-        # Update room status
+        # Updstes the status of the roon
         room.status = "active"
         room.started_at = datetime.utcnow()
         
@@ -264,6 +264,7 @@ class PlayerService:
     async def join_room(db: AsyncSession, room_code: str, player_id: str, nickname: str) -> Player:
         """Add a player to a room."""
         try:
+            #Gets the room info by its code
             room = await RoomService.get_room_by_code(db, room_code)
             
             # Check if room is full
@@ -271,12 +272,12 @@ class PlayerService:
             if current_players >= room.max_players:
                 raise RoomFullException(room_code, room.max_players)
             
-            # Check for duplicate player
+            # Check for duplicate player using player id
             existing_player = await PlayerService.get_player_in_room(db, room.id, player_id)
             if existing_player:
                 raise DuplicatePlayerException(player_id, room_code)
             
-            # Create player
+            # Create player with sanitize nickname
             player = Player(
                 id=generate_unique_id(),
                 room_id=room.id,
@@ -333,7 +334,7 @@ class ScoreService:
             if not question:
                 raise QuestionNotFoundException(answer_data.question_id)
             
-            # Check for duplicate answer
+            # Check for duplicate answers
             existing_answer = await db.execute(
                 select(Answer)
                 .where(Answer.player_id == player_id, Answer.question_id == answer_data.question_id)
