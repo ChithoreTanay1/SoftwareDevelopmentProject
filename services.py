@@ -27,13 +27,13 @@ logger = logging.getLogger(__name__)
 
 
 class QuizService:
-    """Service for quiz management operations."""
+    """Handles operations related to creating and retrieving quizes"""
     
     @staticmethod
     async def create_quiz(db: AsyncSession, quiz_data: QuizCreate) -> Quiz:
-        """Create a new quiz with questions and choices."""
+        """To Create a new quiz with questions and choices."""
         try:
-            # Create quiz
+            # Create quiz main entry in the database
             quiz = Quiz(
                 id=generate_unique_id(),
                 title=quiz_data.title,
@@ -43,9 +43,9 @@ class QuizService:
             )
             
             db.add(quiz)
-            await db.flush()  # Get the quiz ID
+            await db.flush()  # Get the quiz ID and makes it avaiable for the next inserts
             
-            # Create questions and choices
+            # loops through each question 
             for q_data in quiz_data.questions:
                 question = Question(
                     id=generate_unique_id(),
@@ -58,9 +58,9 @@ class QuizService:
                 )
                 
                 db.add(question)
-                await db.flush()
+                await db.flush() #makes sure that the ID exists before adding choices
                 
-                # Validate choices
+                # Validate choices and makes sure that there is at least one correct one
                 correct_choices = [c for c in q_data.choices if c.is_correct]
                 if not correct_choices:
                     raise InvalidAnswerException(
@@ -69,7 +69,7 @@ class QuizService:
                         question.id
                     )
                 
-                for c_data in q_data.choices:
+                for c_data in q_data.choices: #brings out all the answer choices for the question
                     choice = Choice(
                         id=generate_unique_id(),
                         question_id=question.id,
@@ -79,7 +79,7 @@ class QuizService:
                     )
                     db.add(choice)
             
-            await db.commit()
+            await db.commit() #saves to the database
             
             # Return quiz with relationships loaded
             result = await db.execute(
@@ -92,7 +92,7 @@ class QuizService:
             return result.scalar_one()
             
         except Exception as e:
-            await db.rollback()
+            await db.rollback() #rollback if anything fails and logs the error
             logger.error(f"Failed to create quiz: {e}")
             raise
     
@@ -109,7 +109,7 @@ class QuizService:
         
         quiz = result.scalar_one_or_none()
         if not quiz:
-            raise QuizNotFoundException(quiz_id)
+            raise QuizNotFoundException(quiz_id) #if quz doesn't exsit raise the exception
         
         return quiz
     
@@ -132,13 +132,13 @@ class RoomService:
     async def create_room(db: AsyncSession, room_data: RoomCreate, host_id: str) -> Room:
         """Create a new game room."""
         try:
-            # Verify quiz exists
+            #makes sure the quiz exsists before creating a room
             quiz = await QuizService.get_quiz(db, room_data.quiz_id)
             
-            # Generate unique room code
+            # Generates a unique room code
             room_code = generate_room_code()
             
-            # Check for code collision (very unlikely but possible)
+            # Check for code collision
             existing = await db.execute(
                 select(Room).where(Room.room_code == room_code)
             )
