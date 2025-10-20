@@ -1,0 +1,51 @@
+/* styles/AnswerPanel.css */
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.choice-button {
+  background: var(--choice-color);
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.choice-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.choice-button.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px white, 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.choice-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.choice-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.choice-letter {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

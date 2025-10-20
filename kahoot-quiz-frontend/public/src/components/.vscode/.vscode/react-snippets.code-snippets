@@ -1,0 +1,58 @@
+{
+  "React Functional Component": {
+    "prefix": "rfc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      ${2:content}",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Create a React functional component"
+  },
+  "React Context": {
+    "prefix": "rctx",
+    "body": [
+      "import React, { createContext, useContext, useReducer } from 'react';",
+      "",
+      "const ${1:ContextName} = createContext();",
+      "",
+      "const ${2:reducerName} = (state, action) => {",
+      "  switch (action.type) {",
+      "    case 'EXAMPLE_ACTION':",
+      "      return { ...state, example: action.payload };",
+      "    default:",
+      "      return state;",
+      "  }",
+      "};",
+      "",
+      "const initialState = {",
+      "  example: null",
+      "};",
+      "",
+      "export const ${1:ContextName}Provider = ({ children }) => {",
+      "  const [state, dispatch] = useReducer(${2:reducerName}, initialState);",
+      "",
+      "  return (",
+      "    <${1:ContextName}.Provider value={{ ...state, dispatch }}>",
+      "      {children}",
+      "    </${1:ContextName}.Provider>",
+      "  );",
+      "};",
+      "",
+      "export const use${1:ContextName} = () => {",
+      "  const context = useContext(${1:ContextName});",
+      "  if (!context) {",
+      "    throw new Error('use${1:ContextName} must be used within a ${1:ContextName}Provider');",
+      "  }",
+      "  return context;",
+      "};"
+    ]
+  }
+}
