@@ -15,6 +15,7 @@ To implement real-time Websocket communication for multiplayer gameplay
 SYSTEM ARCHITECTURE
 
 BACKEND
+
 The backend is a real-time, event-driven system designed to manage interative quiz sessions  between a host and multiple players. It's core functional areas are:
 . Quiz and question management
 . Room creation and session lifecycle
@@ -23,6 +24,7 @@ The backend is a real-time, event-driven system designed to manage interative qu
 . Game state synchronization
 
 Configuration Highlights (from config.py file)
+
 Database:
 
 Security: Includes secret key and token expiry settings.
@@ -34,6 +36,7 @@ CORS: Defaults to "*"
 Logging: Dynamically adjusts log level in debug mode
 
 Schemas and Data Contracts (schemas.py)
+
 The schemas define the data contracts used across API and websocket layers, implemented using Pydantic models for validation and serialization.
 
 class WSMessageType(..):
@@ -45,9 +48,11 @@ class WSMessage():
 Is used for consistent serialization of all messages between server and clients
 
 Game Entities
+
 Quiz, Question, Choice, Room, Player and Answer schemas define both the create and response variants.
 
 Leaderboard and Statistics
+
 Summarized data is provided using:
 class LeaderboardResponse(..):
   ....
@@ -58,20 +63,29 @@ class GameStats(..):
   ...
 
 Core Business Logic Services (services.py)
+
 All critical business operations are encapsulated within service classes.
 
-.Quiz creation and retrieval is handled by
+. Quiz creation and retrieval is handled by
+ 
   class QuizService:
     ...
 which validates at least one correct answer per question and uses generate_unique_id() for consistent unique user id generation.
 
 .Lifecycle management of game sessions is the responsiblity of
+  
   class RoomService:
     ...
+
 which has the following key functions:
+
 create_room() :       generates unique room codes and initializes new sessions.
+
 get_room_by_code():   retrieves room details using join prefetching.
+
 start_game():         changes room status from waiting -> active.
+
 next_question():      advances question index or marks completion
+
 end_game():           terminates a game session.
 
