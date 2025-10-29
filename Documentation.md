@@ -17,7 +17,7 @@ OBJECTIVES
 
 To handle host and player connections securely and efficiently
 
-To implement real-time Websocket communication for multiplayer gameplay
+To accurately record results in a database
 
 
 SYSTEM ARCHITECTURE
