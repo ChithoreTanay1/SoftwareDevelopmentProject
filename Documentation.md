@@ -6,6 +6,7 @@ the hosts and players to communicate instantly during quiz sessions
 The application manages database connections, Websocket connections, routes, error handling within a single Fast API application file.
 
 CLIENT REQUIREMENTS
+
 To have control over accepted nickname type
 
 To be able to access results after a session ends
