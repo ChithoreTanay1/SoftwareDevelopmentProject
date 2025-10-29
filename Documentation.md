@@ -33,7 +33,9 @@ The backend is a real-time, event-driven system designed to manage interative qu
 
 Configuration Highlights (from config.py file)
 
-Database:
+Programming Language: Python
+
+Database: PostgreSQL
 
 Security: Includes secret key and token expiry settings.
 
