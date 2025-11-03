@@ -131,3 +131,18 @@ active - all questions answered or host ends game - completed
 
 completed - none - end of session
 
+Error Handling and Logging
+
+We used custom exceptions like "RoomNotFoundException", "PlayerNotFoundException", "DuplicateAnswerException", "GameStateException" to ensure clear and consistent error reporting. Logging is centralized through Python's logging module with contextual error messages.
+
+BACKEND SUMMARY
+
+The backend architecture operates with a seperation between transport(WebSocket), business logic(services) and data models(schemas) which ensures maintainability, testability ans scalability.
+
+DATABASE
+
+
+
+FRONTEND
+
+
