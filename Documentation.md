@@ -99,3 +99,31 @@ next_question():      advances question index or marks completion
 
 end_game():           terminates a game session.
 
+. Player state, room joining and connection tracking is handled by the "PlayerService" class which prevents duplicate entries via "DuplicatePlayerException" and enforces room capacity limits.
+
+. "ScoreService" class implements scoring and analytics
+
+REAL-TIME COMMUNICATION
+. Active connections and roon-level broadcasting is managed by the "websocket_manager.py"
+
+The file is also reponsible for:
+. Handling disconnections correctly
+. Targeted or Broadcast messages to WebSocket clients
+. Maintaining mapping of connected clients to rooms and roles
+
+. "websocket_handler.py" acts as the event controller, interpreting incoming messages and insitializing service methods
+
+It's core features:
+. Dispatching host actions
+. Processing player actions
+. Uses "WSMessageType" enums to route behaviour
+. Coordinating with "WebSocketManager" for event distribution
+
+GAME LIFECYCLE
+
+State Transitions
+
+State        Trigger                                     Next State
+
+waiting      host starts game                            active
+
