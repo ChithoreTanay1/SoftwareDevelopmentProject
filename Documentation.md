@@ -123,7 +123,11 @@ GAME LIFECYCLE
 
 State Transitions
 
-State        Trigger                                     Next State
+State - Trigger - Next State
 
-waiting      host starts game                            active
+waiting - Host starts game - active
+
+active - all questions answered or host ends game - completed
+
+completed - none - end of session
 
