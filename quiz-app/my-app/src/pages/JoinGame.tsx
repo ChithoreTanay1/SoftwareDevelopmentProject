@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import { useState } from "react";
 import { Button } from  "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,11 +22,11 @@ const JoinGame = () => {
       return;
     }
 
-    // Store player info for demo
+    
     localStorage.setItem("playerName", nickname);
     localStorage.setItem("gamePin", gamePin);
     
-    // For demo, redirect to lobby if there's a quiz
+    
     const quiz = localStorage.getItem("currentQuiz");
     if (quiz) {
       navigate("/lobby");
@@ -41,7 +41,7 @@ const JoinGame = () => {
 
   return (
     <div className="min-h-screen gradient-hero relative overflow-hidden flex items-center justify-center px-4">
-      {/* Background elements */}
+      
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
