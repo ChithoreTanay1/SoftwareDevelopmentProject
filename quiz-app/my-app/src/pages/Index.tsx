@@ -3,12 +3,13 @@ import { Button } from  "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Gamepad2, Plus, Trophy } from "lucide-react";
 
+
 const Index = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen gradient-hero relative overflow-hidden">
-      {/* Animated background elements */}
+      
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
@@ -16,7 +17,7 @@ const Index = () => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12">
-        {/* Logo/Title */}
+        
         <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-white/20 backdrop-blur-sm shadow-lg">
             <Trophy className="w-10 h-10 text-white" />
@@ -29,7 +30,7 @@ const Index = () => {
           </p>
         </div>
 
-        {/* Main Actions */}
+        
         <div className="flex flex-col sm:flex-row gap-6 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
           <Button
             variant="default"
