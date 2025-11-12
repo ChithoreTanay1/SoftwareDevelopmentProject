@@ -1,9 +1,10 @@
-import React from "react"; 
+import React from "react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Users, Play, Copy, Check } from "lucide-react";
 import { useToast } from  "@/hooks/use-toast";
+
 
 const GameLobby = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const GameLobby = () => {
 
   return (
     <div className="min-h-screen gradient-hero relative overflow-hidden">
-      {/* Background elements */}
+      
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
