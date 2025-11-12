@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Plus, Trash2, Play } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
 
 interface Question {
   id: string;
@@ -233,7 +234,7 @@ const CreateQuiz = () => {
             Add Question
           </Button>
           <Button
-            variant="default" /* CHANGED from "hero" to "default" */
+            variant="default"
             size="lg"
             onClick={startQuiz}
             className="flex-1"
