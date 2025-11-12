@@ -29,7 +29,7 @@ const App = () => (
           <Route path="/lobby" element={<GameLobby />} />
           <Route path="/play" element={<PlayGame />} />
           <Route path="/results" element={<Results />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
