@@ -86,7 +86,7 @@ const PlayGame = () => {
   return (
     <div className="min-h-screen bg-background py-8 px-4">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
+        
         <div className="bg-card rounded-3xl p-6 mb-6 shadow-lg border-2">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
