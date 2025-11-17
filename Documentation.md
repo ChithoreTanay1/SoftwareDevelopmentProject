@@ -139,6 +139,7 @@ BACKEND SUMMARY
 
 The backend architecture operates with a seperation between transport(WebSocket), business logic(services) and data models(schemas) which ensures maintainability, testability ans scalability.
 
+
 DATABASE
 
 
