@@ -167,5 +167,66 @@ async def create_sample_data() - Creates a dummy quiz with multiple questions & 
 async def check_db_health() -> bool - checks if database is running smoothly and is functionable.
 
 
+DATABASE SCHEMA EXPLAINED
+
+
+1. quizzes
+Represents a quiz with metadata.
+- id: unique identifier
+- title: quiz title
+- description: optional info
+- is_active: quiz availability
+Each quiz contains multiple questions.
+
+2. questions
+Questions belonging to quizzes.
+- quiz_id: parent quiz
+- question_text: text of question
+- question_type: e.g., multiple_choice
+- points: score for question
+- order_index: sequence in quiz
+Each question has multiple choices.
+
+3. choices
+Possible answers for a question.
+- question_id: parent question
+- choice_text: text of choice
+- is_correct: marks correct choice
+- order_index: visual order
+
+4. rooms
+Live quiz session room.
+- quiz_id: quiz played
+- room_code: join code
+- host_name: room creator
+- is_active: room running state
+Each room can have many players.
+
+5. players
+Participants in a room.
+- room_id: parent room
+- name: player's name
+- joined_at: join timestamp
+Players submit answers.
+
+6. answers
+Answers submitted by players.
+- player_id: player who answered
+- question_id: question answered
+- choice_id: chosen option
+- answered_at: timestamp
+Used to calculate scoring.
+
+7. scores
+Real-time or final scores.
+- player_id: player
+- total_points: cumulative score
+- updated_at: last change
+
+Schema relationships:
+quiz → questions → choices
+room → players → answers → scores
+
+
 FRONTEND
 
