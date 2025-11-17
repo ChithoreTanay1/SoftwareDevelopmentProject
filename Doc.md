@@ -1,6 +1,6 @@
 INTRODUCTION
 
-This project is a Khahoot inspired quiz game which can also be used for voting on simple prompts. The system supports real-time multiplayer interations usingWebsockets which enables both
+This project is a Kahoot inspired quiz game which can also be used for voting on simple prompts. The system supports real-time multiplayer interations usingWebsockets which enables both
 the hosts and players to communicate instantly during quiz sessions
 
 The application manages database connections, Websocket connections, routes, error handling within a single Fast API application file.
@@ -142,6 +142,29 @@ The backend architecture operates with a seperation between transport(WebSocket)
 
 DATABASE
 
+This module manages all database configuration, connection handling, session lifecycle, and initial data creation for the Quiz/VotingApp backend.
+It uses SQLAlchemy’s async engine (sqlalchemy.ext.asyncio) and integrates with FastAPI dependency injection.
+
+engine - Creates a single global async database engine.
+
+AsyncSessionLocal - Creates a factory for generating new async DB sessions.
+
+async def get_db() -> AsyncGenerator[AsyncSession, None] - 
+
+  Opens a new DB session (async with AsyncSessionLocal()).
+  Yields it to the route for use.
+  Handles errors:
+  Rolls back if something fails.
+  Ensures the session always closes afterward.
+  ✔ This guarantees clean session management per request.
+
+async def init_db() - This ensures tables exist before the app starts serving requests.
+
+async def close_db() - Prevents connection leaks on restart.
+
+async def create_sample_data() - Creates a dummy quiz with multiple questions & choices.
+
+async def check_db_health() -> bool - checks if database is running smoothly and is functionable.
 
 
 FRONTEND
