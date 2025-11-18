@@ -1,0 +1,13 @@
+2025-10-03 18:33:53,851 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-10-03 18:33:53,851 - __main__ - INFO - Environment: Production
+2025-10-03 18:33:53,851 - __main__ - INFO - Server will run on 0.0.0.0:8000
+2025-10-03 18:33:55,168 - __main__ - ERROR - Failed to start server: No module named 'websocket_manager'
+2025-10-03 18:33:55,169 - __main__ - ERROR - Server error: No module named 'websocket_manager'
+2025-10-03 18:33:55,169 - __main__ - INFO - Server stopped
+2025-10-03 18:33:55,169 - __main__ - ERROR - Application failed: No module named 'websocket_manager'
+2025-10-03 18:42:34,142 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-10-03 18:42:34,143 - __main__ - INFO - Environment: Production
+2025-10-03 18:42:34,143 - __main__ - INFO - Server will run on 0.0.0.0:8000
+2025-10-03 18:42:34,966 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-10-03 18:46:01,032 - app - INFO - Shutting down
+2025-10-03 18:46:01,039 - __main__ - INFO - Server stopped
