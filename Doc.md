@@ -1,232 +1,205 @@
-INTRODUCTION
+# 🎮 Real-Time Quiz & Voting App  
+Kahoot-Inspired Multiplayer Quiz System (FastAPI + WebSockets + PostgreSQL)
 
-This project is a Kahoot inspired quiz game which can also be used for voting on simple prompts. The system supports real-time multiplayer interations usingWebsockets which enables both
-the hosts and players to communicate instantly during quiz sessions
+This project is a **real-time interactive quiz and voting platform**, inspired by Kahoot.  
+It supports instant communication between **hosts** and **players** using WebSockets, secure session handling, nickname control, and persistent result tracking via PostgreSQL.
 
-The application manages database connections, Websocket connections, routes, error handling within a single Fast API application file.
+---
 
-CLIENT REQUIREMENTS
+## 🚀 Features
 
-To have control over accepted nickname type
+- 🔌 Real-time multiplayer using WebSockets  
+- 🛡️ Secure room system preventing unauthorized joins  
+- 🎯 Custom nickname validation rules  
+- 📊 Full result tracking & post-session statistics  
+- 🧠 Real-time host ↔ player synchronization  
+- 🗃️ Database-backed quiz & scoring  
+- 🧩 Single FastAPI application managing routes, DB, WebSockets, and errors  
 
-To be able to access results after a session ends
+---
 
-Room security which prevents unauthorized players from participating
+## 📌 Table of Contents
+- [Client Requirements](#client-requirements)  
+- [Objectives](#objectives)  
+- [System Architecture](#system-architecture)  
+  - [Backend](#backend)  
+  - [Database](#database)  
+  - [Frontend](#frontend)  
+- [Game Lifecycle](#game-lifecycle)  
+- [Error Handling and Logging](#error-handling-and-logging)  
+- [Backend Summary](#backend-summary)  
 
-OBJECTIVES 
+---
 
-To handle host and player connections securely and efficiently
+## ✅ Client Requirements
 
-To accurately record results in a database
+- Control over accepted nickname type  
+- Ability to access results after session ends  
+- Room security preventing unauthorized participation  
 
+---
 
-SYSTEM ARCHITECTURE
+## 🎯 Objectives
 
-BACKEND
+- Handle host and player connections securely and efficiently  
+- Accurately record results in the database  
 
-The backend is a real-time, event-driven system designed to manage interative quiz sessions  between a host and multiple players. It's core functional areas are:
-. Quiz and question management
-. Room creation and session lifecycle
-. Real-time communication via WebSocket
-. Player participation and scoring logic
-. Game state synchronization
+---
 
-Configuration Highlights (from config.py file)
+# 🏗 System Architecture
 
-Programming Language: Python
+## 🔧 Backend
 
-Database: PostgreSQL
+The backend is a **real-time, event-driven system** implemented with **FastAPI**, responsible for orchestrating quiz sessions, handling WebSocket connections, and managing room lifecycles.
 
-Security: Includes secret key and token expiry settings.
+### Core Functional Areas
+- Quiz & question management  
+- Room creation and session lifecycle  
+- Real-time WebSocket communication  
+- Player participation and scoring  
+- Game state synchronization  
 
-WebSocket: Configurable ping/pong intervals and timeout settings
+---
 
-CORS: Defaults to "*"
+## ⚙️ Configuration Highlights (`config.py`)
 
-Logging: Dynamically adjusts log level in debug mode
+| Setting | Details |
+|--------|---------|
+| Programming Language | Python |
+| Database | PostgreSQL |
+| Security | Secret key + token expiry |
+| WebSockets | Custom ping/pong intervals and timeouts |
+| CORS | Defaults to `"*"` |
+| Logging | Adaptive logging level in debug mode |
 
-Schemas and Data Contracts (schemas.py)
+---
 
-The schemas define the data contracts used across API and websocket layers, implemented using Pydantic models for validation and serialization.
+## 📦 Schemas & Data Contracts (`schemas.py`)
 
-class WSMessageType(..):
-  ....
-Defines both host-originated and player-originated event types.
+Schemas use **Pydantic** for request/response validation.
 
-class WSMessage():
-  ...
-Is used for consistent serialization of all messages between server and clients
+### WebSocket Message Types
+`WSMessageType` enumerates event categories for both host and player.
 
-Game Entities
+### WebSocket Message Format
+`WSMessage` ensures all messages follow a single consistent structure.
 
-Quiz, Question, Choice, Room, Player and Answer schemas define both the create and response variants.
+### Game Entities
+Schemas define:
+- Quiz  
+- Question  
+- Choice  
+- Room  
+- Player  
+- Answer
 
-Leaderboard and Statistics
+Each has **Create** and **Response** variants.
 
-Summarized data is provided using:
-class LeaderboardResponse(..):
-  ....
+### Statistics
+- `LeaderboardResponse`
+- `GameStats`
 
-and
+---
 
-class GameStats(..):
-  ...
+## 🧠 Core Business Logic (`services.py`)
 
-Core Business Logic Services (services.py)
+All major operations are handled by specialized service classes.
 
-All critical business operations are encapsulated within service classes.
+### **QuizService**
+- Creates and retrieves quizzes  
+- Ensures each question has at least one correct answer  
+- Generates unique IDs  
 
-. Quiz creation and retrieval is handled by
- 
-  class QuizService:
-    ...
-which validates at least one correct answer per question and uses generate_unique_id() for consistent unique user id generation.
+### **RoomService**
+Handles the entire room and game lifecycle:
+- `create_room()` → generates unique room code  
+- `get_room_by_code()`  
+- `start_game()` → transitions from `waiting → active`  
+- `next_question()` → advances quiz state  
+- `end_game()` → marks completion  
 
-.Lifecycle management of game sessions is the responsiblity of
-  
-  class RoomService:
-    ...
+### **PlayerService**
+- Validates player join requests  
+- Prevents duplicates via `DuplicatePlayerException`  
+- Enforces capacity limits  
 
-which has the following key functions:
+### **ScoreService**
+- Records player answers  
+- Generates leaderboards and statistics  
 
-create_room() :       generates unique room codes and initializes new sessions.
+---
 
-get_room_by_code():   retrieves room details using join prefetching.
+## ⚡ Real-Time Communication
 
-start_game():         changes room status from waiting -> active.
+### WebSocket Manager (`websocket_manager.py`)
+Handles:
+- Tracking active connections  
+- Broadcasting to all clients in a room  
+- Direct host/player messaging  
+- Clean disconnections  
+- Mapping sockets to rooms and roles  
 
-next_question():      advances question index or marks completion
+### WebSocket Controller (`websocket_handler.py`)
+Acts as the real-time event router:
+- Dispatches host actions  
+- Processes player submissions  
+- Interprets `WSMessageType`  
+- Sends updates via the WebSocket Manager  
 
-end_game():           terminates a game session.
+---
 
-. Player state, room joining and connection tracking is handled by the "PlayerService" class which prevents duplicate entries via "DuplicatePlayerException" and enforces room capacity limits.
+# 🔄 Game Lifecycle
 
-. "ScoreService" class implements scoring and analytics
+| State | Trigger | Next State |
+|--------|---------|-------------|
+| waiting | Host starts game | active |
+| active | All questions answered or host ends game | completed |
+| completed | (none) | end of session |
 
-REAL-TIME COMMUNICATION
-. Active connections and roon-level broadcasting is managed by the "websocket_manager.py"
+---
 
-The file is also reponsible for:
-. Handling disconnections correctly
-. Targeted or Broadcast messages to WebSocket clients
-. Maintaining mapping of connected clients to rooms and roles
+# ❗ Error Handling and Logging
 
-. "websocket_handler.py" acts as the event controller, interpreting incoming messages and insitializing service methods
+Custom exceptions ensure clear, controlled failures:
+- `RoomNotFoundException`  
+- `PlayerNotFoundException`  
+- `DuplicateAnswerException`  
+- `DuplicatePlayerException`  
+- `GameStateException`
 
-It's core features:
-. Dispatching host actions
-. Processing player actions
-. Uses "WSMessageType" enums to route behaviour
-. Coordinating with "WebSocketManager" for event distribution
+Logging is centralized and provides contextual information for debugging.
 
-GAME LIFECYCLE
+---
 
-State Transitions
+# 🧩 Backend Summary
 
-State - Trigger - Next State
+The architecture cleanly separates:
+- **Transport Layer** → WebSocket networking  
+- **Business Logic** → Services  
+- **Data Models** → Pydantic schemas  
 
-waiting - Host starts game - active
+This enables:
+- Maintainability  
+- Testability  
+- Scalability  
 
-active - all questions answered or host ends game - completed
+---
 
-completed - none - end of session
+# 🗄 Database
+*(This section can be filled with ER diagrams, migrations, or table structures.)*
 
-Error Handling and Logging
+---
 
-We used custom exceptions like "RoomNotFoundException", "PlayerNotFoundException", "DuplicateAnswerException", "GameStateException" to ensure clear and consistent error reporting. Logging is centralized through Python's logging module with contextual error messages.
+# 🖥️ Frontend
+*(Add build instructions, UI screenshots, and WebSocket usage once frontend is finished.)*
 
-BACKEND SUMMARY
+---
 
-The backend architecture operates with a seperation between transport(WebSocket), business logic(services) and data models(schemas) which ensures maintainability, testability ans scalability.
+# 🤝 Contributing
+Pull requests and feature suggestions are welcome.
 
+---
 
-DATABASE
-
-This module manages all database configuration, connection handling, session lifecycle, and initial data creation for the Quiz/VotingApp backend.
-It uses SQLAlchemy’s async engine (sqlalchemy.ext.asyncio) and integrates with FastAPI dependency injection.
-
-engine - Creates a single global async database engine.
-
-AsyncSessionLocal - Creates a factory for generating new async DB sessions.
-
-async def get_db() -> AsyncGenerator[AsyncSession, None] - 
-
-  Opens a new DB session (async with AsyncSessionLocal()).
-  Yields it to the route for use.
-  Handles errors:
-  Rolls back if something fails.
-  Ensures the session always closes afterward.
-  ✔ This guarantees clean session management per request.
-
-async def init_db() - This ensures tables exist before the app starts serving requests.
-
-async def close_db() - Prevents connection leaks on restart.
-
-async def create_sample_data() - Creates a dummy quiz with multiple questions & choices.
-
-async def check_db_health() -> bool - checks if database is running smoothly and is functionable.
-
-
-DATABASE SCHEMA EXPLAINED
-
-
-1. quizzes
-Represents a quiz with metadata.
-- id: unique identifier
-- title: quiz title
-- description: optional info
-- is_active: quiz availability
-Each quiz contains multiple questions.
-
-2. questions
-Questions belonging to quizzes.
-- quiz_id: parent quiz
-- question_text: text of question
-- question_type: e.g., multiple_choice
-- points: score for question
-- order_index: sequence in quiz
-Each question has multiple choices.
-
-3. choices
-Possible answers for a question.
-- question_id: parent question
-- choice_text: text of choice
-- is_correct: marks correct choice
-- order_index: visual order
-
-4. rooms
-Live quiz session room.
-- quiz_id: quiz played
-- room_code: join code
-- host_name: room creator
-- is_active: room running state
-Each room can have many players.
-
-5. players
-Participants in a room.
-- room_id: parent room
-- name: player's name
-- joined_at: join timestamp
-Players submit answers.
-
-6. answers
-Answers submitted by players.
-- player_id: player who answered
-- question_id: question answered
-- choice_id: chosen option
-- answered_at: timestamp
-Used to calculate scoring.
-
-7. scores
-Real-time or final scores.
-- player_id: player
-- total_points: cumulative score
-- updated_at: last change
-
-Schema relationships:
-quiz → questions → choices
-room → players → answers → scores
-
-
-FRONTEND
+# 📜 License
+MIT License (or any license you choose).
 
