@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     app_name: str = "Kahoot-Style Quiz Game"
     debug: bool = False
     host: str = "0.0.0.0"
-    port: int = 8000
+    port: int = 8003
     
     # Database settings
     database_url: str = "postgresql+asyncpg://quiz_user:Tomorkeny1@localhost:5432/quiz_game"

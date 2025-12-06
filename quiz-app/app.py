@@ -3,21 +3,17 @@ Main FastAPI application for Kahoot-style quiz game.
 Combines all routes and WebSocket handlers into a single application.
 """
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 import logging
-import json
-
 
 from database import init_db, close_db
 from routes import api_router
-from websocket_manager import connection_manager
-from websocket_handler import websocket_handler, connection_event_handler  # Fixed import
-from schemas import WSMessage, APIResponse
+from websocket_routes import ws_router
+from schemas import APIResponse
 from config import settings
-
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -52,13 +48,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include API routes
-app.include_router(api_router)
+# Include routers
+app.include_router(api_router)  # api_router already has prefix="/api/v1"
+app.include_router(ws_router, prefix="/api/v1")
 
 
-
-# ROOT ENDPOINTS
-
+# ROOT ENDPOINT
 
 @app.get("/", response_model=APIResponse)
 async def root():
@@ -66,73 +61,7 @@ async def root():
     return APIResponse(message="Kahoot-Style Quiz Game API is running")
 
 
-
-# WEBSOCKET ENDPOINTS
-
-
-@app.websocket("/ws/host/{room_code}")
-async def websocket_host(websocket: WebSocket, room_code: str):
-    """WebSocket endpoint for quiz hosts."""
-    # Get host_id from query parameters
-    from fastapi import Query
-    host_id = Query(...)
-    
-    await connection_manager.connect_host(websocket, room_code, host_id)
-    
-    try:
-        while True:
-            # Receive messages from host
-            data = await websocket.receive_text()
-            message_data = json.loads(data)
-            message = WSMessage(**message_data)
-            
-            # Handle host commands
-            await websocket_handler.handle_host_message(room_code, host_id, message)
-            
-    except WebSocketDisconnect:
-        connection_manager.disconnect_host(room_code)
-        await connection_event_handler.handle_host_disconnect(room_code, host_id)
-        logger.info(f"Host {host_id} disconnected from room {room_code}")
-    except Exception as e:
-        logger.error(f"Host WebSocket error: {e}")
-        connection_manager.disconnect_host(room_code)
-        await connection_event_handler.handle_host_disconnect(room_code, host_id)
-
-
-@app.websocket("/ws/player/{room_code}")
-async def websocket_player(websocket: WebSocket, room_code: str):
-    """WebSocket endpoint for quiz players."""
-    # Get player_id and nickname from query parameters
-    from fastapi import Query
-    player_id = Query(...)
-    nickname = Query(...)
-    
-    await connection_manager.connect_player(websocket, room_code, player_id, nickname)
-    
-    try:
-        while True:
-            # Receive messages from player
-            data = await websocket.receive_text()
-            message_data = json.loads(data)
-            message = WSMessage(**message_data)
-            
-            # Handle player messages
-            await websocket_handler.handle_player_message(room_code, player_id, message)
-            
-    except WebSocketDisconnect:
-        nickname = connection_manager.disconnect_player(room_code, player_id)
-        await connection_event_handler.handle_player_disconnect(room_code, player_id)
-        logger.info(f"Player {nickname} ({player_id}) disconnected from room {room_code}")
-                
-    except Exception as e:
-        logger.error(f"Player WebSocket error: {e}")
-        connection_manager.disconnect_player(room_code, player_id)
-        await connection_event_handler.handle_player_disconnect(room_code, player_id)
-
-
-
 # ERROR HANDLERS
-
 
 @app.exception_handler(404)
 async def not_found_handler(request: Request, exc: Exception):
@@ -156,7 +85,7 @@ async def internal_error_handler(request: Request, exc: Exception):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        "app:app",  # Fixed module reference
+        "app:app",
         host=settings.host,
         port=settings.port,
         reload=settings.debug,

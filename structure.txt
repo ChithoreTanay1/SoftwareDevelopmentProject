@@ -1,0 +1,14 @@
+ok guys, so here's how our backend structure should look like  quiz-app/
+├── app.py                    
+├── config.py                
+├── database.py               
+├── models.py                
+├── schemas.py               
+├── exceptions.py            
+├── services.py              
+├── routes.py                 
+├── websocket_manager.py      
+├── websocket_handlers.py     
+├── utils.py                  
+├── run-script.py            
+└── requirements.txt

@@ -122,13 +122,13 @@ class WebSocketMessageHandler:
         
         # Broadcast game start to all connections
         await connection_manager.broadcast_to_all(room_code, WSMessage(
-            type=WSMessageType.QUESTION_STARTED,
-            data={
-                "question": question_data.dict(),
-                "question_number": 1,
-                "total_questions": len(updated_room.quiz.questions)
-            }
-        ))
+    type="game_started",  # ✅ Frontend recognizes this!
+    data={
+        "quiz": quiz_data,  # Full quiz with all questions
+        "currentQuestionIndex": 0,
+        "score": 0
+    }
+))
         
         logger.info(f"Game started in room {room_code}")
     
