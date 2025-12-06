@@ -1,51 +1,173 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Users, Play, Copy, Check } from "lucide-react";
-import { useToast } from  "@/hooks/use-toast";
+import { Users, Play, Copy, Check, Wifi, WifiOff } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { RoomsService, WebSocketManager, WSMessage } from "@/api/client";
 
+interface Player {
+  id: string;
+  nickname: string;
+  is_connected: boolean;
+}
 
 const GameLobby = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [gamePin] = useState(Math.floor(100000 + Math.random() * 900000).toString());
-  const [copied, setCopied] = useState(false);
-  const [players, setPlayers] = useState<string[]>([]);
+  const wsManagerRef = useRef<WebSocketManager>(new WebSocketManager());
 
+  const [players, setPlayers] = useState<Player[]>([]);
+  const [copied, setCopied] = useState(false);
+  const [isStarting, setIsStarting] = useState(false);
+  const [wsConnected, setWsConnected] = useState(false);
+  const [quizTitle, setQuizTitle] = useState("");
+
+  const roomCode = localStorage.getItem("roomCode") || "";
+  const playerId = localStorage.getItem("playerId") || "";
+  const isHost = localStorage.getItem("isHost") === "true";
+  const playerName = localStorage.getItem("playerName") || "Player";
+
+  // Initialize WebSocket and fetch players
   useEffect(() => {
-    // Simulate players joining for demo
-    const playerName = localStorage.getItem("playerName");
-    if (playerName) {
-      setPlayers([playerName]);
+    if (!roomCode || !playerId) {
+      console.error("Missing required data");
+      navigate("/");
+      return;
     }
 
-    // Simulate more players joining
-    const interval = setInterval(() => {
-      const demoNames = ["Alex", "Jordan", "Sam", "Taylor", "Casey", "Morgan"];
-      const randomName = demoNames[Math.floor(Math.random() * demoNames.length)];
-      setPlayers((prev) => {
-        if (prev.length < 8 && !prev.includes(randomName)) {
-          return [...prev, randomName];
-        }
-        return prev;
-      });
-    }, 3000);
+    let mounted = true;
+    const manager = wsManagerRef.current;
 
+    const initWebSocket = async () => {
+      try {
+        console.log("🎮 Lobby: Connecting to WebSocket:", { roomCode, playerId });
+
+        await manager.connect(
+          roomCode,
+          playerId,
+          (message: WSMessage) => {
+            if (!mounted) return;
+            console.log("📨 Lobby: WebSocket message:", message.type);
+
+            switch (message.type) {
+              case "player_joined":
+                console.log("👤 Player joined:", message.data.nickname);
+                fetchPlayers();
+                break;
+
+              case "player_left":
+                console.log("👤 Player left:", message.data.nickname);
+                fetchPlayers();
+                break;
+
+              case "game_started":
+                // Server confirmed game started
+                console.log("✅ Game started message received, navigating to play...");
+                if (mounted) {
+                  navigate("/play");
+                }
+                break;
+
+              case "error":
+                toast({
+                  title: "Error",
+                  description: message.data?.message || "An error occurred",
+                  variant: "destructive",
+                });
+                break;
+            }
+          },
+          (error) => {
+            if (!mounted) return;
+            console.error("WebSocket error:", error);
+            setWsConnected(false);
+          },
+          (event) => {
+            if (!mounted) return;
+            console.log("WebSocket closed");
+            setWsConnected(false);
+          }
+        );
+
+        if (mounted) {
+          setWsConnected(true);
+          console.log("✅ WebSocket connected");
+        }
+      } catch (error) {
+        if (!mounted) return;
+        console.error("Failed to connect WebSocket:", error);
+        toast({
+          title: "Connection Error",
+          description: "Could not connect to room. Retrying...",
+          variant: "destructive",
+        });
+      }
+    };
+
+    initWebSocket();
+
+    return () => {
+      mounted = false;
+      manager.disconnect();
+    };
+  }, [roomCode, playerId, navigate, toast]);
+
+  // Fetch players from server
+  const fetchPlayers = async () => {
+    if (!roomCode) return;
+    try {
+      const playersData = await RoomsService.getRoomPlayers(roomCode);
+      console.log("📋 Fetched players:", playersData);
+
+      if (Array.isArray(playersData)) {
+        setPlayers(
+          playersData.map((p: any) => ({
+            id: p.id || p.player_id,
+            nickname: p.nickname,
+            is_connected: p.is_connected ?? true,
+          }))
+        );
+      }
+    } catch (error) {
+      console.error("Failed to fetch players:", error);
+    }
+  };
+
+  // Fetch players on mount and periodically
+  useEffect(() => {
+    if (!wsConnected || !roomCode) return;
+
+    fetchPlayers();
+
+    // Poll every 2 seconds for player updates
+    const interval = setInterval(fetchPlayers, 2000);
     return () => clearInterval(interval);
+  }, [roomCode, wsConnected]);
+
+  // Fetch quiz title
+  useEffect(() => {
+    const quiz = localStorage.getItem("currentQuiz");
+    if (quiz) {
+      try {
+        const quizData = JSON.parse(quiz);
+        setQuizTitle(quizData.title);
+      } catch (e) {
+        console.error("Failed to parse quiz:", e);
+      }
+    }
   }, []);
 
   const copyGamePin = () => {
-    navigator.clipboard.writeText(gamePin);
+    navigator.clipboard.writeText(roomCode);
     setCopied(true);
     toast({
-      title: "Game PIN copied!",
+      title: "✅ Game PIN copied!",
       description: "Share it with your players",
     });
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const startGame = () => {
+  const startGame = async () => {
     if (players.length === 0) {
       toast({
         title: "No players",
@@ -54,33 +176,112 @@ const GameLobby = () => {
       });
       return;
     }
-    navigate("/play");
+
+    if (!isHost) {
+      toast({
+        title: "Error",
+        description: "Only the host can start the game",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsStarting(true);
+
+    try {
+      console.log("🎬 Host starting game for room:", roomCode);
+      console.log("📍 Current URL:", window.location.origin);
+      console.log("🌐 Backend should be at:", import.meta.env.VITE_APP_API_BASE_URL || "http://localhost:8003");
+
+      // Call the start game API endpoint
+      const response = await RoomsService.startGame(roomCode);
+      console.log("📡 Start game response:", response);
+
+      if (!response.success) {
+        throw new Error(response.message || "Failed to start game");
+      }
+
+      toast({
+        title: "🎮 Game Started!",
+        description: "Starting quiz for all players...",
+        variant: "default",
+      });
+
+      // Wait for WebSocket game_started message
+      // If it doesn't come within 3 seconds, navigate anyway
+      const timeout = setTimeout(() => {
+        console.warn("⚠️ game_started message not received after 3s, navigating to play anyway");
+        navigate("/play");
+      }, 3000);
+
+      // Clear timeout if we get the message
+      const cleanup = () => {
+        clearTimeout(timeout);
+      };
+
+      return cleanup;
+    } catch (error: any) {
+      console.error("❌ Failed to start game:", error);
+      console.error("📋 Error details:", {
+        message: error.message,
+        status: error.status,
+        response: error.response
+      });
+      toast({
+        title: "Failed to start game",
+        description: error.message || "Please try again",
+        variant: "destructive",
+      });
+      setIsStarting(false);
+    }
   };
 
   return (
-    <div className="min-h-screen gradient-hero relative overflow-hidden">
-      
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 relative overflow-hidden">
+      {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12">
         <div className="max-w-4xl w-full">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-5xl font-black text-white mb-2">{quizTitle}</h1>
+            <div className="flex items-center justify-center gap-2 text-purple-200">
+              {wsConnected ? (
+                <>
+                  <Wifi className="h-4 w-4 text-green-400" />
+                  <span>Connected</span>
+                </>
+              ) : (
+                <>
+                  <WifiOff className="h-4 w-4 text-red-400 animate-pulse" />
+                  <span>Connecting...</span>
+                </>
+              )}
+            </div>
+          </div>
+
           {/* Game PIN Section */}
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-white/80 mb-4">Game PIN</h2>
-            <div className="inline-flex items-center gap-4 bg-white/20 backdrop-blur-xl rounded-3xl px-8 py-6 border-4 border-white/30">
-              <span className="text-6xl md:text-8xl font-black text-white tracking-wider">
-                {gamePin}
+            <h2 className="text-xl font-bold text-white/80 mb-4">Game PIN</h2>
+            <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-xl rounded-3xl px-8 py-6 border-4 border-white/30">
+              <span className="text-6xl md:text-8xl font-black text-white tracking-widest">
+                {roomCode}
               </span>
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
                 onClick={copyGamePin}
-                className="h-14 w-14"
+                className="h-14 w-14 hover:bg-white/20"
               >
-                {copied ? <Check className="h-6 w-6" /> : <Copy className="h-6 w-6" />}
+                {copied ? (
+                  <Check className="h-6 w-6 text-green-400" />
+                ) : (
+                  <Copy className="h-6 w-6 text-white" />
+                )}
               </Button>
             </div>
             <p className="text-white/80 mt-4 text-lg">
@@ -95,45 +296,88 @@ const GameLobby = () => {
                 <Users className="h-7 w-7" />
                 Players ({players.length})
               </h3>
+              {isHost && (
+                <span className="text-xs bg-purple-600 text-white px-3 py-1 rounded-full font-semibold">
+                  HOST
+                </span>
+              )}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {players.map((player, index) => (
-                <div
-                  key={index}
-                  className="bg-white/20 rounded-2xl p-4 text-center backdrop-blur-sm border border-white/20 transition-smooth hover:bg-white/30 hover:scale-105 animate-in fade-in slide-in-from-bottom-4"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-12 h-12 rounded-full bg-gradient-primary mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-white">
-                    {player[0].toUpperCase()}
+            {players.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {players.map((player, index) => (
+                  <div
+                    key={player.id}
+                    className="bg-white/20 rounded-2xl p-4 text-center backdrop-blur-sm border border-white/20 transition-smooth hover:bg-white/30 hover:scale-105 animate-in fade-in slide-in-from-bottom-4"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="relative">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-white">
+                        {player.nickname[0].toUpperCase()}
+                      </div>
+                      {player.is_connected ? (
+                        <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
+                      ) : (
+                        <div className="absolute bottom-0 right-0 w-4 h-4 bg-gray-400 rounded-full border-2 border-white"></div>
+                      )}
+                    </div>
+                    <p className="text-white font-medium text-sm truncate">
+                      {player.nickname}
+                    </p>
+                    {player.id === playerId && (
+                      <p className="text-purple-200 text-xs mt-1">(You)</p>
+                    )}
                   </div>
-                  <p className="text-white font-medium truncate">{player}</p>
-                </div>
-              ))}
-            </div>
-
-            {players.length === 0 && (
+                ))}
+              </div>
+            ) : (
               <div className="text-center py-12">
-                <div className="animate-pulse-slow inline-block">
+                <div className="animate-pulse inline-block">
                   <Users className="h-16 w-16 text-white/40 mx-auto mb-4" />
                 </div>
-                <p className="text-white/60 text-lg">Waiting for players to join...</p>
+                <p className="text-white/60 text-lg">
+                  {wsConnected ? "Waiting for players to join..." : "Connecting to room..."}
+                </p>
               </div>
             )}
           </div>
 
-          {/* Start Button */}
-          <div className="text-center">
-            <Button
-              variant="default"
-              size="xl"
-              onClick={startGame}
-              disabled={players.length === 0}
-              className="group"
-            >
-              <Play className="mr-2 h-6 w-6 transition-transform group-hover:scale-110" />
-              Start Game
-            </Button>
+          {/* Status and Action */}
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 mb-8">
+            {isHost ? (
+              <div>
+                <p className="text-white/80 text-sm mb-4">
+                  You are the host. Click below to start the game when ready.
+                </p>
+                <Button
+                  size="lg"
+                  onClick={startGame}
+                  disabled={isStarting || players.length === 0 || !wsConnected}
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg h-14"
+                >
+                  {isStarting ? (
+                    <>
+                      <div className="h-5 w-5 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                      Starting Game...
+                    </>
+                  ) : (
+                    <>
+                      <Play className="mr-2 h-5 w-5" />
+                      Start Game ({players.length} player{players.length !== 1 ? "s" : ""})
+                    </>
+                  )}
+                </Button>
+              </div>
+            ) : (
+              <div className="text-center">
+                <p className="text-lg font-semibold text-purple-300 mb-2">
+                  Waiting for host to start...
+                </p>
+                <p className="text-white/60">
+                  You're in the room. The host will start the game shortly.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

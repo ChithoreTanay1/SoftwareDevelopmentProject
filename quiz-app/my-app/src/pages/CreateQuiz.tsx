@@ -1,12 +1,21 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Plus, Trash2, Play } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
+import { 
+  QuizzesService, 
+  RoomsService, 
+  QuestionType,
+  checkBackendAvailability,
+  MockQuizzesService,
+  
+  MockRoomsService,
+  
+} from "@/api/client";
 
 interface Question {
   id: string;
@@ -29,6 +38,26 @@ const CreateQuiz = () => {
       timeLimit: 20,
     },
   ]);
+  const [isCreating, setIsCreating] = useState(false);
+  const [usingMockServices, setUsingMockServices] = useState(false);
+
+  useEffect(() => {
+    // Check backend availability on component mount
+    const checkBackend = async () => {
+      const isBackendAvailable = await checkBackendAvailability();
+      setUsingMockServices(!isBackendAvailable);
+      
+      if (!isBackendAvailable) {
+        toast({
+          title: "Using offline mode",
+          description: "Backend server not available. Using mock services.",
+          variant: "default",
+        });
+      }
+    };
+    
+    checkBackend();
+  }, [toast]);
 
   const addQuestion = () => {
     const newQuestion: Question = {
@@ -66,7 +95,7 @@ const CreateQuiz = () => {
     );
   };
 
-  const startQuiz = () => {
+  const startQuiz = async () => {
     if (!quizTitle.trim()) {
       toast({
         title: "Quiz title required",
@@ -89,39 +118,181 @@ const CreateQuiz = () => {
       return;
     }
 
-    // Store quiz data in localStorage for demo purposes
-    localStorage.setItem("currentQuiz", JSON.stringify({ title: quizTitle, questions }));
-    navigate("/lobby");
+    setIsCreating(true);
+
+    try {
+      // Use appropriate service based on backend availability
+      const QuizService = usingMockServices ? MockQuizzesService : QuizzesService;
+      const RoomService = usingMockServices ? MockRoomsService : RoomsService;
+
+      // Convert to API format
+      const quizPayload = {
+        title: quizTitle,
+        created_by: localStorage.getItem("playerName") || "QuizMaster User",
+        questions: questions.map((q, index) => ({
+          question_text: q.question,
+          question_type: "multiple_choice" as QuestionType,
+          time_limit: q.timeLimit,
+          points: 1000,
+          order_index: index,
+          choices: q.answers.map((answer, aIndex) => ({
+            choice_text: answer,
+            order_index: aIndex,
+            is_correct: aIndex === q.correctAnswer
+          }))
+        }))
+      };
+
+      console.log("📤 Sending quiz payload:", quizPayload);
+      console.log("🔧 Using service:", usingMockServices ? "Mock" : "Real");
+
+      // Create quiz on server
+      const quizResponse = await QuizService.createQuiz(quizPayload);
+      console.log("📥 Full quiz creation response:", quizResponse);
+
+      let quizId;
+      
+      if (quizResponse.success) {
+        // Try multiple possible locations for the quiz ID
+        const data = quizResponse.data || quizResponse;
+        
+        // Look for ID in common locations
+        quizId = data.id || 
+                data.quiz_id || 
+                data.quizId || 
+                data._id ||
+                (data.data && (data.data.id || data.data.quiz_id));
+        
+        console.log("🔍 Found quiz ID:", quizId);
+        
+        if (!quizId && !usingMockServices) {
+          // For real API, we need the ID
+          console.error("❌ Could not find quiz ID in response:", data);
+          throw new Error("Quiz created but ID not found in response. Check server response format.");
+        } else if (!quizId && usingMockServices) {
+          // For mock, generate one
+          quizId = `mock_quiz_${Date.now()}`;
+          console.log("🎭 Generated mock quiz ID:", quizId);
+        }
+      } else {
+        throw new Error(quizResponse.message || "Quiz creation failed on server");
+      }
+
+      // Create room for this quiz
+      const roomPayload = {
+        quiz_id: quizId,
+        host_name: localStorage.getItem("playerName") || "Host",
+        max_players: 10
+      };
+
+      console.log("📤 Sending room payload:", roomPayload);
+      
+      const roomResponse = await RoomService.createRoom(roomPayload);
+      console.log("📥 Room creation response:", roomResponse);
+      
+      let roomCode;
+      if (roomResponse.success && (roomResponse.data || roomResponse)) {
+        // Try multiple possible locations for room code
+        const roomData = roomResponse.data || roomResponse;
+        roomCode = roomData.room_code || 
+                  roomData.code || 
+                  roomData.roomCode ||
+                  (roomData.data && roomData.data.room_code);
+        
+        console.log("🔍 Found room code:", roomCode);
+        
+        if (!roomCode) {
+          // Generate a mock room code
+          roomCode = Math.floor(100000 + Math.random() * 900000).toString();
+          console.warn("⚠️ Using generated room code:", roomCode);
+        }
+      } else {
+        throw new Error(roomResponse.message || "Room creation failed");
+      }
+
+      // FIXED: Host needs to join their own room
+      console.log("👤 Host joining room:", roomCode);
+      const joinResponse = await RoomService.joinRoom(roomCode, {
+        nickname: localStorage.getItem("playerName") || "Host"
+      });
+      
+      console.log("📥 Host join response:", joinResponse);
+      
+      let playerId;
+      if (joinResponse.success && (joinResponse.data || joinResponse)) {
+        const joinData = joinResponse.data || joinResponse;
+        playerId = joinData.player_id || 
+                  joinData.id ||
+                  joinData.data?.player_id;
+        
+        console.log("🔍 Host player ID:", playerId);
+      }
+
+      if (!playerId) {
+        // Generate a player ID if not provided by server
+        playerId = `host_${Date.now()}`;
+        console.warn("⚠️ Using generated host player ID:", playerId);
+      }
+
+      // Save everything to localStorage
+      localStorage.setItem("currentQuiz", JSON.stringify({ 
+        title: quizTitle, 
+        questions,
+        quizId: quizId 
+      }));
+      localStorage.setItem("roomCode", roomCode);
+      localStorage.setItem("isHost", "true");
+      localStorage.setItem("playerId", playerId);
+      localStorage.setItem("playerName", localStorage.getItem("playerName") || "Host");
+      localStorage.setItem("finalScore", "0"); // Initialize score
+      
+      toast({
+        title: "🎉 Quiz created successfully!",
+        description: `Room code: ${roomCode} (${usingMockServices ? 'Offline Mode' : 'Online Mode'})`,
+        variant: "default",
+      });
+      
+      navigate("/lobby");
+      
+    } catch (error: any) {
+      console.error("❌ Full error details:", error);
+      toast({
+        title: "Failed to create quiz",
+        description: error.message || "Please check your connection and try again",
+        variant: "destructive",
+      });
+    } finally {
+      setIsCreating(false);
+    }
   };
 
-  // FIXED: Use actual Tailwind classes instead of dynamic strings
   const getAnswerColorClass = (index: number, isCorrect: boolean) => {
     const baseClasses = "border-0 h-20 text-lg font-medium ";
     const colorClasses = [
-      "bg-red-100 hover:bg-red-200",    // Answer 1 - red
-      "bg-blue-100 hover:bg-blue-200",  // Answer 2 - blue  
-      "bg-yellow-100 hover:bg-yellow-200", // Answer 3 - yellow
-      "bg-green-100 hover:bg-green-200" // Answer 4 - green
+      "bg-red-100 hover:bg-red-200",
+      "bg-blue-100 hover:bg-blue-200", 
+      "bg-yellow-100 hover:bg-yellow-200",
+      "bg-green-100 hover:bg-green-200"
     ];
     return baseClasses + colorClasses[index];
   };
 
   const getCorrectButtonClass = (index: number, isCorrect: boolean) => {
     const colorClasses = [
-      "bg-red-500 text-white",    // Answer 1 - red
-      "bg-blue-500 text-white",   // Answer 2 - blue  
-      "bg-yellow-500 text-white", // Answer 3 - yellow
-      "bg-green-500 text-white"  // Answer 4 - green
+      "bg-red-500 text-white",
+      "bg-blue-500 text-white", 
+      "bg-yellow-500 text-white",
+      "bg-green-500 text-white"
     ];
     return isCorrect ? colorClasses[index] : "bg-gray-300";
   };
 
   const getBorderClass = (index: number, isCorrect: boolean) => {
     const colorClasses = [
-      "border-red-500",    // Answer 1 - red
-      "border-blue-500",   // Answer 2 - blue  
-      "border-yellow-500", // Answer 3 - yellow
-      "border-green-500"  // Answer 4 - green
+      "border-red-500",
+      "border-blue-500", 
+      "border-yellow-500",
+      "border-green-500"
     ];
     return isCorrect ? `border-4 ${colorClasses[index]} shadow-md` : "border-2 border-gray-300";
   };
@@ -137,6 +308,14 @@ const CreateQuiz = () => {
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Home
         </Button>
+
+        {usingMockServices && (
+          <div className="mb-4 p-4 bg-yellow-100 border border-yellow-400 rounded-lg">
+            <p className="text-yellow-800 font-medium">
+              ⚠️ Working in offline mode. Data will be saved locally only.
+            </p>
+          </div>
+        )}
 
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gradient mb-4">Create Your Quiz</h1>
@@ -229,6 +408,7 @@ const CreateQuiz = () => {
             size="lg"
             onClick={addQuestion}
             className="flex-1"
+            disabled={isCreating}
           >
             <Plus className="mr-2 h-5 w-5" />
             Add Question
@@ -238,9 +418,19 @@ const CreateQuiz = () => {
             size="lg"
             onClick={startQuiz}
             className="flex-1"
+            disabled={isCreating}
           >
-            <Play className="mr-2 h-5 w-5" />
-            Start Quiz
+            {isCreating ? (
+              <>
+                <div className="h-5 w-5 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                {usingMockServices ? "Creating (Offline)..." : "Creating..."}
+              </>
+            ) : (
+              <>
+                <Play className="mr-2 h-5 w-5" />
+                {usingMockServices ? "Start Quiz (Offline)" : "Start Quiz"}
+              </>
+            )}
           </Button>
         </div>
       </div>

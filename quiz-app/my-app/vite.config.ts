@@ -9,7 +9,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  server: {
+  
+    server: {
+      proxy: {
+        "/api": "http://localhost:8003"
+      }
+    },
     
-  },
+  
 })

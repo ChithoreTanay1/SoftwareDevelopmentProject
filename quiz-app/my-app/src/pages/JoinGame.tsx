@@ -1,18 +1,20 @@
 import React from 'react';
 import { useState } from "react";
-import { Button } from  "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, LogIn } from "lucide-react";
-import { useToast } from  "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
+import { RoomsService } from "@/api/client";
 
 const JoinGame = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [gamePin, setGamePin] = useState("");
   const [nickname, setNickname] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const joinGame = () => {
+  const joinGame = async () => {
     if (!gamePin.trim() || !nickname.trim()) {
       toast({
         title: "Missing information",
@@ -22,26 +24,51 @@ const JoinGame = () => {
       return;
     }
 
-    
-    localStorage.setItem("playerName", nickname);
-    localStorage.setItem("gamePin", gamePin);
-    
-    
-    const quiz = localStorage.getItem("currentQuiz");
-    if (quiz) {
-      navigate("/lobby");
-    } else {
+    setIsLoading(true);
+    try {
+      // Join the room
+      const joinResponse = await RoomsService.joinRoom(gamePin, {
+        nickname: nickname
+      });
+
+      if (joinResponse.success && joinResponse.data) {
+        // Store the player ID from the response - THIS IS KEY!
+        const playerId = joinResponse.data.player_id;
+        
+        localStorage.setItem("playerName", nickname);
+        localStorage.setItem("roomCode", gamePin);
+        localStorage.setItem("playerId", playerId);
+        localStorage.setItem("isHost", "false");
+        
+        console.log("Player joined successfully:", {
+          playerId,
+          roomCode: gamePin,
+          nickname
+        });
+        
+        navigate("/lobby");
+      } else {
+        toast({
+          title: "Join failed",
+          description: "Could not join the game. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error: any) {
+      console.error("Join game error:", error);
       toast({
-        title: "Game not found",
-        description: "Please check the game PIN and try again",
+        title: "Failed to join game",
+        description: error.message || "Please check the game PIN and try again",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen gradient-hero relative overflow-hidden flex items-center justify-center px-4">
-      
+      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
@@ -68,9 +95,10 @@ const JoinGame = () => {
                 type="text"
                 placeholder="123456"
                 value={gamePin}
-                onChange={(e) => setGamePin(e.target.value)}
+                onChange={(e) => setGamePin(e.target.value.toUpperCase())}
                 className="h-16 text-3xl font-bold text-center tracking-wider bg-white/90"
                 maxLength={6}
+                disabled={isLoading}
               />
             </div>
 
@@ -83,6 +111,7 @@ const JoinGame = () => {
                 onChange={(e) => setNickname(e.target.value)}
                 className="h-14 text-xl bg-white/90"
                 maxLength={20}
+                disabled={isLoading}
               />
             </div>
 
@@ -91,9 +120,10 @@ const JoinGame = () => {
               size="xl"
               onClick={joinGame}
               className="w-full"
+              disabled={isLoading}
             >
               <LogIn className="mr-2 h-5 w-5" />
-              Join Game
+              {isLoading ? "Joining..." : "Join Game"}
             </Button>
           </div>
         </div>
