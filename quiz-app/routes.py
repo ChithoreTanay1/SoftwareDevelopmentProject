@@ -213,6 +213,86 @@ async def start_game(room_code: str, db: AsyncSession = Depends(get_db)):
     )
     
     if success:
+        # Get updated room with quiz data
+        updated_room = await handle_service_exceptions(
+            RoomService.get_room_by_code, db, room_code
+        )
+        
+        # Prepare quiz data
+        quiz_data = {
+            "id": updated_room.quiz.id,
+            "title": updated_room.quiz.title,
+            "description": updated_room.quiz.description,
+            "questions": []
+        }
+        
+        for q in updated_room.quiz.questions:
+            question_data = {
+                "id": q.id,
+                "question_text": q.question_text,
+                "question_type": q.question_type,
+                "time_limit": q.time_limit,
+                "points": q.points,
+                "order_index": q.order_index,
+                "answers": []
+            }
+            
+            for i, choice in enumerate(q.choices):
+                question_data["answers"].append({
+                    "id": choice.id,
+                    "text": choice.choice_text,
+                    "is_correct": choice.is_correct
+                })
+                
+                if choice.is_correct:
+                    question_data["correctAnswer"] = i
+            
+            quiz_data["questions"].append(question_data)
+        
+        # Send WebSocket message
+        game_started_msg = {
+            "type": "game_started",
+            "data": {
+                "quiz": quiz_data,
+                "currentQuestionIndex": 0,
+                "score": 0
+            }
+        }
+        
+        print("BROADCAST game_started", flush=True)
+        await connection_manager.broadcast_to_all(room_code, game_started_msg)
+        
+        # Send first question
+        first_question = updated_room.quiz.questions[0]
+        question_response = {
+            "id": first_question.id,
+            "question_text": first_question.question_text,
+            "question_type": first_question.question_type,
+            "time_limit": first_question.time_limit,
+            "points": first_question.points,
+            "order_index": first_question.order_index,
+            "choices": [
+                {
+                    "id": choice.id,
+                    "choice_text": choice.choice_text,
+                    "order_index": choice.order_index
+                }
+                for choice in first_question.choices
+            ]
+        }
+        
+        question_msg = {
+            "type": "question",
+            "data": {
+                "question": question_response,
+                "questionIndex": 0,
+                "timeLimit": first_question.time_limit
+            }
+        }
+        
+        print("BROADCAST question", flush=True)
+        await connection_manager.broadcast_to_all(room_code, question_msg)
+        
         return APIResponse(message="Game started successfully")
     else:
         raise HTTPException(

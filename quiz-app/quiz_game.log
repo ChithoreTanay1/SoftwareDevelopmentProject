@@ -5873,3 +5873,1434 @@
 2025-12-06 11:09:51,133 - websocket_handler - INFO - Player MaxPayne disconnected from room TT5ZIN
 2025-12-06 11:09:51,176 - app - INFO - Shutting down
 2025-12-06 11:09:51,209 - __main__ - INFO - Server stopped
+2025-12-06 15:03:46,218 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 15:03:46,218 - __main__ - INFO - Environment: Production
+2025-12-06 15:03:46,219 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 15:03:47,673 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 15:04:19,684 - services - INFO - Created room JXB2CR for quiz 5g454g45g
+2025-12-06 15:04:19,725 - services - INFO - Player MaxPayne joined room JXB2CR
+2025-12-06 15:04:20,181 - websocket_routes - INFO - WebSocket connection attempt: room=JXB2CR, player=1d5411cf-6a22-42e0-89d4-73596ddde634
+2025-12-06 15:04:20,193 - websocket_routes - INFO - Room found: JXB2CR
+2025-12-06 15:04:20,195 - websocket_routes - INFO - Player 1d5411cf-6a22-42e0-89d4-73596ddde634 accepted for room JXB2CR
+2025-12-06 15:04:20,196 - websocket_manager - INFO - Player MaxPayne (1d5411cf-6a22-42e0-89d4-73596ddde634) connected to room JXB2CR
+2025-12-06 15:04:33,309 - websocket_routes - INFO - Player 1d5411cf-6a22-42e0-89d4-73596ddde634 disconnected from room JXB2CR
+2025-12-06 15:04:33,324 - websocket_handler - INFO - Player MaxPayne disconnected from room JXB2CR
+2025-12-06 15:04:33,614 - websocket_routes - INFO - WebSocket connection attempt: room=JXB2CR, player=1d5411cf-6a22-42e0-89d4-73596ddde634
+2025-12-06 15:04:33,621 - websocket_routes - INFO - Room found: JXB2CR
+2025-12-06 15:04:33,623 - websocket_routes - INFO - Player 1d5411cf-6a22-42e0-89d4-73596ddde634 accepted for room JXB2CR
+2025-12-06 15:04:33,624 - websocket_manager - INFO - Player MaxPayne (1d5411cf-6a22-42e0-89d4-73596ddde634) connected to room JXB2CR
+2025-12-06 15:04:35,624 - websocket_routes - INFO - WebSocket connection attempt: room=JXB2CR, player=1d5411cf-6a22-42e0-89d4-73596ddde634
+2025-12-06 15:04:35,632 - websocket_routes - INFO - Room found: JXB2CR
+2025-12-06 15:04:35,639 - websocket_routes - INFO - Player 1d5411cf-6a22-42e0-89d4-73596ddde634 accepted for room JXB2CR
+2025-12-06 15:04:35,640 - websocket_manager - INFO - Player MaxPayne (1d5411cf-6a22-42e0-89d4-73596ddde634) connected to room JXB2CR
+2025-12-06 15:04:49,871 - websocket_routes - INFO - Player 1d5411cf-6a22-42e0-89d4-73596ddde634 disconnected from room JXB2CR
+2025-12-06 15:04:49,873 - websocket_routes - INFO - Player 1d5411cf-6a22-42e0-89d4-73596ddde634 disconnected from room JXB2CR
+2025-12-06 15:04:49,888 - websocket_handler - INFO - Player MaxPayne disconnected from room JXB2CR
+2025-12-06 15:04:49,979 - websocket_handler - INFO - Player MaxPayne disconnected from room JXB2CR
+2025-12-06 15:04:50,070 - app - INFO - Shutting down
+2025-12-06 15:04:50,088 - __main__ - INFO - Server stopped
+2025-12-06 15:23:57,641 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 15:23:57,641 - __main__ - INFO - Environment: Production
+2025-12-06 15:23:57,641 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 15:23:58,974 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 15:24:11,157 - services - INFO - Created room 7KRF03 for quiz rfreferf
+2025-12-06 15:24:11,194 - services - INFO - Player MaxPayne joined room 7KRF03
+2025-12-06 15:24:11,623 - websocket_routes - INFO - WebSocket connection attempt: room=7KRF03, player=e35dc2b0-409d-47f7-8515-a5f38e8ec092
+2025-12-06 15:24:11,635 - websocket_routes - INFO - Room found: 7KRF03
+2025-12-06 15:24:11,639 - websocket_routes - INFO - Player e35dc2b0-409d-47f7-8515-a5f38e8ec092 accepted for room 7KRF03
+2025-12-06 15:24:11,640 - websocket_manager - INFO - Player MaxPayne (e35dc2b0-409d-47f7-8515-a5f38e8ec092) connected to room 7KRF03
+2025-12-06 15:24:13,392 - websocket_routes - INFO - Player e35dc2b0-409d-47f7-8515-a5f38e8ec092 disconnected from room 7KRF03
+2025-12-06 15:24:13,408 - websocket_handler - INFO - Player MaxPayne disconnected from room 7KRF03
+2025-12-06 15:24:13,710 - websocket_routes - INFO - WebSocket connection attempt: room=7KRF03, player=e35dc2b0-409d-47f7-8515-a5f38e8ec092
+2025-12-06 15:24:13,710 - websocket_routes - INFO - Room found: 7KRF03
+2025-12-06 15:24:13,722 - websocket_routes - INFO - Player e35dc2b0-409d-47f7-8515-a5f38e8ec092 accepted for room 7KRF03
+2025-12-06 15:24:13,722 - websocket_manager - INFO - Player MaxPayne (e35dc2b0-409d-47f7-8515-a5f38e8ec092) connected to room 7KRF03
+2025-12-06 15:24:15,716 - websocket_routes - INFO - WebSocket connection attempt: room=7KRF03, player=e35dc2b0-409d-47f7-8515-a5f38e8ec092
+2025-12-06 15:24:15,716 - websocket_routes - INFO - Room found: 7KRF03
+2025-12-06 15:24:15,726 - websocket_routes - INFO - Player e35dc2b0-409d-47f7-8515-a5f38e8ec092 accepted for room 7KRF03
+2025-12-06 15:24:15,726 - websocket_manager - INFO - Player MaxPayne (e35dc2b0-409d-47f7-8515-a5f38e8ec092) connected to room 7KRF03
+2025-12-06 15:26:07,441 - websocket_routes - INFO - Player e35dc2b0-409d-47f7-8515-a5f38e8ec092 disconnected from room 7KRF03
+2025-12-06 15:26:07,444 - websocket_routes - INFO - Player e35dc2b0-409d-47f7-8515-a5f38e8ec092 disconnected from room 7KRF03
+2025-12-06 15:26:07,470 - websocket_handler - INFO - Player MaxPayne disconnected from room 7KRF03
+2025-12-06 15:26:07,639 - websocket_handler - INFO - Player MaxPayne disconnected from room 7KRF03
+2025-12-06 15:26:10,319 - app - INFO - Shutting down
+2025-12-06 15:26:10,334 - __main__ - INFO - Server stopped
+2025-12-06 17:00:11,758 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:00:11,758 - __main__ - INFO - Environment: Production
+2025-12-06 17:00:11,758 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:00:12,665 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:00:36,565 - services - INFO - Created room UNWPUL for quiz sfsdfsf
+2025-12-06 17:00:36,597 - services - INFO - Player MaxPayne joined room UNWPUL
+2025-12-06 17:00:37,011 - websocket_routes - INFO - WebSocket connection attempt: room=UNWPUL, player=012f3508-fbad-4dbf-afda-f5248920ee77
+2025-12-06 17:00:37,020 - websocket_routes - INFO - Room found: UNWPUL
+2025-12-06 17:00:37,022 - websocket_routes - INFO - Player 012f3508-fbad-4dbf-afda-f5248920ee77 accepted for room UNWPUL
+2025-12-06 17:00:37,023 - websocket_manager - INFO - Player MaxPayne (012f3508-fbad-4dbf-afda-f5248920ee77) connected to room UNWPUL
+2025-12-06 17:00:39,288 - websocket_routes - INFO - Player 012f3508-fbad-4dbf-afda-f5248920ee77 disconnected from room UNWPUL
+2025-12-06 17:00:39,301 - websocket_handler - INFO - Player MaxPayne disconnected from room UNWPUL
+2025-12-06 17:00:39,611 - websocket_routes - INFO - WebSocket connection attempt: room=UNWPUL, player=012f3508-fbad-4dbf-afda-f5248920ee77
+2025-12-06 17:00:39,617 - websocket_routes - INFO - Room found: UNWPUL
+2025-12-06 17:00:39,620 - websocket_routes - INFO - Player 012f3508-fbad-4dbf-afda-f5248920ee77 accepted for room UNWPUL
+2025-12-06 17:00:39,621 - websocket_manager - INFO - Player MaxPayne (012f3508-fbad-4dbf-afda-f5248920ee77) connected to room UNWPUL
+2025-12-06 17:00:41,601 - websocket_routes - INFO - WebSocket connection attempt: room=UNWPUL, player=012f3508-fbad-4dbf-afda-f5248920ee77
+2025-12-06 17:00:41,608 - websocket_routes - INFO - Room found: UNWPUL
+2025-12-06 17:00:41,611 - websocket_routes - INFO - Player 012f3508-fbad-4dbf-afda-f5248920ee77 accepted for room UNWPUL
+2025-12-06 17:00:41,612 - websocket_manager - INFO - Player MaxPayne (012f3508-fbad-4dbf-afda-f5248920ee77) connected to room UNWPUL
+2025-12-06 17:02:30,565 - websocket_routes - INFO - Player 012f3508-fbad-4dbf-afda-f5248920ee77 disconnected from room UNWPUL
+2025-12-06 17:02:30,568 - websocket_routes - INFO - Player 012f3508-fbad-4dbf-afda-f5248920ee77 disconnected from room UNWPUL
+2025-12-06 17:02:30,586 - websocket_handler - INFO - Player MaxPayne disconnected from room UNWPUL
+2025-12-06 17:02:30,673 - websocket_handler - INFO - Player MaxPayne disconnected from room UNWPUL
+2025-12-06 17:02:30,768 - app - INFO - Shutting down
+2025-12-06 17:02:30,783 - __main__ - INFO - Server stopped
+2025-12-06 17:05:09,759 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:05:09,760 - __main__ - INFO - Environment: Production
+2025-12-06 17:05:09,760 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:05:10,703 - __main__ - ERROR - Failed to start server: cannot import name 'connection_manager' from partially initialized module 'websocket_manager' (most likely due to a circular import) (C:\Users\tanay\Documents\PyKahoot\SoftwareDevelopmentProject\quiz-app\websocket_manager.py)
+2025-12-06 17:05:10,704 - __main__ - ERROR - Server error: cannot import name 'connection_manager' from partially initialized module 'websocket_manager' (most likely due to a circular import) (C:\Users\tanay\Documents\PyKahoot\SoftwareDevelopmentProject\quiz-app\websocket_manager.py)
+2025-12-06 17:05:10,704 - __main__ - INFO - Server stopped
+2025-12-06 17:05:10,705 - __main__ - ERROR - Application failed: cannot import name 'connection_manager' from partially initialized module 'websocket_manager' (most likely due to a circular import) (C:\Users\tanay\Documents\PyKahoot\SoftwareDevelopmentProject\quiz-app\websocket_manager.py)
+2025-12-06 17:06:53,303 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:06:53,305 - __main__ - INFO - Environment: Production
+2025-12-06 17:06:53,305 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:06:54,323 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:07:11,010 - services - INFO - Created room BVXX0Y for quiz acsasc
+2025-12-06 17:07:11,044 - services - INFO - Player MaxPayne joined room BVXX0Y
+2025-12-06 17:07:11,455 - websocket_routes - INFO - WebSocket connection attempt: room=BVXX0Y, player=0a9d8bfd-00b7-4729-83af-1c966837d461
+2025-12-06 17:07:11,465 - websocket_routes - INFO - Room found: BVXX0Y
+2025-12-06 17:07:11,468 - websocket_routes - INFO - Player 0a9d8bfd-00b7-4729-83af-1c966837d461 accepted for room BVXX0Y
+2025-12-06 17:07:11,469 - websocket_manager - INFO - Player MaxPayne (0a9d8bfd-00b7-4729-83af-1c966837d461) connected to room BVXX0Y
+2025-12-06 17:07:12,583 - websocket_routes - INFO - Player 0a9d8bfd-00b7-4729-83af-1c966837d461 disconnected from room BVXX0Y
+2025-12-06 17:07:12,599 - websocket_handler - INFO - Player MaxPayne disconnected from room BVXX0Y
+2025-12-06 17:07:12,900 - websocket_routes - INFO - WebSocket connection attempt: room=BVXX0Y, player=0a9d8bfd-00b7-4729-83af-1c966837d461
+2025-12-06 17:07:12,910 - websocket_routes - INFO - Room found: BVXX0Y
+2025-12-06 17:07:12,912 - websocket_routes - INFO - Player 0a9d8bfd-00b7-4729-83af-1c966837d461 accepted for room BVXX0Y
+2025-12-06 17:07:12,913 - websocket_manager - INFO - Player MaxPayne (0a9d8bfd-00b7-4729-83af-1c966837d461) connected to room BVXX0Y
+2025-12-06 17:07:14,897 - websocket_routes - INFO - WebSocket connection attempt: room=BVXX0Y, player=0a9d8bfd-00b7-4729-83af-1c966837d461
+2025-12-06 17:07:14,902 - websocket_routes - INFO - Room found: BVXX0Y
+2025-12-06 17:07:14,904 - websocket_routes - INFO - Player 0a9d8bfd-00b7-4729-83af-1c966837d461 accepted for room BVXX0Y
+2025-12-06 17:07:14,905 - websocket_manager - INFO - Player MaxPayne (0a9d8bfd-00b7-4729-83af-1c966837d461) connected to room BVXX0Y
+2025-12-06 17:07:49,178 - websocket_routes - INFO - Player 0a9d8bfd-00b7-4729-83af-1c966837d461 disconnected from room BVXX0Y
+2025-12-06 17:07:49,179 - websocket_routes - INFO - Player 0a9d8bfd-00b7-4729-83af-1c966837d461 disconnected from room BVXX0Y
+2025-12-06 17:07:49,198 - websocket_handler - INFO - Player MaxPayne disconnected from room BVXX0Y
+2025-12-06 17:07:49,281 - websocket_handler - INFO - Player MaxPayne disconnected from room BVXX0Y
+2025-12-06 17:07:49,379 - app - INFO - Shutting down
+2025-12-06 17:07:49,391 - __main__ - INFO - Server stopped
+2025-12-06 17:08:14,600 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:08:14,600 - __main__ - INFO - Environment: Production
+2025-12-06 17:08:14,600 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:08:15,444 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:08:29,250 - services - INFO - Created room T3JSSI for quiz fewfewf
+2025-12-06 17:08:29,278 - services - INFO - Player MaxPayne joined room T3JSSI
+2025-12-06 17:08:29,699 - websocket_routes - INFO - WebSocket connection attempt: room=T3JSSI, player=d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5
+2025-12-06 17:08:29,710 - websocket_routes - INFO - Room found: T3JSSI
+2025-12-06 17:08:29,711 - websocket_routes - INFO - Player d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5 accepted for room T3JSSI
+2025-12-06 17:08:29,715 - websocket_manager - INFO - Player MaxPayne (d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5) connected to room T3JSSI
+2025-12-06 17:08:29,725 - websocket_routes - ERROR - Error in WebSocket endpoint: 'WebSocketMessageHandler' object has no attribute 'check_and_start_game'
+2025-12-06 17:08:30,508 - websocket_manager - ERROR - Failed to broadcast to player d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 17:08:33,829 - websocket_routes - INFO - WebSocket connection attempt: room=T3JSSI, player=d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5
+2025-12-06 17:08:33,838 - websocket_routes - INFO - Room found: T3JSSI
+2025-12-06 17:08:33,841 - websocket_routes - INFO - Player d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5 accepted for room T3JSSI
+2025-12-06 17:08:33,842 - websocket_manager - INFO - Player MaxPayne (d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5) connected to room T3JSSI
+2025-12-06 17:08:33,847 - websocket_routes - ERROR - Error in WebSocket endpoint: 'WebSocketMessageHandler' object has no attribute 'check_and_start_game'
+2025-12-06 17:08:35,837 - websocket_routes - INFO - WebSocket connection attempt: room=T3JSSI, player=d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5
+2025-12-06 17:08:35,845 - websocket_routes - INFO - Room found: T3JSSI
+2025-12-06 17:08:35,846 - websocket_routes - INFO - Player d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5 accepted for room T3JSSI
+2025-12-06 17:08:35,847 - websocket_manager - INFO - Player MaxPayne (d4a752dd-07fd-4e2a-b5db-9e620ec4b2e5) connected to room T3JSSI
+2025-12-06 17:08:35,850 - websocket_routes - ERROR - Error in WebSocket endpoint: 'WebSocketMessageHandler' object has no attribute 'check_and_start_game'
+2025-12-06 17:10:14,123 - app - INFO - Shutting down
+2025-12-06 17:10:14,134 - __main__ - INFO - Server stopped
+2025-12-06 17:43:22,591 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:43:22,591 - __main__ - INFO - Environment: Production
+2025-12-06 17:43:22,591 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:43:23,649 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:43:44,533 - services - INFO - Created room TUUIYG for quiz accsacas
+2025-12-06 17:43:44,572 - services - INFO - Player MaxPayne joined room TUUIYG
+2025-12-06 17:43:45,002 - websocket_routes - INFO - WebSocket connection attempt: room=TUUIYG, player=36bb43d7-7fef-43d9-abc9-b9d678a9c7fa
+2025-12-06 17:43:45,014 - websocket_manager - INFO - Player MaxPayne (36bb43d7-7fef-43d9-abc9-b9d678a9c7fa) connected to room TUUIYG
+2025-12-06 17:43:45,021 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:43:46,010 - websocket_manager - ERROR - Failed to broadcast to player 36bb43d7-7fef-43d9-abc9-b9d678a9c7fa: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 17:43:49,335 - websocket_routes - INFO - WebSocket connection attempt: room=TUUIYG, player=36bb43d7-7fef-43d9-abc9-b9d678a9c7fa
+2025-12-06 17:43:49,348 - websocket_manager - INFO - Player MaxPayne (36bb43d7-7fef-43d9-abc9-b9d678a9c7fa) connected to room TUUIYG
+2025-12-06 17:43:49,352 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:43:51,436 - websocket_routes - INFO - WebSocket connection attempt: room=TUUIYG, player=36bb43d7-7fef-43d9-abc9-b9d678a9c7fa
+2025-12-06 17:43:51,448 - websocket_manager - INFO - Player MaxPayne (36bb43d7-7fef-43d9-abc9-b9d678a9c7fa) connected to room TUUIYG
+2025-12-06 17:43:51,453 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:44:58,874 - app - INFO - Shutting down
+2025-12-06 17:44:58,885 - __main__ - INFO - Server stopped
+2025-12-06 17:45:54,682 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:45:54,682 - __main__ - INFO - Environment: Production
+2025-12-06 17:45:54,683 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:45:55,518 - __main__ - ERROR - Failed to start server: unexpected unindent (services.py, line 99)
+2025-12-06 17:45:55,519 - __main__ - ERROR - Server error: unexpected unindent (services.py, line 99)
+2025-12-06 17:45:55,519 - __main__ - INFO - Server stopped
+2025-12-06 17:45:55,520 - __main__ - ERROR - Application failed: unexpected unindent (services.py, line 99)
+2025-12-06 17:46:35,625 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:46:35,625 - __main__ - INFO - Environment: Production
+2025-12-06 17:46:35,625 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:46:36,414 - __main__ - ERROR - Failed to start server: expected an indented block after function definition on line 99 (services.py, line 100)
+2025-12-06 17:46:36,415 - __main__ - ERROR - Server error: expected an indented block after function definition on line 99 (services.py, line 100)
+2025-12-06 17:46:36,415 - __main__ - INFO - Server stopped
+2025-12-06 17:46:36,416 - __main__ - ERROR - Application failed: expected an indented block after function definition on line 99 (services.py, line 100)
+2025-12-06 17:47:18,048 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:47:18,049 - __main__ - INFO - Environment: Production
+2025-12-06 17:47:18,049 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:47:18,904 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:47:34,972 - services - INFO - Created room JATDHV for quiz acsacas
+2025-12-06 17:47:35,001 - services - INFO - Player MaxPayne joined room JATDHV
+2025-12-06 17:47:35,424 - websocket_routes - INFO - WebSocket connection attempt: room=JATDHV, player=0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25
+2025-12-06 17:47:35,436 - websocket_manager - INFO - Player MaxPayne (0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25) connected to room JATDHV
+2025-12-06 17:47:35,444 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:47:36,610 - websocket_manager - ERROR - Failed to broadcast to player 0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 17:47:39,942 - websocket_routes - INFO - WebSocket connection attempt: room=JATDHV, player=0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25
+2025-12-06 17:47:39,956 - websocket_manager - INFO - Player MaxPayne (0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25) connected to room JATDHV
+2025-12-06 17:47:39,969 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:47:41,939 - websocket_routes - INFO - WebSocket connection attempt: room=JATDHV, player=0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25
+2025-12-06 17:47:41,948 - websocket_manager - INFO - Player MaxPayne (0add2ce0-e6e0-4ca0-a7b9-592e87fe2b25) connected to room JATDHV
+2025-12-06 17:47:41,951 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:48:27,814 - app - INFO - Shutting down
+2025-12-06 17:48:27,823 - __main__ - INFO - Server stopped
+2025-12-06 17:54:35,632 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:54:35,633 - __main__ - INFO - Environment: Production
+2025-12-06 17:54:35,633 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:54:36,626 - __main__ - ERROR - Failed to start server: expected 'except' or 'finally' block (websocket_routes.py, line 55)
+2025-12-06 17:54:36,626 - __main__ - ERROR - Server error: expected 'except' or 'finally' block (websocket_routes.py, line 55)
+2025-12-06 17:54:36,627 - __main__ - INFO - Server stopped
+2025-12-06 17:54:36,628 - __main__ - ERROR - Application failed: expected 'except' or 'finally' block (websocket_routes.py, line 55)
+2025-12-06 17:56:31,627 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:56:31,627 - __main__ - INFO - Environment: Production
+2025-12-06 17:56:31,627 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:56:32,507 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:56:53,811 - services - INFO - Created room W9KYMN for quiz fwfwefewfwefwef
+2025-12-06 17:56:53,841 - services - INFO - Player MaxPayne joined room W9KYMN
+2025-12-06 17:56:54,254 - websocket_routes - INFO - WebSocket connection attempt: room=W9KYMN, player=77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc
+2025-12-06 17:56:54,272 - websocket_manager - INFO - Player MaxPayne (77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc) connected to room W9KYMN
+2025-12-06 17:56:54,279 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:56:55,400 - websocket_manager - ERROR - Failed to broadcast to player 77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 17:56:58,725 - websocket_routes - INFO - WebSocket connection attempt: room=W9KYMN, player=77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc
+2025-12-06 17:56:58,734 - websocket_manager - INFO - Player MaxPayne (77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc) connected to room W9KYMN
+2025-12-06 17:56:58,738 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:57:00,738 - websocket_routes - INFO - WebSocket connection attempt: room=W9KYMN, player=77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc
+2025-12-06 17:57:00,747 - websocket_manager - INFO - Player MaxPayne (77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc) connected to room W9KYMN
+2025-12-06 17:57:00,752 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:58:49,276 - app - INFO - Shutting down
+2025-12-06 17:58:49,287 - __main__ - INFO - Server stopped
+2025-12-06 17:59:07,690 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 17:59:07,691 - __main__ - INFO - Environment: Production
+2025-12-06 17:59:07,691 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 17:59:08,633 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 17:59:09,133 - websocket_routes - INFO - WebSocket connection attempt: room=W9KYMN, player=77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc
+2025-12-06 17:59:09,223 - websocket_manager - INFO - Player MaxPayne (77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc) connected to room W9KYMN
+2025-12-06 17:59:09,228 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:59:09,598 - websocket_routes - INFO - WebSocket connection attempt: room=W9KYMN, player=77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc
+2025-12-06 17:59:09,608 - websocket_manager - INFO - Player MaxPayne (77cbeeff-6fb2-4b2c-9bc6-3b45deb6ebdc) connected to room W9KYMN
+2025-12-06 17:59:09,611 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:59:31,220 - services - INFO - Created room EJJT24 for quiz sdcsdc
+2025-12-06 17:59:31,241 - services - INFO - Player MaxPayne joined room EJJT24
+2025-12-06 17:59:31,660 - websocket_routes - INFO - WebSocket connection attempt: room=EJJT24, player=47fb864c-4cd0-4b69-96a9-26ad3faf43c0
+2025-12-06 17:59:31,672 - websocket_manager - INFO - Player MaxPayne (47fb864c-4cd0-4b69-96a9-26ad3faf43c0) connected to room EJJT24
+2025-12-06 17:59:31,678 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:59:32,666 - websocket_manager - ERROR - Failed to broadcast to player 47fb864c-4cd0-4b69-96a9-26ad3faf43c0: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 17:59:35,988 - websocket_routes - INFO - WebSocket connection attempt: room=EJJT24, player=47fb864c-4cd0-4b69-96a9-26ad3faf43c0
+2025-12-06 17:59:36,000 - websocket_manager - INFO - Player MaxPayne (47fb864c-4cd0-4b69-96a9-26ad3faf43c0) connected to room EJJT24
+2025-12-06 17:59:36,003 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 17:59:37,989 - websocket_routes - INFO - WebSocket connection attempt: room=EJJT24, player=47fb864c-4cd0-4b69-96a9-26ad3faf43c0
+2025-12-06 17:59:37,996 - websocket_manager - INFO - Player MaxPayne (47fb864c-4cd0-4b69-96a9-26ad3faf43c0) connected to room EJJT24
+2025-12-06 17:59:38,000 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:09:37,304 - app - INFO - Shutting down
+2025-12-06 18:09:37,317 - __main__ - INFO - Server stopped
+2025-12-06 18:10:26,743 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 18:10:26,744 - __main__ - INFO - Environment: Production
+2025-12-06 18:10:26,744 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 18:10:27,672 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 18:10:43,828 - services - INFO - Created room 6CPPMQ for quiz wdqwdqwd
+2025-12-06 18:10:43,856 - services - INFO - Player MaxPayne joined room 6CPPMQ
+2025-12-06 18:10:44,273 - websocket_routes - INFO - WebSocket connection attempt: room=6CPPMQ, player=08de31a8-606f-4c70-a4d8-270e2b5c95e3
+2025-12-06 18:10:44,288 - websocket_manager - INFO - Player MaxPayne (08de31a8-606f-4c70-a4d8-270e2b5c95e3) connected to room 6CPPMQ
+2025-12-06 18:10:44,294 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:10:45,365 - websocket_manager - ERROR - Failed to broadcast to player 08de31a8-606f-4c70-a4d8-270e2b5c95e3: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 18:10:48,706 - websocket_routes - INFO - WebSocket connection attempt: room=6CPPMQ, player=08de31a8-606f-4c70-a4d8-270e2b5c95e3
+2025-12-06 18:10:48,719 - websocket_manager - INFO - Player MaxPayne (08de31a8-606f-4c70-a4d8-270e2b5c95e3) connected to room 6CPPMQ
+2025-12-06 18:10:48,723 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:11:16,491 - services - INFO - Created room ENU3C5 for quiz wqddqdqwd
+2025-12-06 18:11:16,510 - services - INFO - Player MaxPayne joined room ENU3C5
+2025-12-06 18:11:16,921 - websocket_routes - INFO - WebSocket connection attempt: room=ENU3C5, player=f7ab3a7b-539f-4760-9ecb-8653a96951de
+2025-12-06 18:11:16,935 - websocket_manager - INFO - Player MaxPayne (f7ab3a7b-539f-4760-9ecb-8653a96951de) connected to room ENU3C5
+2025-12-06 18:11:16,939 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:11:45,374 - services - INFO - Player bony joined room ENU3C5
+2025-12-06 18:11:45,712 - websocket_routes - INFO - WebSocket connection attempt: room=ENU3C5, player=a5d68310-f290-427b-aad8-6a2a3cdd6e51
+2025-12-06 18:11:45,724 - websocket_manager - INFO - Player bony (a5d68310-f290-427b-aad8-6a2a3cdd6e51) connected to room ENU3C5
+2025-12-06 18:11:45,728 - websocket_manager - ERROR - Failed to broadcast to player f7ab3a7b-539f-4760-9ecb-8653a96951de: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 18:11:45,729 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:11:48,514 - websocket_manager - ERROR - Failed to broadcast to player a5d68310-f290-427b-aad8-6a2a3cdd6e51: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 18:11:51,839 - websocket_routes - INFO - WebSocket connection attempt: room=ENU3C5, player=f7ab3a7b-539f-4760-9ecb-8653a96951de
+2025-12-06 18:11:51,851 - websocket_manager - INFO - Player MaxPayne (f7ab3a7b-539f-4760-9ecb-8653a96951de) connected to room ENU3C5
+2025-12-06 18:11:51,855 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:11:53,838 - websocket_routes - INFO - WebSocket connection attempt: room=ENU3C5, player=f7ab3a7b-539f-4760-9ecb-8653a96951de
+2025-12-06 18:11:53,850 - websocket_manager - INFO - Player MaxPayne (f7ab3a7b-539f-4760-9ecb-8653a96951de) connected to room ENU3C5
+2025-12-06 18:11:53,853 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 18:14:25,163 - app - INFO - Shutting down
+2025-12-06 18:14:25,181 - __main__ - INFO - Server stopped
+2025-12-06 20:50:14,247 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 20:50:14,248 - __main__ - INFO - Environment: Production
+2025-12-06 20:50:14,248 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 20:50:15,124 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 20:50:47,454 - services - INFO - Created room A8RVJT for quiz saxdsqdwqdq
+2025-12-06 20:50:47,479 - services - INFO - Player MaxPayne joined room A8RVJT
+2025-12-06 20:51:49,415 - app - INFO - Shutting down
+2025-12-06 20:51:49,426 - __main__ - INFO - Server stopped
+2025-12-06 20:56:05,623 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 20:56:05,624 - __main__ - INFO - Environment: Production
+2025-12-06 20:56:05,624 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 20:56:06,443 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 20:56:23,231 - services - INFO - Created room 7QI3DV for quiz dqwdqwdqw
+2025-12-06 20:56:23,262 - services - INFO - Player MaxPayne joined room 7QI3DV
+2025-12-06 20:56:23,684 - websocket_routes - INFO - WebSocket connection attempt: room=7QI3DV, player=ddc308fa-2a4c-4892-a465-33be83d9cb53
+2025-12-06 20:56:23,693 - websocket_manager - INFO - Player MaxPayne (ddc308fa-2a4c-4892-a465-33be83d9cb53) connected to room 7QI3DV
+2025-12-06 20:56:23,698 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 20:57:03,215 - services - INFO - Player John joined room 7QI3DV
+2025-12-06 20:57:03,545 - websocket_routes - INFO - WebSocket connection attempt: room=7QI3DV, player=613bdf8d-57dd-4e07-be4e-90c5669497e0
+2025-12-06 20:57:03,555 - websocket_manager - INFO - Player John (613bdf8d-57dd-4e07-be4e-90c5669497e0) connected to room 7QI3DV
+2025-12-06 20:57:03,560 - websocket_manager - ERROR - Failed to broadcast to player ddc308fa-2a4c-4892-a465-33be83d9cb53: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 20:57:03,561 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 20:57:10,056 - websocket_manager - ERROR - Failed to broadcast to player 613bdf8d-57dd-4e07-be4e-90c5669497e0: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 20:57:13,386 - websocket_routes - INFO - WebSocket connection attempt: room=7QI3DV, player=ddc308fa-2a4c-4892-a465-33be83d9cb53
+2025-12-06 20:57:13,396 - websocket_manager - INFO - Player MaxPayne (ddc308fa-2a4c-4892-a465-33be83d9cb53) connected to room 7QI3DV
+2025-12-06 20:57:13,400 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 20:57:15,395 - websocket_routes - INFO - WebSocket connection attempt: room=7QI3DV, player=ddc308fa-2a4c-4892-a465-33be83d9cb53
+2025-12-06 20:57:15,403 - websocket_manager - INFO - Player MaxPayne (ddc308fa-2a4c-4892-a465-33be83d9cb53) connected to room 7QI3DV
+2025-12-06 20:57:15,408 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 20:58:32,000 - app - INFO - Shutting down
+2025-12-06 20:58:32,013 - __main__ - INFO - Server stopped
+2025-12-06 21:00:08,698 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 21:00:08,699 - __main__ - INFO - Environment: Production
+2025-12-06 21:00:08,699 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 21:00:09,471 - __main__ - ERROR - Failed to start server: name 'api_router' is not defined
+2025-12-06 21:00:09,472 - __main__ - ERROR - Server error: name 'api_router' is not defined
+2025-12-06 21:00:09,472 - __main__ - INFO - Server stopped
+2025-12-06 21:00:09,473 - __main__ - ERROR - Application failed: name 'api_router' is not defined
+2025-12-06 21:02:17,790 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 21:02:17,790 - __main__ - INFO - Environment: Production
+2025-12-06 21:02:17,791 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 21:02:18,585 - __main__ - ERROR - Failed to start server: name 'api_router' is not defined
+2025-12-06 21:02:18,586 - __main__ - ERROR - Server error: name 'api_router' is not defined
+2025-12-06 21:02:18,586 - __main__ - INFO - Server stopped
+2025-12-06 21:02:18,587 - __main__ - ERROR - Application failed: name 'api_router' is not defined
+2025-12-06 21:04:55,621 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-06 21:04:55,622 - __main__ - INFO - Environment: Production
+2025-12-06 21:04:55,623 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-06 21:04:56,433 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-06 21:05:16,279 - services - INFO - Created room 7R65TC for quiz qwdqwd
+2025-12-06 21:05:16,308 - services - INFO - Player MaxPayne joined room 7R65TC
+2025-12-06 21:05:16,720 - websocket_routes - INFO - WebSocket connection attempt: room=7R65TC, player=a32d2d6f-58da-447f-9735-bbb2a6e29af9
+2025-12-06 21:05:16,737 - websocket_manager - INFO - Player MaxPayne (a32d2d6f-58da-447f-9735-bbb2a6e29af9) connected to room 7R65TC
+2025-12-06 21:05:16,743 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 21:05:18,223 - websocket_manager - ERROR - Failed to broadcast to player a32d2d6f-58da-447f-9735-bbb2a6e29af9: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-06 21:05:21,549 - websocket_routes - INFO - WebSocket connection attempt: room=7R65TC, player=a32d2d6f-58da-447f-9735-bbb2a6e29af9
+2025-12-06 21:05:21,569 - websocket_manager - INFO - Player MaxPayne (a32d2d6f-58da-447f-9735-bbb2a6e29af9) connected to room 7R65TC
+2025-12-06 21:05:21,573 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 21:05:23,562 - websocket_routes - INFO - WebSocket connection attempt: room=7R65TC, player=a32d2d6f-58da-447f-9735-bbb2a6e29af9
+2025-12-06 21:05:23,574 - websocket_manager - INFO - Player MaxPayne (a32d2d6f-58da-447f-9735-bbb2a6e29af9) connected to room 7R65TC
+2025-12-06 21:05:23,577 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-06 21:06:16,500 - app - INFO - Shutting down
+2025-12-06 21:06:16,510 - __main__ - INFO - Server stopped
+2025-12-07 10:03:29,521 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 10:03:29,523 - __main__ - INFO - Environment: Production
+2025-12-07 10:03:29,523 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 10:03:31,398 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 10:03:59,559 - services - INFO - Created room RYUHAX for quiz fwefewf
+2025-12-07 10:03:59,632 - services - INFO - Player MaxPayne joined room RYUHAX
+2025-12-07 10:04:00,135 - websocket_routes - INFO - WebSocket connection attempt: room=RYUHAX, player=2818c841-1e02-458a-9afc-4703f5e1dbed
+2025-12-07 10:04:00,161 - websocket_manager - INFO - Player MaxPayne (2818c841-1e02-458a-9afc-4703f5e1dbed) connected to room RYUHAX
+2025-12-07 10:04:00,181 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:04:13,850 - websocket_manager - ERROR - Failed to broadcast to player 2818c841-1e02-458a-9afc-4703f5e1dbed: Unexpected ASGI message 'websocket.send', after sending 'websocket.close'.
+2025-12-07 10:04:17,182 - websocket_routes - INFO - WebSocket connection attempt: room=RYUHAX, player=2818c841-1e02-458a-9afc-4703f5e1dbed
+2025-12-07 10:04:17,207 - websocket_manager - INFO - Player MaxPayne (2818c841-1e02-458a-9afc-4703f5e1dbed) connected to room RYUHAX
+2025-12-07 10:04:17,219 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:04:19,187 - websocket_routes - INFO - WebSocket connection attempt: room=RYUHAX, player=2818c841-1e02-458a-9afc-4703f5e1dbed
+2025-12-07 10:04:19,211 - websocket_manager - INFO - Player MaxPayne (2818c841-1e02-458a-9afc-4703f5e1dbed) connected to room RYUHAX
+2025-12-07 10:04:19,219 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:10:53,344 - app - INFO - Shutting down
+2025-12-07 10:10:53,369 - __main__ - INFO - Server stopped
+2025-12-07 10:23:48,230 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 10:23:48,230 - __main__ - INFO - Environment: Production
+2025-12-07 10:23:48,230 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 10:23:49,487 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 10:24:15,560 - services - INFO - Created room GZ5XNZ for quiz 2erwewrwer
+2025-12-07 10:24:15,917 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:24:15,962 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:24:15,964 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:24:18,297 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:24:18,322 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:24:18,324 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:24:22,655 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:24:22,677 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:24:22,677 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:24:29,010 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:24:29,038 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:24:29,038 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:24:37,370 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:24:37,399 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:24:37,399 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:24:48,338 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:24:48,364 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:24:48,364 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:48:27,396 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:48:27,588 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:48:27,588 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:48:30,342 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:48:30,374 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:48:30,374 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:48:35,352 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:48:35,377 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:48:35,379 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:48:42,352 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:48:42,384 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:48:42,388 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:48:51,344 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:48:51,360 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:48:51,360 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:49:02,353 - websocket_routes - INFO - WebSocket connection attempt: room=GZ5XNZ, player=22a11cae-378c-460b-8a2d-ac850680d177
+2025-12-07 10:49:02,382 - websocket_routes - WARNING - Player 22a11cae-378c-460b-8a2d-ac850680d177 not found in room GZ5XNZ
+2025-12-07 10:49:02,384 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:49:45,203 - app - INFO - Shutting down
+2025-12-07 10:49:45,234 - __main__ - INFO - Server stopped
+2025-12-07 10:50:24,592 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 10:50:24,592 - __main__ - INFO - Environment: Production
+2025-12-07 10:50:24,592 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 10:50:26,179 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 10:50:44,468 - services - INFO - Created room W2L96X for quiz ewfwefwefwef
+2025-12-07 10:50:44,827 - websocket_routes - INFO - WebSocket connection attempt: room=W2L96X, player=64b9c04c-b802-4b4f-818f-b2e43016b923
+2025-12-07 10:50:44,877 - websocket_routes - WARNING - Player 64b9c04c-b802-4b4f-818f-b2e43016b923 not found in room W2L96X
+2025-12-07 10:50:44,877 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:50:47,194 - websocket_routes - INFO - WebSocket connection attempt: room=W2L96X, player=64b9c04c-b802-4b4f-818f-b2e43016b923
+2025-12-07 10:50:47,215 - websocket_routes - WARNING - Player 64b9c04c-b802-4b4f-818f-b2e43016b923 not found in room W2L96X
+2025-12-07 10:50:47,219 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 10:52:21,955 - app - INFO - Shutting down
+2025-12-07 10:52:21,980 - __main__ - INFO - Server stopped
+2025-12-07 11:06:53,565 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:06:53,565 - __main__ - INFO - Environment: Production
+2025-12-07 11:06:53,565 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:06:55,404 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:06:56,039 - __main__ - INFO - Server stopped
+2025-12-07 11:11:24,917 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:11:24,926 - __main__ - INFO - Environment: Production
+2025-12-07 11:11:24,926 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:11:26,381 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:11:52,251 - services - INFO - Created room P2FCZ7 for quiz adaasasda
+2025-12-07 11:11:52,632 - websocket_routes - INFO - WebSocket connection attempt: room=P2FCZ7, player=1912f38b-69ac-4b2d-888a-726cd1b347c9
+2025-12-07 11:11:52,669 - websocket_routes - INFO - Room found: P2FCZ7
+2025-12-07 11:11:52,677 - websocket_routes - WARNING - Player 1912f38b-69ac-4b2d-888a-726cd1b347c9 not found in room P2FCZ7
+2025-12-07 11:11:52,677 - websocket_routes - INFO - Attempting to find player by player_id in room 029003cb-2528-48d0-b9bb-85f6e5620f36
+2025-12-07 11:11:52,677 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 11:11:55,009 - websocket_routes - INFO - WebSocket connection attempt: room=P2FCZ7, player=1912f38b-69ac-4b2d-888a-726cd1b347c9
+2025-12-07 11:11:55,031 - websocket_routes - INFO - Room found: P2FCZ7
+2025-12-07 11:11:55,032 - websocket_routes - WARNING - Player 1912f38b-69ac-4b2d-888a-726cd1b347c9 not found in room P2FCZ7
+2025-12-07 11:11:55,032 - websocket_routes - INFO - Attempting to find player by player_id in room 029003cb-2528-48d0-b9bb-85f6e5620f36
+2025-12-07 11:11:55,032 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 11:11:59,355 - websocket_routes - INFO - WebSocket connection attempt: room=P2FCZ7, player=1912f38b-69ac-4b2d-888a-726cd1b347c9
+2025-12-07 11:11:59,370 - websocket_routes - INFO - Room found: P2FCZ7
+2025-12-07 11:11:59,370 - websocket_routes - WARNING - Player 1912f38b-69ac-4b2d-888a-726cd1b347c9 not found in room P2FCZ7
+2025-12-07 11:11:59,370 - websocket_routes - INFO - Attempting to find player by player_id in room 029003cb-2528-48d0-b9bb-85f6e5620f36
+2025-12-07 11:11:59,376 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 11:12:05,705 - websocket_routes - INFO - WebSocket connection attempt: room=P2FCZ7, player=1912f38b-69ac-4b2d-888a-726cd1b347c9
+2025-12-07 11:12:05,721 - websocket_routes - INFO - Room found: P2FCZ7
+2025-12-07 11:12:05,727 - websocket_routes - WARNING - Player 1912f38b-69ac-4b2d-888a-726cd1b347c9 not found in room P2FCZ7
+2025-12-07 11:12:05,727 - websocket_routes - INFO - Attempting to find player by player_id in room 029003cb-2528-48d0-b9bb-85f6e5620f36
+2025-12-07 11:12:05,727 - websocket_routes - ERROR - Error in WebSocket endpoint: type object 'PlayerService' has no attribute 'get_players_in_room'
+2025-12-07 11:12:48,999 - app - INFO - Shutting down
+2025-12-07 11:12:49,022 - __main__ - INFO - Server stopped
+2025-12-07 11:12:52,530 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:12:52,530 - __main__ - INFO - Environment: Production
+2025-12-07 11:12:52,530 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:12:54,260 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:13:21,611 - services - INFO - Created room USR7MN for quiz fwefewfwe
+2025-12-07 11:13:21,694 - services - INFO - Player MaxPayne joined room USR7MN
+2025-12-07 11:13:22,166 - websocket_routes - INFO - WebSocket connection attempt: room=USR7MN, player=c9e73fd2-9e15-457c-9cc7-d0f863da2969
+2025-12-07 11:13:22,191 - websocket_routes - INFO - Room found: USR7MN
+2025-12-07 11:13:22,191 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 accepted for room USR7MN
+2025-12-07 11:13:22,199 - websocket_manager - INFO - Player MaxPayne (c9e73fd2-9e15-457c-9cc7-d0f863da2969) connected to room USR7MN
+2025-12-07 11:13:36,693 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 disconnected from room USR7MN
+2025-12-07 11:13:36,724 - websocket_handler - INFO - Player MaxPayne disconnected from room USR7MN
+2025-12-07 11:13:37,010 - websocket_routes - INFO - WebSocket connection attempt: room=USR7MN, player=c9e73fd2-9e15-457c-9cc7-d0f863da2969
+2025-12-07 11:13:37,032 - websocket_routes - INFO - Room found: USR7MN
+2025-12-07 11:13:37,037 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 accepted for room USR7MN
+2025-12-07 11:13:37,039 - websocket_manager - INFO - Player MaxPayne (c9e73fd2-9e15-457c-9cc7-d0f863da2969) connected to room USR7MN
+2025-12-07 11:13:39,022 - websocket_routes - INFO - WebSocket connection attempt: room=USR7MN, player=c9e73fd2-9e15-457c-9cc7-d0f863da2969
+2025-12-07 11:13:39,047 - websocket_routes - INFO - Room found: USR7MN
+2025-12-07 11:13:39,049 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 accepted for room USR7MN
+2025-12-07 11:13:39,049 - websocket_manager - INFO - Player MaxPayne (c9e73fd2-9e15-457c-9cc7-d0f863da2969) connected to room USR7MN
+2025-12-07 11:18:40,042 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 disconnected from room USR7MN
+2025-12-07 11:18:40,251 - websocket_handler - INFO - Player MaxPayne disconnected from room USR7MN
+2025-12-07 11:18:40,359 - websocket_routes - INFO - WebSocket connection attempt: room=USR7MN, player=c9e73fd2-9e15-457c-9cc7-d0f863da2969
+2025-12-07 11:18:40,365 - websocket_routes - INFO - Room found: USR7MN
+2025-12-07 11:18:40,373 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 accepted for room USR7MN
+2025-12-07 11:18:40,377 - websocket_manager - INFO - Player MaxPayne (c9e73fd2-9e15-457c-9cc7-d0f863da2969) connected to room USR7MN
+2025-12-07 11:18:42,367 - websocket_routes - INFO - WebSocket connection attempt: room=USR7MN, player=c9e73fd2-9e15-457c-9cc7-d0f863da2969
+2025-12-07 11:18:42,384 - websocket_routes - INFO - Room found: USR7MN
+2025-12-07 11:18:42,388 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 accepted for room USR7MN
+2025-12-07 11:18:42,391 - websocket_manager - INFO - Player MaxPayne (c9e73fd2-9e15-457c-9cc7-d0f863da2969) connected to room USR7MN
+2025-12-07 11:18:43,189 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 disconnected from room USR7MN
+2025-12-07 11:18:43,194 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 disconnected from room USR7MN
+2025-12-07 11:18:43,199 - websocket_routes - INFO - Player c9e73fd2-9e15-457c-9cc7-d0f863da2969 disconnected from room USR7MN
+2025-12-07 11:18:43,241 - websocket_handler - INFO - Player MaxPayne disconnected from room USR7MN
+2025-12-07 11:18:43,715 - websocket_handler - INFO - Player MaxPayne disconnected from room USR7MN
+2025-12-07 11:18:43,724 - websocket_handler - INFO - Player MaxPayne disconnected from room USR7MN
+2025-12-07 11:18:50,069 - app - INFO - Shutting down
+2025-12-07 11:18:50,103 - __main__ - INFO - Server stopped
+2025-12-07 11:18:52,379 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:18:52,380 - __main__ - INFO - Environment: Production
+2025-12-07 11:18:52,380 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:18:53,585 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:19:59,189 - services - INFO - Created room 4UJNH9 for quiz ascascasc
+2025-12-07 11:19:59,253 - services - INFO - Player MaxPayne joined room 4UJNH9
+2025-12-07 11:19:59,750 - websocket_routes - INFO - WebSocket connection attempt: room=4UJNH9, player=87f67b30-9630-483f-aa6d-3755db26a38b
+2025-12-07 11:19:59,762 - websocket_routes - INFO - Room found: 4UJNH9
+2025-12-07 11:19:59,762 - websocket_routes - INFO - Player 87f67b30-9630-483f-aa6d-3755db26a38b accepted for room 4UJNH9
+2025-12-07 11:19:59,762 - websocket_manager - INFO - Player MaxPayne (87f67b30-9630-483f-aa6d-3755db26a38b) connected to room 4UJNH9
+2025-12-07 11:20:00,763 - websocket_routes - INFO - Player 87f67b30-9630-483f-aa6d-3755db26a38b disconnected from room 4UJNH9
+2025-12-07 11:20:00,786 - websocket_handler - INFO - Player MaxPayne disconnected from room 4UJNH9
+2025-12-07 11:20:01,074 - websocket_routes - INFO - WebSocket connection attempt: room=4UJNH9, player=87f67b30-9630-483f-aa6d-3755db26a38b
+2025-12-07 11:20:01,096 - websocket_routes - INFO - Room found: 4UJNH9
+2025-12-07 11:20:01,100 - websocket_routes - INFO - Player 87f67b30-9630-483f-aa6d-3755db26a38b accepted for room 4UJNH9
+2025-12-07 11:20:01,102 - websocket_manager - INFO - Player MaxPayne (87f67b30-9630-483f-aa6d-3755db26a38b) connected to room 4UJNH9
+2025-12-07 11:20:03,089 - websocket_routes - INFO - WebSocket connection attempt: room=4UJNH9, player=87f67b30-9630-483f-aa6d-3755db26a38b
+2025-12-07 11:20:03,113 - websocket_routes - INFO - Room found: 4UJNH9
+2025-12-07 11:20:03,113 - websocket_routes - INFO - Player 87f67b30-9630-483f-aa6d-3755db26a38b accepted for room 4UJNH9
+2025-12-07 11:20:03,113 - websocket_manager - INFO - Player MaxPayne (87f67b30-9630-483f-aa6d-3755db26a38b) connected to room 4UJNH9
+2025-12-07 11:20:53,441 - websocket_routes - INFO - Player 87f67b30-9630-483f-aa6d-3755db26a38b disconnected from room 4UJNH9
+2025-12-07 11:20:53,446 - websocket_routes - INFO - Player 87f67b30-9630-483f-aa6d-3755db26a38b disconnected from room 4UJNH9
+2025-12-07 11:20:53,481 - websocket_handler - INFO - Player MaxPayne disconnected from room 4UJNH9
+2025-12-07 11:20:53,706 - websocket_handler - INFO - Player MaxPayne disconnected from room 4UJNH9
+2025-12-07 11:21:24,124 - services - INFO - Created room GB8C6K for quiz dqwdqwddwqdqwdqwd
+2025-12-07 11:21:24,172 - services - INFO - Player MaxPayne joined room GB8C6K
+2025-12-07 11:21:24,650 - websocket_routes - INFO - WebSocket connection attempt: room=GB8C6K, player=bd0dce98-e71a-4c37-ae75-c98625a4cdb9
+2025-12-07 11:21:24,668 - websocket_routes - INFO - Room found: GB8C6K
+2025-12-07 11:21:24,671 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 accepted for room GB8C6K
+2025-12-07 11:21:24,673 - websocket_manager - INFO - Player MaxPayne (bd0dce98-e71a-4c37-ae75-c98625a4cdb9) connected to room GB8C6K
+2025-12-07 11:21:25,896 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 disconnected from room GB8C6K
+2025-12-07 11:21:25,928 - websocket_handler - INFO - Player MaxPayne disconnected from room GB8C6K
+2025-12-07 11:21:26,222 - websocket_routes - INFO - WebSocket connection attempt: room=GB8C6K, player=bd0dce98-e71a-4c37-ae75-c98625a4cdb9
+2025-12-07 11:21:26,237 - websocket_routes - INFO - Room found: GB8C6K
+2025-12-07 11:21:26,245 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 accepted for room GB8C6K
+2025-12-07 11:21:26,245 - websocket_manager - INFO - Player MaxPayne (bd0dce98-e71a-4c37-ae75-c98625a4cdb9) connected to room GB8C6K
+2025-12-07 11:21:28,220 - websocket_routes - INFO - WebSocket connection attempt: room=GB8C6K, player=bd0dce98-e71a-4c37-ae75-c98625a4cdb9
+2025-12-07 11:21:28,241 - websocket_routes - INFO - Room found: GB8C6K
+2025-12-07 11:21:28,244 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 accepted for room GB8C6K
+2025-12-07 11:21:28,244 - websocket_manager - INFO - Player MaxPayne (bd0dce98-e71a-4c37-ae75-c98625a4cdb9) connected to room GB8C6K
+2025-12-07 11:25:45,215 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 disconnected from room GB8C6K
+2025-12-07 11:25:45,225 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 disconnected from room GB8C6K
+2025-12-07 11:25:45,260 - websocket_handler - INFO - Player MaxPayne disconnected from room GB8C6K
+2025-12-07 11:25:45,476 - websocket_handler - INFO - Player MaxPayne disconnected from room GB8C6K
+2025-12-07 11:25:45,516 - app - INFO - Shutting down
+2025-12-07 11:25:45,549 - __main__ - INFO - Server stopped
+2025-12-07 11:26:09,871 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:26:09,887 - __main__ - INFO - Environment: Production
+2025-12-07 11:26:09,887 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:26:10,916 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:26:15,363 - websocket_routes - INFO - WebSocket connection attempt: room=GB8C6K, player=bd0dce98-e71a-4c37-ae75-c98625a4cdb9
+2025-12-07 11:26:15,604 - websocket_routes - INFO - Room found: GB8C6K
+2025-12-07 11:26:15,610 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 accepted for room GB8C6K
+2025-12-07 11:26:15,613 - websocket_manager - INFO - Player MaxPayne (bd0dce98-e71a-4c37-ae75-c98625a4cdb9) connected to room GB8C6K
+2025-12-07 11:26:17,355 - websocket_routes - INFO - WebSocket connection attempt: room=GB8C6K, player=bd0dce98-e71a-4c37-ae75-c98625a4cdb9
+2025-12-07 11:26:17,374 - websocket_routes - INFO - Room found: GB8C6K
+2025-12-07 11:26:17,374 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 accepted for room GB8C6K
+2025-12-07 11:26:17,374 - websocket_manager - INFO - Player MaxPayne (bd0dce98-e71a-4c37-ae75-c98625a4cdb9) connected to room GB8C6K
+2025-12-07 11:26:19,074 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 disconnected from room GB8C6K
+2025-12-07 11:26:19,079 - websocket_routes - INFO - Player bd0dce98-e71a-4c37-ae75-c98625a4cdb9 disconnected from room GB8C6K
+2025-12-07 11:26:19,127 - websocket_handler - INFO - Player MaxPayne disconnected from room GB8C6K
+2025-12-07 11:26:19,498 - websocket_handler - INFO - Player MaxPayne disconnected from room GB8C6K
+2025-12-07 11:26:28,982 - services - INFO - Created room JFWXLR for quiz qwdqwdq
+2025-12-07 11:26:29,031 - services - INFO - Player MaxPayne joined room JFWXLR
+2025-12-07 11:26:29,535 - websocket_routes - INFO - WebSocket connection attempt: room=JFWXLR, player=4cbe8914-7ed2-4c50-9c25-cdf8483ac13d
+2025-12-07 11:26:29,552 - websocket_routes - INFO - Room found: JFWXLR
+2025-12-07 11:26:29,556 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d accepted for room JFWXLR
+2025-12-07 11:26:29,556 - websocket_manager - INFO - Player MaxPayne (4cbe8914-7ed2-4c50-9c25-cdf8483ac13d) connected to room JFWXLR
+2025-12-07 11:26:30,575 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d disconnected from room JFWXLR
+2025-12-07 11:26:30,602 - websocket_handler - INFO - Player MaxPayne disconnected from room JFWXLR
+2025-12-07 11:26:30,901 - websocket_routes - INFO - WebSocket connection attempt: room=JFWXLR, player=4cbe8914-7ed2-4c50-9c25-cdf8483ac13d
+2025-12-07 11:26:30,915 - websocket_routes - INFO - Room found: JFWXLR
+2025-12-07 11:26:30,923 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d accepted for room JFWXLR
+2025-12-07 11:26:30,923 - websocket_manager - INFO - Player MaxPayne (4cbe8914-7ed2-4c50-9c25-cdf8483ac13d) connected to room JFWXLR
+2025-12-07 11:26:32,896 - websocket_routes - INFO - WebSocket connection attempt: room=JFWXLR, player=4cbe8914-7ed2-4c50-9c25-cdf8483ac13d
+2025-12-07 11:26:32,918 - websocket_routes - INFO - Room found: JFWXLR
+2025-12-07 11:26:32,920 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d accepted for room JFWXLR
+2025-12-07 11:26:32,920 - websocket_manager - INFO - Player MaxPayne (4cbe8914-7ed2-4c50-9c25-cdf8483ac13d) connected to room JFWXLR
+2025-12-07 11:32:53,842 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d disconnected from room JFWXLR
+2025-12-07 11:32:53,847 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d disconnected from room JFWXLR
+2025-12-07 11:32:54,088 - websocket_handler - INFO - Player MaxPayne disconnected from room JFWXLR
+2025-12-07 11:32:54,090 - websocket_handler - INFO - Player MaxPayne disconnected from room JFWXLR
+2025-12-07 11:32:54,153 - app - INFO - Shutting down
+2025-12-07 11:32:54,175 - __main__ - INFO - Server stopped
+2025-12-07 11:33:03,982 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:33:03,983 - __main__ - INFO - Environment: Production
+2025-12-07 11:33:03,983 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:33:05,161 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:33:05,896 - websocket_routes - INFO - WebSocket connection attempt: room=JFWXLR, player=4cbe8914-7ed2-4c50-9c25-cdf8483ac13d
+2025-12-07 11:33:06,024 - websocket_routes - INFO - Room found: JFWXLR
+2025-12-07 11:33:06,024 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d accepted for room JFWXLR
+2025-12-07 11:33:06,024 - websocket_manager - INFO - Player MaxPayne (4cbe8914-7ed2-4c50-9c25-cdf8483ac13d) connected to room JFWXLR
+2025-12-07 11:33:06,043 - websocket_manager - INFO - Broadcasting to all in room JFWXLR: player_joined
+2025-12-07 11:33:06,043 - websocket_manager - WARNING - No host connection found for room JFWXLR
+2025-12-07 11:33:06,045 - websocket_manager - INFO - Sent to player MaxPayne (4cbe8914-7ed2-4c50-9c25-cdf8483ac13d)
+2025-12-07 11:33:09,186 - websocket_routes - INFO - Player 4cbe8914-7ed2-4c50-9c25-cdf8483ac13d disconnected from room JFWXLR
+2025-12-07 11:33:09,216 - websocket_manager - INFO - Broadcasting to all in room JFWXLR: player_left
+2025-12-07 11:33:09,219 - websocket_manager - WARNING - No host connection found for room JFWXLR
+2025-12-07 11:33:09,221 - websocket_handler - INFO - Player MaxPayne disconnected from room JFWXLR
+2025-12-07 11:33:22,448 - services - INFO - Created room IWXAUI for quiz qwdqwdq
+2025-12-07 11:33:22,497 - services - INFO - Player MaxPayne joined room IWXAUI
+2025-12-07 11:33:22,990 - websocket_routes - INFO - WebSocket connection attempt: room=IWXAUI, player=a8e88a67-e0c5-4005-883f-73b1ecf5808e
+2025-12-07 11:33:23,013 - websocket_routes - INFO - Room found: IWXAUI
+2025-12-07 11:33:23,013 - websocket_routes - INFO - Player a8e88a67-e0c5-4005-883f-73b1ecf5808e accepted for room IWXAUI
+2025-12-07 11:33:23,021 - websocket_manager - INFO - Player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e) connected to room IWXAUI
+2025-12-07 11:33:23,030 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: player_joined
+2025-12-07 11:33:23,030 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:33:23,032 - websocket_manager - INFO - Sent to player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e)
+2025-12-07 11:33:24,107 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: game_started
+2025-12-07 11:33:24,107 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:33:24,107 - websocket_manager - INFO - Sent to player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e)
+2025-12-07 11:33:24,107 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: question
+2025-12-07 11:33:24,107 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:33:24,114 - websocket_manager - INFO - Sent to player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e)
+2025-12-07 11:33:24,123 - websocket_routes - INFO - Player a8e88a67-e0c5-4005-883f-73b1ecf5808e disconnected from room IWXAUI
+2025-12-07 11:33:24,154 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: player_left
+2025-12-07 11:33:24,154 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:33:24,156 - websocket_handler - INFO - Player MaxPayne disconnected from room IWXAUI
+2025-12-07 11:33:24,436 - websocket_routes - INFO - WebSocket connection attempt: room=IWXAUI, player=a8e88a67-e0c5-4005-883f-73b1ecf5808e
+2025-12-07 11:33:24,456 - websocket_routes - INFO - Room found: IWXAUI
+2025-12-07 11:33:24,461 - websocket_routes - INFO - Player a8e88a67-e0c5-4005-883f-73b1ecf5808e accepted for room IWXAUI
+2025-12-07 11:33:24,461 - websocket_manager - INFO - Player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e) connected to room IWXAUI
+2025-12-07 11:33:24,469 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: player_joined
+2025-12-07 11:33:24,469 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:33:24,474 - websocket_manager - INFO - Sent to player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e)
+2025-12-07 11:33:26,449 - websocket_routes - INFO - WebSocket connection attempt: room=IWXAUI, player=a8e88a67-e0c5-4005-883f-73b1ecf5808e
+2025-12-07 11:33:26,473 - websocket_routes - INFO - Room found: IWXAUI
+2025-12-07 11:33:26,479 - websocket_routes - INFO - Player a8e88a67-e0c5-4005-883f-73b1ecf5808e accepted for room IWXAUI
+2025-12-07 11:33:26,482 - websocket_manager - INFO - Player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e) connected to room IWXAUI
+2025-12-07 11:33:26,489 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: player_joined
+2025-12-07 11:33:26,489 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:33:26,489 - websocket_manager - INFO - Sent to player MaxPayne (a8e88a67-e0c5-4005-883f-73b1ecf5808e)
+2025-12-07 11:40:15,750 - websocket_routes - INFO - Player a8e88a67-e0c5-4005-883f-73b1ecf5808e disconnected from room IWXAUI
+2025-12-07 11:40:15,756 - websocket_routes - INFO - Player a8e88a67-e0c5-4005-883f-73b1ecf5808e disconnected from room IWXAUI
+2025-12-07 11:40:16,210 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: player_left
+2025-12-07 11:40:16,215 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:40:16,215 - websocket_handler - INFO - Player MaxPayne disconnected from room IWXAUI
+2025-12-07 11:40:16,219 - websocket_manager - INFO - Broadcasting to all in room IWXAUI: player_left
+2025-12-07 11:40:16,219 - websocket_manager - WARNING - No host connection found for room IWXAUI
+2025-12-07 11:40:16,219 - websocket_handler - INFO - Player MaxPayne disconnected from room IWXAUI
+2025-12-07 11:42:55,098 - app - INFO - Shutting down
+2025-12-07 11:42:55,131 - __main__ - INFO - Server stopped
+2025-12-07 11:43:05,066 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:43:05,066 - __main__ - INFO - Environment: Production
+2025-12-07 11:43:05,066 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:43:06,907 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:43:30,002 - services - INFO - Created room P5D2J6 for quiz wqdqdqwdq
+2025-12-07 11:43:30,078 - services - INFO - Player MaxPayne joined room P5D2J6
+2025-12-07 11:43:30,508 - websocket_routes - INFO - WebSocket connection attempt: room=P5D2J6, player=86bfbfb2-8b5d-4dac-9134-c41f5717a12e
+2025-12-07 11:43:30,524 - websocket_routes - INFO - Room found: P5D2J6
+2025-12-07 11:43:30,531 - websocket_routes - INFO - Player 86bfbfb2-8b5d-4dac-9134-c41f5717a12e accepted for room P5D2J6
+2025-12-07 11:43:30,531 - websocket_manager - INFO - Player MaxPayne (86bfbfb2-8b5d-4dac-9134-c41f5717a12e) connected to room P5D2J6
+2025-12-07 11:43:30,544 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_joined
+2025-12-07 11:43:30,546 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:43:30,547 - websocket_manager - INFO - Sent to player MaxPayne (86bfbfb2-8b5d-4dac-9134-c41f5717a12e)
+2025-12-07 11:44:01,371 - services - INFO - Player jawn joined room P5D2J6
+2025-12-07 11:44:01,737 - websocket_routes - INFO - WebSocket connection attempt: room=P5D2J6, player=9478a52a-b714-43e8-a9e5-c62beeb57f9c
+2025-12-07 11:44:01,758 - websocket_routes - INFO - Room found: P5D2J6
+2025-12-07 11:44:01,758 - websocket_routes - INFO - Player 9478a52a-b714-43e8-a9e5-c62beeb57f9c accepted for room P5D2J6
+2025-12-07 11:44:01,758 - websocket_manager - INFO - Player jawn (9478a52a-b714-43e8-a9e5-c62beeb57f9c) connected to room P5D2J6
+2025-12-07 11:44:01,765 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_joined
+2025-12-07 11:44:01,765 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:44:01,773 - websocket_manager - INFO - Sent to player MaxPayne (86bfbfb2-8b5d-4dac-9134-c41f5717a12e)
+2025-12-07 11:44:01,773 - websocket_manager - INFO - Sent to player jawn (9478a52a-b714-43e8-a9e5-c62beeb57f9c)
+2025-12-07 11:45:15,310 - services - INFO - Player host joined room P5D2J6
+2025-12-07 11:45:15,669 - websocket_routes - INFO - WebSocket connection attempt: room=P5D2J6, player=306a5ff3-cc28-4eb9-a876-41ce05fe0f4a
+2025-12-07 11:45:15,686 - websocket_routes - INFO - Room found: P5D2J6
+2025-12-07 11:45:15,694 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a accepted for room P5D2J6
+2025-12-07 11:45:15,694 - websocket_manager - INFO - Player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a) connected to room P5D2J6
+2025-12-07 11:45:15,708 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_joined
+2025-12-07 11:45:15,708 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:45:15,708 - websocket_manager - INFO - Sent to player MaxPayne (86bfbfb2-8b5d-4dac-9134-c41f5717a12e)
+2025-12-07 11:45:15,710 - websocket_manager - INFO - Sent to player jawn (9478a52a-b714-43e8-a9e5-c62beeb57f9c)
+2025-12-07 11:45:15,710 - websocket_manager - INFO - Sent to player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a)
+2025-12-07 11:45:15,784 - websocket_routes - INFO - Player 86bfbfb2-8b5d-4dac-9134-c41f5717a12e disconnected from room P5D2J6
+2025-12-07 11:45:15,809 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_left
+2025-12-07 11:45:15,809 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:45:15,809 - websocket_manager - INFO - Sent to player jawn (9478a52a-b714-43e8-a9e5-c62beeb57f9c)
+2025-12-07 11:45:15,809 - websocket_manager - INFO - Sent to player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a)
+2025-12-07 11:45:15,809 - websocket_handler - INFO - Player MaxPayne disconnected from room P5D2J6
+2025-12-07 11:45:16,091 - websocket_routes - INFO - WebSocket connection attempt: room=P5D2J6, player=306a5ff3-cc28-4eb9-a876-41ce05fe0f4a
+2025-12-07 11:45:16,109 - websocket_routes - INFO - Room found: P5D2J6
+2025-12-07 11:45:16,112 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a accepted for room P5D2J6
+2025-12-07 11:45:16,112 - websocket_manager - INFO - Player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a) connected to room P5D2J6
+2025-12-07 11:45:16,123 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_joined
+2025-12-07 11:45:16,123 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:45:16,123 - websocket_manager - INFO - Sent to player jawn (9478a52a-b714-43e8-a9e5-c62beeb57f9c)
+2025-12-07 11:45:16,123 - websocket_manager - INFO - Sent to player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a)
+2025-12-07 11:45:18,108 - websocket_routes - INFO - WebSocket connection attempt: room=P5D2J6, player=306a5ff3-cc28-4eb9-a876-41ce05fe0f4a
+2025-12-07 11:45:18,131 - websocket_routes - INFO - Room found: P5D2J6
+2025-12-07 11:45:18,131 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a accepted for room P5D2J6
+2025-12-07 11:45:18,131 - websocket_manager - INFO - Player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a) connected to room P5D2J6
+2025-12-07 11:45:18,140 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_joined
+2025-12-07 11:45:18,147 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:45:18,147 - websocket_manager - INFO - Sent to player jawn (9478a52a-b714-43e8-a9e5-c62beeb57f9c)
+2025-12-07 11:45:18,147 - websocket_manager - INFO - Sent to player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a)
+2025-12-07 11:46:02,521 - websocket_routes - INFO - Player 9478a52a-b714-43e8-a9e5-c62beeb57f9c disconnected from room P5D2J6
+2025-12-07 11:46:02,570 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_left
+2025-12-07 11:46:02,570 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:46:02,570 - websocket_manager - INFO - Sent to player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a)
+2025-12-07 11:46:02,572 - websocket_handler - INFO - Player jawn disconnected from room P5D2J6
+2025-12-07 11:48:50,716 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a disconnected from room P5D2J6
+2025-12-07 11:48:50,731 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_left
+2025-12-07 11:48:50,731 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:48:50,731 - websocket_handler - INFO - Player host disconnected from room P5D2J6
+2025-12-07 11:48:52,408 - websocket_routes - INFO - WebSocket connection attempt: room=P5D2J6, player=306a5ff3-cc28-4eb9-a876-41ce05fe0f4a
+2025-12-07 11:48:52,415 - websocket_routes - INFO - Room found: P5D2J6
+2025-12-07 11:48:52,417 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a accepted for room P5D2J6
+2025-12-07 11:48:52,418 - websocket_manager - INFO - Player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a) connected to room P5D2J6
+2025-12-07 11:48:52,421 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_joined
+2025-12-07 11:48:52,421 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:48:52,422 - websocket_manager - INFO - Sent to player host (306a5ff3-cc28-4eb9-a876-41ce05fe0f4a)
+2025-12-07 11:48:52,860 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a disconnected from room P5D2J6
+2025-12-07 11:48:52,862 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a disconnected from room P5D2J6
+2025-12-07 11:48:52,863 - websocket_routes - INFO - Player 306a5ff3-cc28-4eb9-a876-41ce05fe0f4a disconnected from room P5D2J6
+2025-12-07 11:48:52,881 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_left
+2025-12-07 11:48:52,882 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:48:52,882 - websocket_handler - INFO - Player host disconnected from room P5D2J6
+2025-12-07 11:48:52,885 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_left
+2025-12-07 11:48:52,885 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:48:52,886 - websocket_handler - INFO - Player host disconnected from room P5D2J6
+2025-12-07 11:48:52,959 - websocket_manager - INFO - Broadcasting to all in room P5D2J6: player_left
+2025-12-07 11:48:52,959 - websocket_manager - WARNING - No host connection found for room P5D2J6
+2025-12-07 11:48:52,960 - websocket_handler - INFO - Player host disconnected from room P5D2J6
+2025-12-07 11:48:53,061 - app - INFO - Shutting down
+2025-12-07 11:48:53,078 - __main__ - INFO - Server stopped
+2025-12-07 11:48:58,466 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:48:58,467 - __main__ - INFO - Environment: Production
+2025-12-07 11:48:58,467 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:48:59,634 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:49:09,797 - services - INFO - Created room 4U7D8M for quiz wqdqwdqwd
+2025-12-07 11:49:09,822 - services - INFO - Player host joined room 4U7D8M
+2025-12-07 11:49:10,219 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:49:10,228 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:49:10,230 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:49:10,231 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:49:10,237 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:49:10,237 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:49:10,237 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:49:10,544 - websocket_routes - INFO - Host WebSocket connection: room=4U7D8M, host=718c599c-698f-41a3-8b6c-10dd8c776c70
+2025-12-07 11:49:10,551 - websocket_manager - INFO - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 connected to room 4U7D8M
+2025-12-07 11:49:10,552 - websocket_routes - INFO - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 connected to room 4U7D8M
+2025-12-07 11:49:12,068 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: game_started
+2025-12-07 11:49:12,068 - websocket_manager - INFO - Sent message to host in room 4U7D8M: game_started
+2025-12-07 11:49:12,069 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:49:12,069 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: question
+2025-12-07 11:49:12,069 - websocket_manager - INFO - Sent message to host in room 4U7D8M: question
+2025-12-07 11:49:12,071 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:49:12,082 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:49:12,084 - websocket_routes - INFO - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 disconnected from room 4U7D8M
+2025-12-07 11:49:12,104 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:49:12,104 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:49:12,104 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:49:12,197 - websocket_handler - WARNING - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 disconnected from room 4U7D8M
+2025-12-07 11:49:12,399 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:49:12,410 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:49:12,411 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:49:12,412 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:49:12,416 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:49:12,416 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:49:12,417 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:49:14,401 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:49:14,408 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:49:14,410 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:49:14,411 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:49:14,415 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:49:14,416 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:49:14,416 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:49:14,514 - websocket_handler - ERROR - Error handling player answer: 1 validation error for PlayerAnswer
+choice_id
+  Input should be a valid string [type=string_type, input_value={'id': '43d398bb-8663-449...qw', 'is_correct': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-12-07 11:51:38,046 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:51:38,062 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:51:38,063 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:38,063 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:51:38,357 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:51:38,365 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:51:38,366 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:51:38,367 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:51:38,371 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:51:38,373 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:38,373 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:51:41,330 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:51:41,337 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:51:41,339 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:51:41,339 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:51:41,342 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:51:41,343 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:41,343 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:51:47,864 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:51:47,878 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:51:47,878 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:47,878 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:51:48,175 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:51:48,192 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:51:48,194 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:51:48,195 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:51:48,200 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:51:48,201 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:48,202 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:51:48,516 - websocket_routes - INFO - Host WebSocket connection: room=4U7D8M, host=718c599c-698f-41a3-8b6c-10dd8c776c70
+2025-12-07 11:51:48,542 - websocket_manager - INFO - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 connected to room 4U7D8M
+2025-12-07 11:51:48,542 - websocket_routes - INFO - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 connected to room 4U7D8M
+2025-12-07 11:51:49,614 - database - ERROR - Database session error: 
+2025-12-07 11:51:50,179 - websocket_routes - INFO - WebSocket connection attempt: room=4U7D8M, player=1c103384-ab6e-4cd4-82bb-25f673c169ba
+2025-12-07 11:51:50,194 - websocket_routes - INFO - Room found: 4U7D8M
+2025-12-07 11:51:50,196 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba accepted for room 4U7D8M
+2025-12-07 11:51:50,198 - websocket_manager - INFO - Player host (1c103384-ab6e-4cd4-82bb-25f673c169ba) connected to room 4U7D8M
+2025-12-07 11:51:50,204 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_joined
+2025-12-07 11:51:50,205 - websocket_manager - INFO - Sent message to host in room 4U7D8M: player_joined
+2025-12-07 11:51:50,207 - websocket_manager - INFO - Sent to player host (1c103384-ab6e-4cd4-82bb-25f673c169ba)
+2025-12-07 11:51:53,906 - database - ERROR - Database session error: 
+2025-12-07 11:51:54,432 - database - ERROR - Database session error: 
+2025-12-07 11:51:54,590 - database - ERROR - Database session error: 
+2025-12-07 11:51:54,736 - database - ERROR - Database session error: 
+2025-12-07 11:51:54,909 - database - ERROR - Database session error: 
+2025-12-07 11:51:55,063 - database - ERROR - Database session error: 
+2025-12-07 11:51:55,220 - database - ERROR - Database session error: 
+2025-12-07 11:51:55,377 - database - ERROR - Database session error: 
+2025-12-07 11:51:55,547 - database - ERROR - Database session error: 
+2025-12-07 11:51:57,676 - websocket_routes - INFO - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 disconnected from room 4U7D8M
+2025-12-07 11:51:57,679 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:51:57,681 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:51:57,687 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:51:57,692 - websocket_routes - INFO - Player 1c103384-ab6e-4cd4-82bb-25f673c169ba disconnected from room 4U7D8M
+2025-12-07 11:51:57,742 - websocket_handler - WARNING - Host 718c599c-698f-41a3-8b6c-10dd8c776c70 disconnected from room 4U7D8M
+2025-12-07 11:51:57,868 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:51:57,869 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:57,870 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:51:58,124 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:51:58,124 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:58,125 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:51:58,128 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:51:58,129 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:58,129 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:51:58,132 - websocket_manager - INFO - Broadcasting to all in room 4U7D8M: player_left
+2025-12-07 11:51:58,133 - websocket_manager - WARNING - No host connection found for room 4U7D8M
+2025-12-07 11:51:58,133 - websocket_handler - INFO - Player host disconnected from room 4U7D8M
+2025-12-07 11:52:11,450 - services - INFO - Created room LGFOJK for quiz dwqdwqd
+2025-12-07 11:52:11,472 - services - INFO - Player host joined room LGFOJK
+2025-12-07 11:52:11,848 - websocket_routes - INFO - WebSocket connection attempt: room=LGFOJK, player=77f30279-742f-4611-a3bd-7df68a6adfcb
+2025-12-07 11:52:11,857 - websocket_routes - INFO - Room found: LGFOJK
+2025-12-07 11:52:11,859 - websocket_routes - INFO - Player 77f30279-742f-4611-a3bd-7df68a6adfcb accepted for room LGFOJK
+2025-12-07 11:52:11,860 - websocket_manager - INFO - Player host (77f30279-742f-4611-a3bd-7df68a6adfcb) connected to room LGFOJK
+2025-12-07 11:52:11,865 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: player_joined
+2025-12-07 11:52:11,865 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:52:11,866 - websocket_manager - INFO - Sent to player host (77f30279-742f-4611-a3bd-7df68a6adfcb)
+2025-12-07 11:52:12,176 - websocket_routes - INFO - Host WebSocket connection: room=LGFOJK, host=2e2444ee-7648-4019-b992-7b0d2a606ebe
+2025-12-07 11:52:12,184 - websocket_manager - INFO - Host 2e2444ee-7648-4019-b992-7b0d2a606ebe connected to room LGFOJK
+2025-12-07 11:52:12,184 - websocket_routes - INFO - Host 2e2444ee-7648-4019-b992-7b0d2a606ebe connected to room LGFOJK
+2025-12-07 11:52:12,999 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: game_started
+2025-12-07 11:52:13,000 - websocket_manager - INFO - Sent message to host in room LGFOJK: game_started
+2025-12-07 11:52:13,001 - websocket_manager - INFO - Sent to player host (77f30279-742f-4611-a3bd-7df68a6adfcb)
+2025-12-07 11:52:13,001 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: question
+2025-12-07 11:52:13,002 - websocket_manager - INFO - Sent message to host in room LGFOJK: question
+2025-12-07 11:52:13,003 - websocket_manager - INFO - Sent to player host (77f30279-742f-4611-a3bd-7df68a6adfcb)
+2025-12-07 11:52:13,016 - websocket_routes - INFO - Player 77f30279-742f-4611-a3bd-7df68a6adfcb disconnected from room LGFOJK
+2025-12-07 11:52:13,020 - websocket_routes - INFO - Host 2e2444ee-7648-4019-b992-7b0d2a606ebe disconnected from room LGFOJK
+2025-12-07 11:52:13,044 - websocket_handler - WARNING - Host 2e2444ee-7648-4019-b992-7b0d2a606ebe disconnected from room LGFOJK
+2025-12-07 11:52:13,047 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: player_left
+2025-12-07 11:52:13,048 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:52:13,048 - websocket_handler - INFO - Player host disconnected from room LGFOJK
+2025-12-07 11:52:13,329 - websocket_routes - INFO - WebSocket connection attempt: room=LGFOJK, player=77f30279-742f-4611-a3bd-7df68a6adfcb
+2025-12-07 11:52:13,339 - websocket_routes - INFO - Room found: LGFOJK
+2025-12-07 11:52:13,341 - websocket_routes - INFO - Player 77f30279-742f-4611-a3bd-7df68a6adfcb accepted for room LGFOJK
+2025-12-07 11:52:13,342 - websocket_manager - INFO - Player host (77f30279-742f-4611-a3bd-7df68a6adfcb) connected to room LGFOJK
+2025-12-07 11:52:13,346 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: player_joined
+2025-12-07 11:52:13,346 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:52:13,347 - websocket_manager - INFO - Sent to player host (77f30279-742f-4611-a3bd-7df68a6adfcb)
+2025-12-07 11:52:14,448 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: message
+2025-12-07 11:52:14,448 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:52:14,449 - websocket_manager - ERROR - Failed to broadcast to player 77f30279-742f-4611-a3bd-7df68a6adfcb: Object of type datetime is not JSON serializable
+2025-12-07 11:52:14,449 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:52:15,344 - websocket_routes - INFO - WebSocket connection attempt: room=LGFOJK, player=77f30279-742f-4611-a3bd-7df68a6adfcb
+2025-12-07 11:52:15,352 - websocket_routes - INFO - Room found: LGFOJK
+2025-12-07 11:52:15,354 - websocket_routes - INFO - Player 77f30279-742f-4611-a3bd-7df68a6adfcb accepted for room LGFOJK
+2025-12-07 11:52:15,354 - websocket_manager - INFO - Player host (77f30279-742f-4611-a3bd-7df68a6adfcb) connected to room LGFOJK
+2025-12-07 11:52:15,357 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: player_joined
+2025-12-07 11:52:15,358 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:52:15,358 - websocket_manager - INFO - Sent to player host (77f30279-742f-4611-a3bd-7df68a6adfcb)
+2025-12-07 11:57:05,399 - websocket_routes - INFO - Player 77f30279-742f-4611-a3bd-7df68a6adfcb disconnected from room LGFOJK
+2025-12-07 11:57:05,402 - websocket_routes - INFO - Player 77f30279-742f-4611-a3bd-7df68a6adfcb disconnected from room LGFOJK
+2025-12-07 11:57:05,534 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: player_left
+2025-12-07 11:57:05,534 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:57:05,534 - websocket_handler - INFO - Player host disconnected from room LGFOJK
+2025-12-07 11:57:05,538 - websocket_manager - INFO - Broadcasting to all in room LGFOJK: player_left
+2025-12-07 11:57:05,539 - websocket_manager - WARNING - No host connection found for room LGFOJK
+2025-12-07 11:57:05,539 - websocket_handler - INFO - Player host disconnected from room LGFOJK
+2025-12-07 11:57:05,615 - app - INFO - Shutting down
+2025-12-07 11:57:05,639 - __main__ - INFO - Server stopped
+2025-12-07 11:57:15,144 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:57:15,144 - __main__ - INFO - Environment: Production
+2025-12-07 11:57:15,145 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:57:15,975 - __main__ - ERROR - Failed to start server: unexpected indent (websocket_handler.py, line 2)
+2025-12-07 11:57:15,975 - __main__ - ERROR - Server error: unexpected indent (websocket_handler.py, line 2)
+2025-12-07 11:57:15,976 - __main__ - INFO - Server stopped
+2025-12-07 11:57:15,977 - __main__ - ERROR - Application failed: unexpected indent (websocket_handler.py, line 2)
+2025-12-07 11:58:13,525 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 11:58:13,525 - __main__ - INFO - Environment: Production
+2025-12-07 11:58:13,525 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 11:58:14,303 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 11:58:28,735 - services - INFO - Created room 4KTURV for quiz wqdqwdwqdq
+2025-12-07 11:58:28,761 - services - INFO - Player host joined room 4KTURV
+2025-12-07 11:58:29,155 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 11:58:29,164 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 11:58:29,165 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 11:58:29,166 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 11:58:29,172 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 11:58:29,172 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:29,173 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 11:58:29,474 - websocket_routes - INFO - Host WebSocket connection: room=4KTURV, host=aaee6197-32ca-46dd-86f3-40aa567e3bf9
+2025-12-07 11:58:29,484 - websocket_manager - INFO - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 connected to room 4KTURV
+2025-12-07 11:58:29,484 - websocket_routes - INFO - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 connected to room 4KTURV
+2025-12-07 11:58:30,438 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: game_started
+2025-12-07 11:58:30,439 - websocket_manager - INFO - Sent message to host in room 4KTURV: game_started
+2025-12-07 11:58:30,440 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 11:58:30,441 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: question
+2025-12-07 11:58:30,441 - websocket_manager - INFO - Sent message to host in room 4KTURV: question
+2025-12-07 11:58:30,442 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 11:58:30,455 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 11:58:30,457 - websocket_routes - INFO - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 disconnected from room 4KTURV
+2025-12-07 11:58:30,479 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 11:58:30,480 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:30,480 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 11:58:30,616 - websocket_handler - WARNING - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 disconnected from room 4KTURV
+2025-12-07 11:58:30,778 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 11:58:30,788 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 11:58:30,789 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 11:58:30,790 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 11:58:30,794 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 11:58:30,794 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:30,795 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 11:58:32,013 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: message
+2025-12-07 11:58:32,013 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:32,014 - websocket_manager - ERROR - Failed to broadcast to player 30289c42-2b12-454d-9526-03d769798aec: Object of type datetime is not JSON serializable
+2025-12-07 11:58:32,014 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:32,772 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 11:58:32,779 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 11:58:32,780 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 11:58:32,781 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 11:58:32,785 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 11:58:32,785 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:32,786 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 11:58:34,037 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: message
+2025-12-07 11:58:34,037 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 11:58:34,038 - websocket_manager - ERROR - Failed to broadcast to player 30289c42-2b12-454d-9526-03d769798aec: Object of type datetime is not JSON serializable
+2025-12-07 11:58:34,039 - websocket_handler - INFO - Game completed in room 4KTURV with 1 players
+2025-12-07 12:00:10,040 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 12:00:10,057 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 12:00:10,057 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:10,058 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 12:00:10,358 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 12:00:10,369 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 12:00:10,371 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 12:00:10,371 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 12:00:10,375 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 12:00:10,376 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:10,376 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 12:00:12,372 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 12:00:12,391 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 12:00:12,395 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 12:00:12,397 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 12:00:12,402 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 12:00:12,402 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:12,404 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 12:00:15,562 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 12:00:15,574 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 12:00:15,576 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:15,576 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 12:00:15,886 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 12:00:15,895 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 12:00:15,897 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 12:00:15,898 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 12:00:15,902 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 12:00:15,903 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:15,903 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 12:00:16,214 - websocket_routes - INFO - Host WebSocket connection: room=4KTURV, host=aaee6197-32ca-46dd-86f3-40aa567e3bf9
+2025-12-07 12:00:16,233 - websocket_manager - INFO - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 connected to room 4KTURV
+2025-12-07 12:00:16,233 - websocket_routes - INFO - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 connected to room 4KTURV
+2025-12-07 12:00:17,048 - database - ERROR - Database session error: 
+2025-12-07 12:00:17,876 - websocket_routes - INFO - WebSocket connection attempt: room=4KTURV, player=30289c42-2b12-454d-9526-03d769798aec
+2025-12-07 12:00:17,888 - websocket_routes - INFO - Room found: 4KTURV
+2025-12-07 12:00:17,890 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec accepted for room 4KTURV
+2025-12-07 12:00:17,891 - websocket_manager - INFO - Player host (30289c42-2b12-454d-9526-03d769798aec) connected to room 4KTURV
+2025-12-07 12:00:17,895 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_joined
+2025-12-07 12:00:17,896 - websocket_manager - INFO - Sent message to host in room 4KTURV: player_joined
+2025-12-07 12:00:17,897 - websocket_manager - INFO - Sent to player host (30289c42-2b12-454d-9526-03d769798aec)
+2025-12-07 12:00:20,679 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 12:00:20,682 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 12:00:20,684 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 12:00:20,688 - websocket_routes - INFO - Player 30289c42-2b12-454d-9526-03d769798aec disconnected from room 4KTURV
+2025-12-07 12:00:20,692 - websocket_routes - INFO - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 disconnected from room 4KTURV
+2025-12-07 12:00:20,744 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 12:00:20,756 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:20,760 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 12:00:20,763 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 12:00:20,764 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:20,765 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 12:00:21,122 - websocket_handler - WARNING - Host aaee6197-32ca-46dd-86f3-40aa567e3bf9 disconnected from room 4KTURV
+2025-12-07 12:00:21,126 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 12:00:21,127 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:21,127 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 12:00:21,130 - websocket_manager - INFO - Broadcasting to all in room 4KTURV: player_left
+2025-12-07 12:00:21,130 - websocket_manager - WARNING - No host connection found for room 4KTURV
+2025-12-07 12:00:21,130 - websocket_handler - INFO - Player host disconnected from room 4KTURV
+2025-12-07 12:00:29,162 - services - INFO - Created room 4Y0C2V for quiz dqwdqwd
+2025-12-07 12:00:29,182 - services - INFO - Player host joined room 4Y0C2V
+2025-12-07 12:00:29,553 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:00:29,561 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:00:29,563 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:00:29,564 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:00:29,567 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:00:29,568 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:29,569 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:00:29,876 - websocket_routes - INFO - Host WebSocket connection: room=4Y0C2V, host=bb0b9794-4f4e-4764-afe7-a343cdaf883d
+2025-12-07 12:00:29,885 - websocket_manager - INFO - Host bb0b9794-4f4e-4764-afe7-a343cdaf883d connected to room 4Y0C2V
+2025-12-07 12:00:29,886 - websocket_routes - INFO - Host bb0b9794-4f4e-4764-afe7-a343cdaf883d connected to room 4Y0C2V
+2025-12-07 12:00:30,492 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: game_started
+2025-12-07 12:00:30,493 - websocket_manager - INFO - Sent message to host in room 4Y0C2V: game_started
+2025-12-07 12:00:30,494 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:00:30,494 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: question
+2025-12-07 12:00:30,494 - websocket_manager - INFO - Sent message to host in room 4Y0C2V: question
+2025-12-07 12:00:30,495 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:00:30,499 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:00:30,501 - websocket_routes - INFO - Host bb0b9794-4f4e-4764-afe7-a343cdaf883d disconnected from room 4Y0C2V
+2025-12-07 12:00:30,522 - websocket_handler - WARNING - Host bb0b9794-4f4e-4764-afe7-a343cdaf883d disconnected from room 4Y0C2V
+2025-12-07 12:00:30,524 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:00:30,525 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:30,525 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:00:30,816 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:00:30,829 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:00:30,831 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:00:30,832 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:00:30,835 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:00:30,836 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:30,837 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:00:31,452 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: message
+2025-12-07 12:00:31,453 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:31,453 - websocket_manager - ERROR - Failed to broadcast to player 301068b9-7a8a-44c3-a5e7-b8bb00608013: Object of type datetime is not JSON serializable
+2025-12-07 12:00:31,453 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:32,826 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:00:32,832 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:00:32,833 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:00:32,834 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:00:32,837 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:00:32,838 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:32,839 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:00:33,480 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: message
+2025-12-07 12:00:33,480 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:00:33,481 - websocket_manager - ERROR - Failed to broadcast to player 301068b9-7a8a-44c3-a5e7-b8bb00608013: Object of type datetime is not JSON serializable
+2025-12-07 12:00:33,481 - websocket_handler - INFO - Game completed in room 4Y0C2V with 1 players
+2025-12-07 12:03:05,046 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:05,060 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:05,061 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:05,061 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:05,351 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:05,362 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:05,363 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:05,364 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:05,367 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:05,368 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:05,369 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:08,341 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:08,350 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:08,352 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:08,353 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:08,357 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:08,357 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:08,358 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:12,040 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:12,053 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:12,054 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:12,054 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:12,349 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:12,357 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:12,359 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:12,360 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:12,363 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:12,363 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:12,364 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:15,347 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:15,356 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:15,357 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:15,358 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:15,361 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:15,362 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:15,362 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:17,035 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:17,170 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:17,171 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:17,171 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:17,345 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:17,352 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:17,353 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:17,354 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:17,357 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:17,357 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:17,358 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:20,339 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:20,346 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:20,348 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:20,349 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:20,352 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:20,352 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:20,353 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:20,370 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:20,378 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:20,379 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:20,380 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:20,383 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:20,384 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:20,384 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:22,034 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:22,045 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:22,046 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:22,046 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:22,345 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:22,357 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:22,359 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:22,360 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:22,363 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:22,363 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:22,364 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:25,350 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:25,356 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:25,358 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:25,358 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:25,361 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:25,361 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:25,362 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:27,030 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:27,042 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:27,042 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:27,043 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:27,343 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:27,352 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:27,353 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:27,354 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:27,357 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:27,358 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:27,358 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:29,026 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:29,036 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:29,037 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:29,037 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:29,336 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:29,343 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:29,344 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:29,345 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:29,348 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:29,349 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:29,349 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:30,344 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:30,353 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:30,354 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:30,355 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:30,358 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:30,359 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:30,359 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:32,341 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:32,349 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:32,351 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:32,352 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:32,355 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:32,355 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:32,356 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:32,373 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:32,625 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:32,628 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:32,629 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:32,635 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:32,635 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:32,636 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:35,029 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:35,039 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:35,040 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:35,040 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:35,338 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:35,346 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:35,348 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:35,349 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:35,352 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:35,353 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:35,353 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:38,333 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:38,458 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:38,461 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:38,461 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:38,467 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:38,467 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:38,468 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:39,036 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:39,046 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:39,047 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:39,047 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:39,345 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:39,352 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:39,354 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:39,355 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:39,358 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:39,358 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:39,359 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:42,348 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:42,357 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:42,358 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:42,359 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:42,362 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:42,363 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:42,363 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:44,034 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:44,045 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:44,045 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:44,046 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:44,345 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:44,353 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:44,355 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:44,356 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:44,359 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:44,359 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:44,360 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:47,339 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:47,348 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:47,349 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:47,350 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:47,355 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:47,355 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:47,356 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:47,369 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:47,377 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:47,379 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:47,380 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:47,383 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:47,384 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:47,384 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:50,039 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:50,050 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:50,051 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:50,051 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:50,350 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:50,357 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:50,359 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:50,360 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:50,363 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:50,364 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:50,365 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:51,028 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:03:51,037 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:03:51,038 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:51,038 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:03:51,339 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:51,345 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:51,346 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:51,346 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:51,350 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:51,350 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:51,351 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:53,346 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:53,354 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:53,355 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:53,356 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:53,359 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:53,359 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:53,360 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:03:53,377 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:03:53,384 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:03:53,385 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:03:53,386 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:03:53,389 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:03:53,389 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:03:53,390 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:04:33,897 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,898 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,898 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,899 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,900 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,901 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,901 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,903 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,905 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,907 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,911 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,914 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,916 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,918 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,921 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:33,923 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:34,078 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,080 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,080 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,308 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,309 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,309 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,313 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,313 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,314 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,318 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,320 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,320 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,324 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,324 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,326 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,329 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,329 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,330 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,399 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,400 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,400 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,407 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,407 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,407 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,409 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,409 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,409 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,411 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,411 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,412 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,416 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,416 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,417 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,418 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,419 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,419 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,420 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,420 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,421 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,423 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,423 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,423 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,426 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,426 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,426 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,428 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:34,429 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:34,429 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:34,505 - app - INFO - Shutting down
+2025-12-07 12:04:34,554 - __main__ - INFO - Server stopped
+2025-12-07 12:04:37,950 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 12:04:37,951 - __main__ - INFO - Environment: Production
+2025-12-07 12:04:37,951 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 12:04:38,763 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 12:04:38,909 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:04:38,977 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:04:38,980 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:04:38,981 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:04:38,986 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:04:38,987 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:38,988 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:04:39,000 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:04:39,009 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:04:39,010 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:04:39,011 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:04:39,014 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:04:39,014 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:39,015 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:04:40,342 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:04:40,350 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:04:40,352 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:04:40,353 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:04:40,357 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:04:40,357 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:40,358 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:04:42,345 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:04:42,352 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:04:42,353 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:04:42,354 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:04:42,357 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:04:42,357 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:42,358 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:04:44,346 - websocket_routes - INFO - WebSocket connection attempt: room=4Y0C2V, player=301068b9-7a8a-44c3-a5e7-b8bb00608013
+2025-12-07 12:04:44,353 - websocket_routes - INFO - Room found: 4Y0C2V
+2025-12-07 12:04:44,354 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 accepted for room 4Y0C2V
+2025-12-07 12:04:44,355 - websocket_manager - INFO - Player host (301068b9-7a8a-44c3-a5e7-b8bb00608013) connected to room 4Y0C2V
+2025-12-07 12:04:44,359 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_joined
+2025-12-07 12:04:44,359 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:44,360 - websocket_manager - INFO - Sent to player host (301068b9-7a8a-44c3-a5e7-b8bb00608013)
+2025-12-07 12:04:45,982 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:45,983 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:45,989 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:45,993 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:45,996 - websocket_routes - INFO - Player 301068b9-7a8a-44c3-a5e7-b8bb00608013 disconnected from room 4Y0C2V
+2025-12-07 12:04:46,018 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:46,018 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:46,018 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:46,268 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:46,268 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:46,268 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:46,276 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:46,277 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:46,277 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:46,279 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:46,280 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:46,280 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:46,282 - websocket_manager - INFO - Broadcasting to all in room 4Y0C2V: player_left
+2025-12-07 12:04:46,283 - websocket_manager - WARNING - No host connection found for room 4Y0C2V
+2025-12-07 12:04:46,283 - websocket_handler - INFO - Player host disconnected from room 4Y0C2V
+2025-12-07 12:04:49,386 - app - INFO - Shutting down
+2025-12-07 12:04:49,408 - __main__ - INFO - Server stopped
+2025-12-07 12:04:51,409 - __main__ - INFO - Starting Kahoot-style Quiz Game API server...
+2025-12-07 12:04:51,410 - __main__ - INFO - Environment: Production
+2025-12-07 12:04:51,410 - __main__ - INFO - Server will run on 0.0.0.0:8003
+2025-12-07 12:04:52,211 - app - INFO - Starting up Kahoot-style Quiz Game API
+2025-12-07 12:05:14,684 - services - INFO - Created room NJN5HT for quiz dqwdqwdqw
+2025-12-07 12:05:14,710 - services - INFO - Player host joined room NJN5HT
+2025-12-07 12:05:15,104 - websocket_routes - INFO - WebSocket connection attempt: room=NJN5HT, player=41dfb919-befb-4754-9a0b-6b23b2a7c38b
+2025-12-07 12:05:15,114 - websocket_routes - INFO - Room found: NJN5HT
+2025-12-07 12:05:15,116 - websocket_routes - INFO - Player 41dfb919-befb-4754-9a0b-6b23b2a7c38b accepted for room NJN5HT
+2025-12-07 12:05:15,117 - websocket_manager - INFO - Player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b) connected to room NJN5HT
+2025-12-07 12:05:15,126 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: player_joined
+2025-12-07 12:05:15,126 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:15,127 - websocket_manager - INFO - Sent to player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b)
+2025-12-07 12:05:15,429 - websocket_routes - INFO - Host WebSocket connection: room=NJN5HT, host=a1144e46-cc2b-4e22-ad9a-f5862403ab60
+2025-12-07 12:05:15,440 - websocket_manager - INFO - Host a1144e46-cc2b-4e22-ad9a-f5862403ab60 connected to room NJN5HT
+2025-12-07 12:05:15,440 - websocket_routes - INFO - Host a1144e46-cc2b-4e22-ad9a-f5862403ab60 connected to room NJN5HT
+2025-12-07 12:05:16,117 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: game_started
+2025-12-07 12:05:16,118 - websocket_manager - INFO - Sent message to host in room NJN5HT: game_started
+2025-12-07 12:05:16,118 - websocket_manager - INFO - Sent to player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b)
+2025-12-07 12:05:16,119 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: question
+2025-12-07 12:05:16,119 - websocket_manager - INFO - Sent message to host in room NJN5HT: question
+2025-12-07 12:05:16,119 - websocket_manager - INFO - Sent to player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b)
+2025-12-07 12:05:16,132 - websocket_routes - INFO - Player 41dfb919-befb-4754-9a0b-6b23b2a7c38b disconnected from room NJN5HT
+2025-12-07 12:05:16,135 - websocket_routes - INFO - Host a1144e46-cc2b-4e22-ad9a-f5862403ab60 disconnected from room NJN5HT
+2025-12-07 12:05:16,156 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: player_left
+2025-12-07 12:05:16,156 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:16,156 - websocket_handler - INFO - Player host disconnected from room NJN5HT
+2025-12-07 12:05:16,264 - websocket_handler - WARNING - Host a1144e46-cc2b-4e22-ad9a-f5862403ab60 disconnected from room NJN5HT
+2025-12-07 12:05:16,453 - websocket_routes - INFO - WebSocket connection attempt: room=NJN5HT, player=41dfb919-befb-4754-9a0b-6b23b2a7c38b
+2025-12-07 12:05:16,467 - websocket_routes - INFO - Room found: NJN5HT
+2025-12-07 12:05:16,469 - websocket_routes - INFO - Player 41dfb919-befb-4754-9a0b-6b23b2a7c38b accepted for room NJN5HT
+2025-12-07 12:05:16,470 - websocket_manager - INFO - Player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b) connected to room NJN5HT
+2025-12-07 12:05:16,475 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: player_joined
+2025-12-07 12:05:16,476 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:16,477 - websocket_manager - INFO - Sent to player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b)
+2025-12-07 12:05:17,066 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: message
+2025-12-07 12:05:17,066 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:17,067 - websocket_manager - ERROR - Failed to broadcast to player 41dfb919-befb-4754-9a0b-6b23b2a7c38b: Object of type datetime is not JSON serializable
+2025-12-07 12:05:17,067 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:18,453 - websocket_routes - INFO - WebSocket connection attempt: room=NJN5HT, player=41dfb919-befb-4754-9a0b-6b23b2a7c38b
+2025-12-07 12:05:18,460 - websocket_routes - INFO - Room found: NJN5HT
+2025-12-07 12:05:18,461 - websocket_routes - INFO - Player 41dfb919-befb-4754-9a0b-6b23b2a7c38b accepted for room NJN5HT
+2025-12-07 12:05:18,462 - websocket_manager - INFO - Player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b) connected to room NJN5HT
+2025-12-07 12:05:18,467 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: player_joined
+2025-12-07 12:05:18,468 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:18,468 - websocket_manager - INFO - Sent to player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b)
+2025-12-07 12:05:19,063 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: message
+2025-12-07 12:05:19,063 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:05:19,064 - websocket_manager - INFO - Sent to player host (41dfb919-befb-4754-9a0b-6b23b2a7c38b)
+2025-12-07 12:05:19,064 - websocket_handler - INFO - Game completed in room NJN5HT with 1 players
+2025-12-07 12:07:09,178 - websocket_routes - INFO - Player 41dfb919-befb-4754-9a0b-6b23b2a7c38b disconnected from room NJN5HT
+2025-12-07 12:07:09,180 - websocket_routes - INFO - Player 41dfb919-befb-4754-9a0b-6b23b2a7c38b disconnected from room NJN5HT
+2025-12-07 12:07:09,196 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: player_left
+2025-12-07 12:07:09,196 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:07:09,197 - websocket_handler - INFO - Player host disconnected from room NJN5HT
+2025-12-07 12:07:09,198 - websocket_manager - INFO - Broadcasting to all in room NJN5HT: player_left
+2025-12-07 12:07:09,198 - websocket_manager - WARNING - No host connection found for room NJN5HT
+2025-12-07 12:07:09,198 - websocket_handler - INFO - Player host disconnected from room NJN5HT
+2025-12-07 12:07:09,287 - app - INFO - Shutting down
+2025-12-07 12:07:09,303 - __main__ - INFO - Server stopped

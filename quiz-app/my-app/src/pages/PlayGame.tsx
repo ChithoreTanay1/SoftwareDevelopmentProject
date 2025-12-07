@@ -1,4 +1,3 @@
-// File: src/pages/PlayGame.tsx
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -12,17 +11,33 @@ const PlayGame = () => {
   const { toast } = useToast();
   const wsManagerRef = useRef<WebSocketManager>(new WebSocketManager());
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(20);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [score, setScore] = useState(0);
-  const [showResult, setShowResult] = useState(false);
-  const [wsConnected, setWsConnected] = useState(false);
-  const [gameStarted, setGameStarted] = useState(false); // Track if server confirmed game start
-  const [quiz, setQuiz] = useState<any>(null);
-
   const playerId = localStorage.getItem("playerId");
   const roomCode = localStorage.getItem("roomCode");
+
+  // Initialize state from localStorage
+  const [quiz, setQuiz] = useState<any>(() => {
+    const stored = localStorage.getItem("quizData");
+    return stored ? JSON.parse(stored) : null;
+  });
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(() => {
+    return parseInt(localStorage.getItem("currentQuestionIndex") || "0");
+  });
+  const [score, setScore] = useState(() => {
+    return parseInt(localStorage.getItem("score") || "0");
+  });
+
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [showResult, setShowResult] = useState(false);
+  const [wsConnected, setWsConnected] = useState(false);
+  const [gameStarted, setGameStarted] = useState(!!quiz);
+
+  // Initialize timer when quiz loads
+  useEffect(() => {
+    if (quiz && quiz.questions[currentQuestionIndex]) {
+      setTimeLeft(quiz.questions[currentQuestionIndex].time_limit || 20);
+    }
+  }, [currentQuestionIndex, quiz]);
 
   // Redirect if missing required data
   useEffect(() => {
@@ -41,20 +56,21 @@ const PlayGame = () => {
 
     const initWebSocket = async () => {
       try {
-        console.log("Connecting to WebSocket:", { roomCode, playerId });
+        console.log("🎮 PlayGame: Connecting to WebSocket:", { roomCode, playerId });
 
         await manager.connect(
           roomCode,
           playerId,
           (message: WSMessage) => {
             if (!mounted) return;
-            console.log("WebSocket message:", message);
+            console.log("📨 PlayGame: WebSocket message:", message.type, message.data);
 
             switch (message.type) {
               case "game_started":
                 // Server confirms the game has started
-                console.log("Game started by server:", message.data);
+                console.log("✅ Game started by server:", message.data);
                 if (message.data?.quiz) {
+                  localStorage.setItem("quizData", JSON.stringify(message.data.quiz));
                   setQuiz(message.data.quiz);
                   setCurrentQuestionIndex(message.data.currentQuestionIndex || 0);
                   setScore(message.data.score || 0);
@@ -64,7 +80,7 @@ const PlayGame = () => {
 
               case "question":
                 // Server sends the current question
-                console.log("Received question from server:", message.data);
+                console.log("📝 Received question from server:", message.data);
                 if (message.data?.questionIndex !== undefined) {
                   setCurrentQuestionIndex(message.data.questionIndex);
                   setSelectedAnswer(null);
@@ -74,23 +90,33 @@ const PlayGame = () => {
                 break;
 
               case "leaderboard_update":
-                console.log("Leaderboard updated:", message.data);
+                console.log("🏆 Leaderboard updated:", message.data);
                 break;
 
               case "question_ended":
-                console.log("Question ended:", message.data);
+                console.log("⏱️ Question ended:", message.data);
+                if (message.data?.correctAnswer !== undefined) {
+                  // Show correct answer even if player didn't answer
+                  setShowResult(true);
+                }
                 break;
 
-              case "game_ended":
-                console.log("Game ended:", message.data);
-                if (message.data?.finalScore) {
-                  localStorage.setItem("finalScore", message.data.finalScore.toString());
-                }
-                navigate("/results");
-                break;
+                case "game_ended":
+                  console.log("🏁 Game ended:", message.data);
+  // Get the current player's score from the leaderboard
+                  if (message.data?.final_leaderboard?.players) {
+                    const currentPlayerName = localStorage.getItem("playerName") || "You";
+                    const currentPlayer = message.data.final_leaderboard.players.find((p: any) => p.nickname === currentPlayerName);
+                    if (currentPlayer) {
+                      localStorage.setItem("finalScore", currentPlayer.total_score.toString());
+                      console.log("Saved final score:", currentPlayer.total_score);
+                    }
+                  }
+                  navigate("/results");
+                  break;
 
               case "error":
-                console.error("Server error:", message.data);
+                console.error("❌ Server error:", message.data);
                 toast({
                   title: "Error",
                   description: message.data?.message || "An error occurred",
@@ -101,12 +127,13 @@ const PlayGame = () => {
           },
           (error) => {
             if (!mounted) return;
-            console.error("WebSocket error:", error);
+            console.error("❌ WebSocket error:", error);
             toast({
               title: "Connection Error",
               description: "Lost connection to game server",
               variant: "destructive",
             });
+            setWsConnected(false);
           },
           (event) => {
             if (!mounted) return;
@@ -116,10 +143,13 @@ const PlayGame = () => {
           }
         );
 
-        if (mounted) setWsConnected(true);
+        if (mounted) {
+          setWsConnected(true);
+          console.log("✅ PlayGame WebSocket connected");
+        }
       } catch (error) {
         if (!mounted) return;
-        console.error("Failed to connect WebSocket:", error);
+        console.error("❌ Failed to connect WebSocket:", error);
         toast({
           title: "Connection Failed",
           description: "Could not connect to game server",
@@ -141,24 +171,24 @@ const PlayGame = () => {
     if (!wsConnected || !gameStarted || !quiz) return;
 
     const currentQuestion = quiz.questions[currentQuestionIndex];
-    if (!currentQuestion) return;
+    if (!currentQuestion || selectedAnswer !== null) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           handleTimeUp();
-          return currentQuestion.timeLimit || 20;
+          return currentQuestion.time_limit || 20;
         }
         return prev - 1;
       });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [currentQuestionIndex, quiz, wsConnected, gameStarted]);
+  }, [currentQuestionIndex, quiz, wsConnected, gameStarted, selectedAnswer]);
 
   const handleTimeUp = () => {
     if (selectedAnswer !== null) return;
-    console.log("Time up - auto-submitting");
+    console.log("⏱️ Time up - auto-submitting");
     handleAnswerSelect(-1);
   };
 
@@ -186,35 +216,57 @@ const PlayGame = () => {
     setShowResult(true);
 
     const currentQuestion = quiz.questions[currentQuestionIndex];
-    const timeTaken = currentQuestion.timeLimit - timeLeft;
+    const timeTaken = currentQuestion.time_limit - timeLeft;
     const isCorrect = answerIndex !== -1 && currentQuestion.correctAnswer === answerIndex;
 
     try {
+      // Get the choice ID from the answers array
+      let choiceId = "";
+      if (answerIndex >= 0 && currentQuestion.answers && currentQuestion.answers[answerIndex]) {
+        const answer = currentQuestion.answers[answerIndex];
+        // If answer is an object with id property, use it; otherwise use the text
+        choiceId = answer.id || answer;
+      }
+
+      console.log("📤 Submitting answer:", {
+        questionId: currentQuestion.id,
+        choiceId: choiceId,
+        timeTaken: timeTaken,
+        isCorrect: isCorrect
+      });
+
       wsManagerRef.current.submitAnswer(
         currentQuestion.id,
-        answerIndex >= 0 ? currentQuestion.answers[answerIndex] : "",
+        choiceId,
         timeTaken
       );
 
       if (isCorrect) {
-        const points = Math.round((timeLeft / currentQuestion.timeLimit) * 1000);
+        const points = Math.round((timeLeft / currentQuestion.time_limit) * 1000);
         const newScore = score + points;
         setScore(newScore);
+        localStorage.setItem("score", newScore.toString());
 
         toast({
-          title: "Correct!",
+          title: "✅ Correct!",
           description: `+${points} points!`,
           variant: "default",
         });
       } else if (answerIndex !== -1) {
         toast({
-          title: "Incorrect",
+          title: "❌ Incorrect",
           description: "The correct answer was highlighted",
           variant: "destructive",
         });
+      } else {
+        toast({
+          title: "⏱️ Time's up!",
+          description: "Moving to next question",
+          variant: "default",
+        });
       }
     } catch (error: any) {
-      console.error("Failed to submit answer:", error);
+      console.error("❌ Failed to submit answer:", error);
       toast({
         title: "Error",
         description: error.message || "Failed to submit answer",
@@ -223,15 +275,15 @@ const PlayGame = () => {
     }
 
     // Let the server send the next question or game_ended
-    // setTimeout(handleNextQuestion, 2000);
   };
 
+  // Loading states
   if (!playerId || !roomCode) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-destructive">Game data missing</h1>
-          <p className="text-muted-foreground mt-2">Redirecting...</p>
+          <h1 className="text-2xl font-bold text-white">Game data missing</h1>
+          <p className="text-purple-200 mt-2">Redirecting...</p>
           <Button onClick={() => navigate("/")} className="mt-4">
             Return to Home
           </Button>
@@ -242,12 +294,13 @@ const PlayGame = () => {
 
   if (!wsConnected || !gameStarted || !quiz) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">
-            {!wsConnected ? "Connecting to game..." : "Waiting for game to start..."}
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-300 border-t-white mx-auto mb-4"></div>
+          <h1 className="text-2xl font-bold text-white">
+            {!wsConnected ? "🔌 Connecting to game..." : "⏳ Loading game..."}
           </h1>
-          <p className="text-muted-foreground mt-2">Please wait</p>
+          <p className="text-purple-200 mt-2">Please wait</p>
         </div>
       </div>
     );
@@ -256,12 +309,15 @@ const PlayGame = () => {
   const currentQuestion = quiz.questions[currentQuestionIndex];
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Invalid question index</h1>
-          <p className="text-muted-foreground mt-2">
-            Expected question {currentQuestionIndex}, but quiz only has {quiz.questions.length}
+          <h1 className="text-2xl font-bold text-white">Invalid question</h1>
+          <p className="text-purple-200 mt-2">
+            Expected question {currentQuestionIndex + 1}, but quiz only has {quiz.questions.length}
           </p>
+          <Button onClick={() => navigate("/")} className="mt-4">
+            Return to Home
+          </Button>
         </div>
       </div>
     );
@@ -274,38 +330,42 @@ const PlayGame = () => {
     "bg-green-500 border-green-500 hover:bg-green-600",
   ];
   const answerShapes = ["◆", "●", "▲", "■"];
-  const timeProgress = (timeLeft / currentQuestion.timeLimit) * 100;
+  const timeProgress = (timeLeft / (currentQuestion.time_limit || 20)) * 100;
 
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 py-8 px-4">
       <div className="max-w-5xl mx-auto">
-        <div className="bg-card rounded-3xl p-6 mb-6 shadow-lg border-2">
+        {/* Header with timer and score */}
+        <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 shadow-lg border-2 border-white/20">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 text-2xl font-bold">
-                <Timer className="h-6 w-6 text-primary" />
-                <span className={timeLeft <= 5 ? "text-red-500 animate-pulse" : ""}>
+              <div className="flex items-center gap-2 text-2xl font-bold text-white">
+                <Timer className={`h-6 w-6 ${timeLeft <= 5 ? "text-red-500 animate-pulse" : "text-purple-300"}`} />
+                <span className={timeLeft <= 5 ? "text-red-500 animate-pulse" : "text-white"}>
                   {timeLeft}s
                 </span>
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-purple-200">
                 Question {currentQuestionIndex + 1} of {quiz.questions.length}
               </div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-muted-foreground">Your Score</div>
-              <div className="text-3xl font-black text-gradient">{score}</div>
+              <div className="text-sm text-purple-200">Your Score</div>
+              <div className="text-3xl font-black text-white">{score}</div>
             </div>
           </div>
-          <Progress value={timeProgress} className="h-3" />
+          <Progress value={timeProgress} className="h-3 bg-purple-900" />
         </div>
 
+        {/* Question */}
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-8 md:p-12 mb-8 shadow-2xl text-center animate-in fade-in slide-in-from-bottom-4">
-          <h2 className="text-3xl md:text-5xl font-black text-white">{currentQuestion.question}</h2>
+          <h2 className="text-3xl md:text-5xl font-black text-white">{currentQuestion.question_text}</h2>
         </div>
 
+        {/* Answer Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {currentQuestion.answers.map((answer: string, index: number) => {
+          {currentQuestion.answers.map((answer: any, index: number) => {
+            const answerText = typeof answer === "string" ? answer : answer.text;
             const isSelected = selectedAnswer === index;
             const isCorrect = currentQuestion.correctAnswer === index;
             const showCorrect = showResult && isCorrect;
@@ -321,11 +381,11 @@ const PlayGame = () => {
                     ? "bg-green-500 border-green-600 text-white scale-105"
                     : showIncorrect
                     ? "bg-red-500 border-red-600 text-white opacity-50"
-                    : `${answerColorClasses[index]} text-white`
+                    : `${answerColorClasses[index % 4]} text-white`
                 }`}
               >
-                <span className="text-4xl mr-4">{answerShapes[index]}</span>
-                <span className="flex-1 text-left">{answer}</span>
+                <span className="text-4xl mr-4">{answerShapes[index % 4]}</span>
+                <span className="flex-1 text-left">{answerText}</span>
                 {showCorrect && <CheckCircle2 className="absolute right-4 h-12 w-12 animate-in zoom-in" />}
               </Button>
             );

@@ -336,22 +336,7 @@ export const QuizzesService = {
 };
 
 // Function to check if backend is available
-export const checkBackendAvailability = async (): Promise<boolean> => {
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
-  try {
-    const response = await Promise.race([
-      fetch(`${apiUrl}/health`),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 3000))
-    ]) as Response;
-    
-    if (!response.ok) return false;
-    console.log('✅ Backend available:', await response.json());
-    return true;
-  } catch (error) {
-    console.warn('⚠️ Backend unavailable:', error);
-    return false;
-  }
-};
+
 export class MockQuizzesService {
   static async createQuiz(data: any): Promise<APIResponse> {
     console.log('🎭 Using MockQuizzesService.createQuiz');

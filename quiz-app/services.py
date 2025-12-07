@@ -95,6 +95,14 @@ class QuizService:
             await db.rollback()
             logger.error(f"Failed to create quiz: {e}")
             raise
+    @staticmethod
+    async def get_players_in_room(db: AsyncSession, room_id: str) -> List[Player]:
+        """Get all players in a room."""
+        result = await db.execute(
+            select(Player)
+            .where(Player.room_id == room_id)
+        )
+        return result.scalars().all()
     
     @staticmethod
     async def get_quiz(db: AsyncSession, quiz_id: str) -> Quiz:
@@ -259,6 +267,8 @@ class RoomService:
 
 class PlayerService:
     """Service for player management operations."""
+
+    
     
     @staticmethod
     async def join_room(db: AsyncSession, room_code: str, player_id: str, nickname: str) -> Player:

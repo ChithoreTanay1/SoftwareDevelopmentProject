@@ -15,15 +15,18 @@ const GameLobby = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const wsManagerRef = useRef<WebSocketManager>(new WebSocketManager());
+  const hostWsRef = useRef<WebSocket | null>(null);
 
   const [players, setPlayers] = useState<Player[]>([]);
   const [copied, setCopied] = useState(false);
   const [isStarting, setIsStarting] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
+  const [hostWsConnected, setHostWsConnected] = useState(false);
   const [quizTitle, setQuizTitle] = useState("");
 
   const roomCode = localStorage.getItem("roomCode") || "";
   const playerId = localStorage.getItem("playerId") || "";
+  const hostId = localStorage.getItem("hostId") || "";
   const isHost = localStorage.getItem("isHost") === "true";
   const playerName = localStorage.getItem("playerName") || "Player";
 
@@ -40,8 +43,9 @@ const GameLobby = () => {
 
     const initWebSocket = async () => {
       try {
-        console.log("🎮 Lobby: Connecting to WebSocket:", { roomCode, playerId });
+        console.log("🎮 Lobby: Connecting to WebSocket:", { roomCode, playerId, isHost });
 
+        // Connect as player
         await manager.connect(
           roomCode,
           playerId,
@@ -61,8 +65,14 @@ const GameLobby = () => {
                 break;
 
               case "game_started":
-                // Server confirmed game started
-                console.log("✅ Game started message received, navigating to play...");
+                console.log("✅ Game started message received");
+                // Store quiz data before navigating
+                if (message.data?.quiz) {
+                  localStorage.setItem("quizData", JSON.stringify(message.data.quiz));
+                  localStorage.setItem("currentQuestionIndex", message.data.currentQuestionIndex || "0");
+                  localStorage.setItem("score", message.data.score || "0");
+                }
+                // Navigation will happen from host WS or this will trigger it
                 if (mounted) {
                   navigate("/play");
                 }
@@ -91,7 +101,13 @@ const GameLobby = () => {
 
         if (mounted) {
           setWsConnected(true);
-          console.log("✅ WebSocket connected");
+          console.log("✅ Player WebSocket connected");
+        }
+
+        // If host, also connect to host WebSocket endpoint
+        if (isHost && hostId) {
+          console.log("🎬 Connecting host WebSocket:", { roomCode, hostId });
+          connectHostWebSocket(roomCode, hostId);
         }
       } catch (error) {
         if (!mounted) return;
@@ -109,8 +125,73 @@ const GameLobby = () => {
     return () => {
       mounted = false;
       manager.disconnect();
+      if (hostWsRef.current) {
+        hostWsRef.current.close();
+      }
     };
-  }, [roomCode, playerId, navigate, toast]);
+  }, [roomCode, playerId, hostId, isHost, navigate, toast]);
+
+  // Connect host to host-specific WebSocket
+  const connectHostWebSocket = (room: string, host: string) => {
+    try {
+      const apiBase = import.meta.env.VITE_APP_API_BASE_URL || "http://localhost:8003";
+      const wsProtocol = apiBase.startsWith("https") ? "wss" : "ws";
+      const wsUrl = `${wsProtocol}://${apiBase.replace(/^https?:\/\//, "")}/api/v1/ws/host/${room}/${host}`;
+
+      console.log("🔗 Host WebSocket URL:", wsUrl);
+
+      const hostWs = new WebSocket(wsUrl);
+
+      hostWs.onopen = () => {
+        console.log("✅ Host WebSocket connected");
+        setHostWsConnected(true);
+      };
+
+      hostWs.onmessage = (event) => {
+        try {
+          const message = JSON.parse(event.data);
+          console.log("📨 Host WS message:", message.type, message);
+
+          switch (message.type) {
+            case "game_started":
+              console.log("✅ Host received game_started confirmation");
+              // Store quiz data before navigating
+              if (message.data?.quiz) {
+                localStorage.setItem("quizData", JSON.stringify(message.data.quiz));
+                localStorage.setItem("currentQuestionIndex", message.data.currentQuestionIndex || "0");
+                localStorage.setItem("score", message.data.score || "0");
+              }
+              navigate("/play");
+              break;
+            case "error":
+              console.error("Host WS error:", message.data);
+              toast({
+                title: "Error",
+                description: message.data?.message || "An error occurred",
+                variant: "destructive",
+              });
+              break;
+          }
+        } catch (e) {
+          console.error("Failed to parse host WS message:", e);
+        }
+      };
+
+      hostWs.onerror = (error) => {
+        console.error("Host WebSocket error:", error);
+        setHostWsConnected(false);
+      };
+
+      hostWs.onclose = () => {
+        console.log("Host WebSocket closed");
+        setHostWsConnected(false);
+      };
+
+      hostWsRef.current = hostWs;
+    } catch (error) {
+      console.error("Failed to connect host WebSocket:", error);
+    }
+  };
 
   // Fetch players from server
   const fetchPlayers = async () => {
@@ -190,8 +271,7 @@ const GameLobby = () => {
 
     try {
       console.log("🎬 Host starting game for room:", roomCode);
-      console.log("📍 Current URL:", window.location.origin);
-      console.log("🌐 Backend should be at:", import.meta.env.VITE_APP_API_BASE_URL || "http://localhost:8003");
+      console.log("📍 Host WS Connected:", hostWsConnected);
 
       // Call the start game API endpoint
       const response = await RoomsService.startGame(roomCode);
@@ -207,25 +287,14 @@ const GameLobby = () => {
         variant: "default",
       });
 
-      // Wait for WebSocket game_started message
-      // If it doesn't come within 3 seconds, navigate anyway
-      const timeout = setTimeout(() => {
-        console.warn("⚠️ game_started message not received after 3s, navigating to play anyway");
-        navigate("/play");
-      }, 3000);
-
-      // Clear timeout if we get the message
-      const cleanup = () => {
-        clearTimeout(timeout);
-      };
-
-      return cleanup;
+      // Wait for game_started message from WebSocket
+      // The listener above will handle navigation
     } catch (error: any) {
       console.error("❌ Failed to start game:", error);
       console.error("📋 Error details:", {
         message: error.message,
         status: error.status,
-        response: error.response
+        response: error.response,
       });
       toast({
         title: "Failed to start game",
@@ -249,17 +318,34 @@ const GameLobby = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-5xl font-black text-white mb-2">{quizTitle}</h1>
-            <div className="flex items-center justify-center gap-2 text-purple-200">
-              {wsConnected ? (
-                <>
-                  <Wifi className="h-4 w-4 text-green-400" />
-                  <span>Connected</span>
-                </>
-              ) : (
-                <>
-                  <WifiOff className="h-4 w-4 text-red-400 animate-pulse" />
-                  <span>Connecting...</span>
-                </>
+            <div className="flex items-center justify-center gap-4 text-purple-200">
+              <div className="flex items-center gap-2">
+                {wsConnected ? (
+                  <>
+                    <Wifi className="h-4 w-4 text-green-400" />
+                    <span>Player WS</span>
+                  </>
+                ) : (
+                  <>
+                    <WifiOff className="h-4 w-4 text-red-400 animate-pulse" />
+                    <span>Connecting...</span>
+                  </>
+                )}
+              </div>
+              {isHost && (
+                <div className="flex items-center gap-2">
+                  {hostWsConnected ? (
+                    <>
+                      <Wifi className="h-4 w-4 text-green-400" />
+                      <span>Host WS</span>
+                    </>
+                  ) : (
+                    <>
+                      <WifiOff className="h-4 w-4 text-orange-400 animate-pulse" />
+                      <span>Host Connecting...</span>
+                    </>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -352,7 +438,7 @@ const GameLobby = () => {
                 <Button
                   size="lg"
                   onClick={startGame}
-                  disabled={isStarting || players.length === 0 || !wsConnected}
+                  disabled={isStarting || players.length === 0 || !wsConnected || !hostWsConnected}
                   className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg h-14"
                 >
                   {isStarting ? (

@@ -10,11 +10,8 @@ import {
   QuizzesService, 
   RoomsService, 
   QuestionType,
-  checkBackendAvailability,
   MockQuizzesService,
-  
   MockRoomsService,
-  
 } from "@/api/client";
 
 interface Question {
@@ -40,24 +37,6 @@ const CreateQuiz = () => {
   ]);
   const [isCreating, setIsCreating] = useState(false);
   const [usingMockServices, setUsingMockServices] = useState(false);
-
-  useEffect(() => {
-    // Check backend availability on component mount
-    const checkBackend = async () => {
-      const isBackendAvailable = await checkBackendAvailability();
-      setUsingMockServices(!isBackendAvailable);
-      
-      if (!isBackendAvailable) {
-        toast({
-          title: "Using offline mode",
-          description: "Backend server not available. Using mock services.",
-          variant: "default",
-        });
-      }
-    };
-    
-    checkBackend();
-  }, [toast]);
 
   const addQuestion = () => {
     const newQuestion: Question = {
@@ -191,6 +170,8 @@ const CreateQuiz = () => {
       console.log("📥 Room creation response:", roomResponse);
       
       let roomCode;
+      let hostId;
+      
       if (roomResponse.success && (roomResponse.data || roomResponse)) {
         // Try multiple possible locations for room code
         const roomData = roomResponse.data || roomResponse;
@@ -199,18 +180,29 @@ const CreateQuiz = () => {
                   roomData.roomCode ||
                   (roomData.data && roomData.data.room_code);
         
+        // Get host ID from response
+        hostId = roomData.host_id || 
+                roomData.hostId ||
+                (roomData.data && roomData.data.host_id);
+        
         console.log("🔍 Found room code:", roomCode);
+        console.log("🔍 Found host ID:", hostId);
         
         if (!roomCode) {
           // Generate a mock room code
           roomCode = Math.floor(100000 + Math.random() * 900000).toString();
           console.warn("⚠️ Using generated room code:", roomCode);
         }
+        
+        if (!hostId) {
+          hostId = `host_${Date.now()}`;
+          console.warn("⚠️ Using generated host ID:", hostId);
+        }
       } else {
         throw new Error(roomResponse.message || "Room creation failed");
       }
 
-      // FIXED: Host needs to join their own room
+      // Host joins their own room as a player
       console.log("👤 Host joining room:", roomCode);
       const joinResponse = await RoomService.joinRoom(roomCode, {
         nickname: localStorage.getItem("playerName") || "Host"
@@ -241,10 +233,11 @@ const CreateQuiz = () => {
         quizId: quizId 
       }));
       localStorage.setItem("roomCode", roomCode);
+      localStorage.setItem("hostId", hostId);
       localStorage.setItem("isHost", "true");
       localStorage.setItem("playerId", playerId);
       localStorage.setItem("playerName", localStorage.getItem("playerName") || "Host");
-      localStorage.setItem("finalScore", "0"); // Initialize score
+      localStorage.setItem("finalScore", "0");
       
       toast({
         title: "🎉 Quiz created successfully!",

@@ -54,9 +54,13 @@ class ConnectionManager:
         """Send message to host of a room."""
         if room_code in self.host_connections:
             try:
-                await self.host_connections[room_code].send_json(message.dict() if hasattr(message, 'dict') else message)
+                msg_data = message.dict() if hasattr(message, 'dict') else message
+                await self.host_connections[room_code].send_json(msg_data)
+                logger.info(f"Sent message to host in room {room_code}: {message.get('type', 'unknown') if isinstance(message, dict) else 'message'}")
             except Exception as e:
                 logger.error(f"Failed to send to host in room {room_code}: {e}")
+        else:
+            logger.warning(f"No host connection found for room {room_code}")
     
     async def send_to_player(self, room_code: str, player_id: str, message):
         """Send message to specific player."""
@@ -64,27 +68,35 @@ class ConnectionManager:
             player_id in self.player_connections[room_code]):
             try:
                 websocket, _ = self.player_connections[room_code][player_id]
-                await websocket.send_json(message.dict() if hasattr(message, 'dict') else message)
+                msg_data = message.dict() if hasattr(message, 'dict') else message
+                await websocket.send_json(msg_data)
             except Exception as e:
                 logger.error(f"Failed to send to player {player_id} in room {room_code}: {e}")
     
     async def broadcast_to_room(self, room_code: str, message):
         """Broadcast message to all players in a room."""
-        if room_code in self.player_connections:
-            disconnected_players = []
-            for player_id, (websocket, nickname) in self.player_connections[room_code].items():
-                try:
-                    await websocket.send_json(message.dict() if hasattr(message, 'dict') else message)
-                except Exception as e:
-                    logger.error(f"Failed to broadcast to player {player_id}: {e}")
-                    disconnected_players.append(player_id)
-            
-            # Clean up disconnected players
-            for player_id in disconnected_players:
-                self.disconnect_player(room_code, player_id)
+        if room_code not in self.player_connections:
+            logger.warning(f"No players in room {room_code}")
+            return
+        
+        msg_data = message.dict() if hasattr(message, 'dict') else message
+        disconnected_players = []
+        
+        for player_id, (websocket, nickname) in self.player_connections[room_code].items():
+            try:
+                await websocket.send_json(msg_data)
+                logger.info(f"Sent to player {nickname} ({player_id})")
+            except Exception as e:
+                logger.error(f"Failed to broadcast to player {player_id}: {e}")
+                disconnected_players.append(player_id)
+        
+        # Clean up disconnected players
+        for player_id in disconnected_players:
+            self.disconnect_player(room_code, player_id)
     
     async def broadcast_to_all(self, room_code: str, message):
         """Broadcast message to all connections in a room (host and players)."""
+        logger.info(f"Broadcasting to all in room {room_code}: {message.get('type', 'unknown') if isinstance(message, dict) else 'message'}")
         await self.send_to_host(room_code, message)
         await self.broadcast_to_room(room_code, message)
     

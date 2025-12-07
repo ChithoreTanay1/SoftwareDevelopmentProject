@@ -4,6 +4,7 @@ Handles different types of WebSocket messages from hosts and players.
 """
 
 import logging
+import asyncio
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Optional
@@ -12,7 +13,7 @@ from database import AsyncSessionLocal
 from models import Room, Player
 from schemas import (
     WSMessage, WSMessageType, PlayerAnswer, QuestionResponse, 
-    ChoiceResponse, PlayerAnswer
+    ChoiceResponse
 )
 from services import RoomService, PlayerService, ScoreService
 from websocket_manager import connection_manager
@@ -93,42 +94,84 @@ class WebSocketMessageHandler:
         if room.status != "waiting":
             raise GameStateException("start game", room.status, "waiting")
         
-        success = await RoomService.start_game(db, room.id)
-        if not success:
-            logger.error(f"Failed to start game in room {room_code}")
-            return
+        # Start the game in database
+        await RoomService.start_game(db, room.id)
         
-        # Get updated room with first question
+        # Get updated room with all quiz data
         updated_room = await RoomService.get_room(db, room.id)
-        first_question = updated_room.quiz.questions[0]
         
-        # Prepare question data for players (without correct answers)
-        question_data = QuestionResponse(
-            id=first_question.id,
-            question_text=first_question.question_text,
-            question_type=first_question.question_type,
-            time_limit=first_question.time_limit,
-            points=first_question.points,
-            order_index=first_question.order_index,
-            choices=[
-                ChoiceResponse(
-                    id=choice.id,
-                    choice_text=choice.choice_text,
-                    order_index=choice.order_index
-                )
-                for choice in first_question.choices
-            ]
-        )
+        # Prepare complete quiz data for players
+        quiz_data = {
+            "id": updated_room.quiz.id,
+            "title": updated_room.quiz.title,
+            "description": updated_room.quiz.description,
+            "questions": []
+        }
+        
+        for q in updated_room.quiz.questions:
+            question_data = {
+                "id": q.id,
+                "question_text": q.question_text,
+                "question_type": q.question_type,
+                "time_limit": q.time_limit,
+                "points": q.points,
+                "order_index": q.order_index,
+                "answers": []
+            }
+            
+            # Add choices as answers
+            for i, choice in enumerate(q.choices):
+                question_data["answers"].append({
+                    "id": choice.id,
+                    "text": choice.choice_text,
+                    "is_correct": choice.is_correct
+                })
+                
+                # For the frontend, we need to know the correct answer index
+                if choice.is_correct:
+                    question_data["correctAnswer"] = i
+            
+            quiz_data["questions"].append(question_data)
         
         # Broadcast game start to all connections
-        await connection_manager.broadcast_to_all(room_code, WSMessage(
-    type="game_started",  # ✅ Frontend recognizes this!
-    data={
-        "quiz": quiz_data,  # Full quiz with all questions
-        "currentQuestionIndex": 0,
-        "score": 0
-    }
-))
+        await connection_manager.broadcast_to_all(room_code, {
+            "type": "game_started",
+            "data": {
+                "quiz": quiz_data,
+                "currentQuestionIndex": 0,
+                "score": 0
+            }
+        })
+        
+        # Also send first question
+        first_question = updated_room.quiz.questions[0]
+        
+        # Prepare question data for players
+        question_data = {
+            "id": first_question.id,
+            "question_text": first_question.question_text,
+            "question_type": first_question.question_type,
+            "time_limit": first_question.time_limit,
+            "points": first_question.points,
+            "order_index": first_question.order_index,
+            "choices": [
+                {
+                    "id": choice.id,
+                    "choice_text": choice.choice_text,
+                    "order_index": choice.order_index
+                }
+                for choice in first_question.choices
+            ]
+        }
+        
+        await connection_manager.broadcast_to_all(room_code, {
+            "type": "question",
+            "data": {
+                "question": question_data,
+                "questionIndex": 0,
+                "timeLimit": first_question.time_limit
+            }
+        })
         
         logger.info(f"Game started in room {room_code}")
     
@@ -212,7 +255,7 @@ class WebSocketMessageHandler:
     @staticmethod
     async def _handle_player_answer(db: AsyncSession, room: Room, player: Player, 
                                   room_code: str, data: dict):
-        """Handle player answer submission."""
+        """Handle player answer submission - only one question, then game ends."""
         if room.status != "active":
             await connection_manager.send_to_player(room_code, player.player_id, WSMessage(
                 type=WSMessageType.ERROR,
@@ -261,6 +304,16 @@ class WebSocketMessageHandler:
                     }
                 ))
                 
+                # Wait 2 seconds then end the game (only one question)
+                await asyncio.sleep(2)
+                
+                # Mark game as completed
+                room.status = "completed"
+                await db.commit()
+                
+                # Send game ended message to all players
+                await WebSocketMessageHandler._handle_game_completed(db, room, room_code)
+                
             else:
                 # Answer submission failed (likely duplicate)
                 await connection_manager.send_to_player(room_code, player.player_id, WSMessage(
@@ -289,14 +342,28 @@ class WebSocketMessageHandler:
             "total_questions": total_questions,
             "total_players": total_players,
             "quiz_title": room.quiz.title,
-            "game_duration": None  # Could calculate from start/end times
+            "game_duration": None
         }
         
-        # Broadcast game end
+        # Build leaderboard data with players
+        leaderboard_data = {
+            "players": [
+                {
+                    "player_id": player.player_id,
+                    "nickname": player.nickname,
+                    "total_score": player.total_score,
+                    "rank": idx + 1,
+                    "is_connected": player.is_connected
+                }
+                for idx, player in enumerate(sorted(room.players, key=lambda p: p.total_score, reverse=True))
+            ]
+        }
+        
+        # Broadcast game end with complete data
         await connection_manager.broadcast_to_all(room_code, WSMessage(
             type=WSMessageType.GAME_ENDED,
             data={
-                "final_leaderboard": leaderboard.dict(),
+                "final_leaderboard": leaderboard_data,
                 "game_stats": game_stats,
                 "message": "Game completed! Thanks for playing!"
             }
@@ -354,4 +421,3 @@ class ConnectionEventHandler:
 # Global handler instance
 websocket_handler = WebSocketMessageHandler()
 connection_event_handler = ConnectionEventHandler()
-        
