@@ -9,43 +9,29 @@ The application is designed for **local hosting**, making it ideal for classroom
 
 ---
 
-📘 Requirements & Planning
-1. 📄 Requirement Specification
-Functional Requirements
+# 📘 Requirements & Planning
 
-Host can create a quiz room.
+## 1. 📄 Requirement Specification
 
-System generates a unique room code.
+### Functional Requirements
+- Host can create a quiz room.
+- System generates a unique room code.
+- Players can join using the room code.
+- Nicknames must be validated according to host rules.
+- Real-time communication between host and players via WebSockets.
+- Players must submit one answer per question.
+- Duplicate answers must be prevented.
+- Host must control the game flow (start, next question, finish).
+- Leaderboard must be created when game ends.
+- System must store session results for later viewing.
 
-Players can join using the room code.
-
-Nicknames must be validated according to host rules.
-
-Real-time communication between host and players via WebSockets.
-
-Players must submit one answer per question.
-
-Duplicate answers must be prevented.
-
-Host must control the flow of the game (start, next question, finish).
-
-Leaderboard must be created when game ends.
-
-System must store session results for later viewing.
-
-Non-Functional Requirements
-
-Must support at least 50 simultaneous players with <50ms latency.
-
-All messages must follow a strict JSON schema.
-
-Database writes must be atomic and safe (ACID compliance).
-
-System must run offline or on localhost.
-
-Must survive WebSocket reconnect events.
-
-Should require minimal setup.
+### Non-Functional Requirements
+- Supports **50+ simultaneous players** with <50ms latency.
+- WebSocket messages must follow consistent JSON schema.
+- Database operations must be atomic (ACID).
+- System must run fully offline or on `localhost`.
+- Should handle disconnects gracefully.
+- Requires minimal setup for deployment.
 
 ---
 
