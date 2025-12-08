@@ -271,4 +271,4 @@ The project was planned and iterated in short, focused sprints.
 To run the backend locally:
 
 ```bash
-uvicorn app:app --reload
+python run_script.py
