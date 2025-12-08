@@ -270,3 +270,15 @@ To run the backend locally:
 
 ```bash
 python run_script.py
+
+```
+
+To run the fronend locally:
+
+```bash
+npm start
+
+
+
+
+
