@@ -61,12 +61,16 @@ const PlayGame = () => {
         await manager.connect(
           roomCode,
           playerId,
-          (message: WSMessage) => {
+          (message: any) => {
             if (!mounted) return;
             console.log("📨 PlayGame: WebSocket message:", message.type, message.data);
 
-            switch (message.type) {
+            // Handle messages - convert to string for comparison since backend sends enum
+            const messageType = typeof message.type === 'string' ? message.type : String(message.type || '');
+            
+            switch (messageType) {
               case "game_started":
+              case "GAME_STARTED":
                 // Server confirms the game has started
                 console.log("✅ Game started by server:", message.data);
                 if (message.data?.quiz) {
@@ -78,22 +82,25 @@ const PlayGame = () => {
                 }
                 break;
 
-              case "question":
+              case "question_started":
+              case "QUESTION_STARTED":
                 // Server sends the current question
                 console.log("📝 Received question from server:", message.data);
-                if (message.data?.questionIndex !== undefined) {
-                  setCurrentQuestionIndex(message.data.questionIndex);
+                if (message.data?.question_number !== undefined) {
+                  setCurrentQuestionIndex(message.data.question_number - 1);
                   setSelectedAnswer(null);
                   setShowResult(false);
-                  setTimeLeft(message.data.timeLimit || 20);
+                  setTimeLeft(message.data.data?.time_limit || 20);
                 }
                 break;
 
               case "leaderboard_update":
+              case "LEADERBOARD_UPDATE":
                 console.log("🏆 Leaderboard updated:", message.data);
                 break;
 
               case "question_ended":
+              case "QUESTION_ENDED":
                 console.log("⏱️ Question ended:", message.data);
                 if (message.data?.correctAnswer !== undefined) {
                   // Show correct answer even if player didn't answer
@@ -101,21 +108,29 @@ const PlayGame = () => {
                 }
                 break;
 
-                case "game_ended":
-                  console.log("🏁 Game ended:", message.data);
-  // Get the current player's score from the leaderboard
-                  if (message.data?.final_leaderboard?.players) {
-                    const currentPlayerName = localStorage.getItem("playerName") || "You";
-                    const currentPlayer = message.data.final_leaderboard.players.find((p: any) => p.nickname === currentPlayerName);
-                    if (currentPlayer) {
-                      localStorage.setItem("finalScore", currentPlayer.total_score.toString());
-                      console.log("Saved final score:", currentPlayer.total_score);
-                    }
+              case "game_ended":
+              case "GAME_ENDED":
+              case "game_completed":
+              case "GAME_COMPLETED":
+                console.log("🏁 Game ended:", message.data);
+                // Get the current player's score from the leaderboard
+                if (message.data?.final_leaderboard?.players) {
+                  const currentPlayerName = localStorage.getItem("playerName") || "You";
+                  const currentPlayer = message.data.final_leaderboard.players.find((p: any) => p.nickname === currentPlayerName);
+                  if (currentPlayer) {
+                    localStorage.setItem("finalScore", currentPlayer.total_score.toString());
+                    console.log("Saved final score:", currentPlayer.total_score);
                   }
-                  navigate("/results");
-                  break;
+                } else if (message.data?.room_code) {
+                  // Fallback: if no leaderboard in message, use current score
+                  localStorage.setItem("finalScore", score.toString());
+                  console.log("Game completed, using current score:", score);
+                }
+                navigate("/results");
+                break;
 
               case "error":
+              case "ERROR":
                 console.error("❌ Server error:", message.data);
                 toast({
                   title: "Error",
