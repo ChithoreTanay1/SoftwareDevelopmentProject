@@ -1,9 +1,51 @@
+
+
 # 🎮 Real-Time Quiz & Voting App  
 A FastAPI + WebSocket Kahoot-style quiz system running locally.
 
 This project is a lightweight, real-time quiz and voting platform inspired by Kahoot.  
 It enables hosts to run interactive quizzes while players join via a room code and participate live using WebSockets.  
 The application is designed for **local hosting**, making it ideal for classroom use, demos, or small events.
+
+---
+
+📘 Requirements & Planning
+1. 📄 Requirement Specification
+Functional Requirements
+
+Host can create a quiz room.
+
+System generates a unique room code.
+
+Players can join using the room code.
+
+Nicknames must be validated according to host rules.
+
+Real-time communication between host and players via WebSockets.
+
+Players must submit one answer per question.
+
+Duplicate answers must be prevented.
+
+Host must control the flow of the game (start, next question, finish).
+
+Leaderboard must be created when game ends.
+
+System must store session results for later viewing.
+
+Non-Functional Requirements
+
+Must support at least 50 simultaneous players with <50ms latency.
+
+All messages must follow a strict JSON schema.
+
+Database writes must be atomic and safe (ACID compliance).
+
+System must run offline or on localhost.
+
+Must survive WebSocket reconnect events.
+
+Should require minimal setup.
 
 ---
 
