@@ -9,8 +9,6 @@ The application is designed for **local hosting**, making it ideal for classroom
 
 ---
 
-# 📘 Requirements & Planning
-
 ## 📄 Requirement Specification
 
 ### Functional Requirements
