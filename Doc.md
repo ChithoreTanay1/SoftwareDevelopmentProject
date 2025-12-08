@@ -11,7 +11,7 @@ The application is designed for **local hosting**, making it ideal for classroom
 
 # 📘 Requirements & Planning
 
-## 1. 📄 Requirement Specification
+## 📄 Requirement Specification
 
 ### Functional Requirements
 - Host can create a quiz room.
@@ -47,13 +47,33 @@ The application is designed for **local hosting**, making it ideal for classroom
 
 ---
 
-## 📌 Client Requirements
+## 🛠️ Technology Choices and Justification
 
-- Ability to **control the type of nicknames** players can use  
-- Access to **results and statistics** after the session  
-- **Secure room permissions** preventing unwanted participants  
+### FastAPI
+- Asynchronous performance  
+- Pydantic validation  
+- Built-in WebSocket support  
+
+### PostgreSQL
+- Reliable relational storage  
+- Strong consistency for multiplayer scoring  
+
+### WebSockets
+- Enables real-time updates  
+- Reduces delay for high-interaction gameplay  
+
+### SQLAlchemy (async)
+- Clean ORM  
+- Protects against SQL injection  
+- Works seamlessly with FastAPI  
+
+### Uvicorn
+- High-speed ASGI server  
+
+These tools were chosen for their speed, simplicity, and compatibility with real-time features.
 
 ---
+
 
 ## 🧠 How the System Works (High-Level)
 
