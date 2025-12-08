@@ -139,6 +139,87 @@ The system remains stable for **small to medium sessions** (<100 players) on a n
 
 ---
 
+## 📆 Development Sprints
+
+The project was planned and iterated in short, focused sprints.
+
+### 🧩 Sprint 1 – Core Game Loop (2 weeks)
+
+**Goal:** Get a minimal, playable quiz session running end-to-end.
+
+**Scope:**
+- Set up FastAPI project structure  
+- Implement basic WebSocket endpoints for host and players  
+- Hard-code a sample quiz in memory  
+- Implement room creation with a simple room code generator  
+- Handle player join + nickname registration  
+
+**Outcome:**
+- A host can create a room  
+- Players can join via WebSocket and see a question broadcast  
+- Answers are accepted but not yet stored or scored persistently  
+
+---
+
+### 🗄️ Sprint 2 – Persistence & Services Layer (2 weeks)
+
+**Goal:** Move from in-memory prototype to a persistent, structured backend.
+
+**Scope:**
+- Integrate PostgreSQL and SQLAlchemy models for:
+  - Quizzes, questions, choices  
+  - Rooms, players, answers, scores  
+- Introduce `QuizService`, `RoomService`, `PlayerService`, `ScoreService`  
+- Add Pydantic schemas for request/response validation  
+- Replace hard-coded quiz with database-backed quizzes  
+
+**Outcome:**
+- Full game lifecycle backed by PostgreSQL  
+- Clean separation between API layer, services, and database  
+- Basic error handling for invalid room codes and missing quizzes  
+
+---
+
+### 📡 Sprint 3 – Reliability, Validation & Security (1–2 weeks)
+
+**Goal:** Make the system safe and robust for classroom/demo usage.
+
+**Scope:**
+- Nickname validation + basic content filtering  
+- Prevent duplicate nicknames within the same room  
+- Enforce room state transitions (`waiting → active → completed`)  
+- Prevent late joins after game start (optional toggle)  
+- Add duplicate-answer protection and idempotent answer handling  
+- Improve WebSocketManager with safe broadcasts and disconnect handling  
+
+**Outcome:**
+- Stable sessions without ghost players or duplicate identities  
+- Reduced risk of accidental cheating via multi-joins  
+- Cleaner UX for both host and players  
+
+---
+
+### 📊 Sprint 4 – Analytics, UX Polish & Load Testing (2 weeks)
+
+**Goal:** Add visibility into game performance and validate scalability on a single machine.
+
+**Scope:**
+- Implement post-session statistics:
+  - Per-question correctness rates  
+  - Per-player accuracy and total score  
+  - Final leaderboard with ranks  
+- Add simple JSON/HTML endpoints for session summary retrieval  
+- Run smoke tests on all primary flows  
+- Run local stress tests with simulated WebSocket clients (50–100 players)  
+- Document known limitations and recommended player counts  
+
+**Outcome:**
+- Hosts can review detailed session results  
+- Confirmed stable behavior for up to ~100 players on a typical laptop  
+- README updated with smoke & stress test summaries  
+
+---
+
 ## 🖥️ Local Hosting
 
 To run the backend locally:
