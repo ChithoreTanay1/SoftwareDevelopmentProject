@@ -55,7 +55,7 @@ class ConnectionManager:
         if room_code in self.host_connections:
             try:
                 msg_data = message.dict() if hasattr(message, 'dict') else message
-                await self.host_connections[room_code].send_json(msg_data)
+                await self.host_connections[room_code].send_text(json.dumps(msg_data, default=str))
                 logger.info(f"Sent message to host in room {room_code}: {message.get('type', 'unknown') if isinstance(message, dict) else 'message'}")
             except Exception as e:
                 logger.error(f"Failed to send to host in room {room_code}: {e}")
@@ -69,7 +69,7 @@ class ConnectionManager:
             try:
                 websocket, _ = self.player_connections[room_code][player_id]
                 msg_data = message.dict() if hasattr(message, 'dict') else message
-                await websocket.send_json(msg_data)
+                await websocket.send_text(json.dumps(msg_data, default=str))
             except Exception as e:
                 logger.error(f"Failed to send to player {player_id} in room {room_code}: {e}")
     
@@ -78,21 +78,20 @@ class ConnectionManager:
         if room_code not in self.player_connections:
             logger.warning(f"No players in room {room_code}")
             return
-        
+
         msg_data = message.dict() if hasattr(message, 'dict') else message
         disconnected_players = []
-        
+
         for player_id, (websocket, nickname) in self.player_connections[room_code].items():
             try:
-                await websocket.send_json(msg_data)
+                await websocket.send_text(json.dumps(msg_data, default=str))
                 logger.info(f"Sent to player {nickname} ({player_id})")
             except Exception as e:
                 logger.error(f"Failed to broadcast to player {player_id}: {e}")
                 disconnected_players.append(player_id)
-        
-        # Clean up disconnected players
+
         for player_id in disconnected_players:
-            self.disconnect_player(room_code, player_id)
+            await self.disconnect_player(room_code, player_id)
     
     async def broadcast_to_all(self, room_code: str, message):
         """Broadcast message to all connections in a room (host and players)."""

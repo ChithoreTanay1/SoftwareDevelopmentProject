@@ -2,7 +2,6 @@
 // Complete client with WebSocket support for answer submissions
 
 
-
 export const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL || "http://localhost:8003";
 export const WS_BASE_URL = import.meta.env.VITE_APP_WS_BASE_URL || "ws://localhost:8003";
 
@@ -75,11 +74,13 @@ export class WebSocketManager {
   private maxReconnectAttempts = 5;
   private reconnectDelay = 2000;
   private roomCode = '';
-  private playerId = '';
+  private clientId = ''; // playerId or hostId
+  private role: 'player' | 'host' = 'player';
   private onMessageCallback: ((message: WSMessage) => void) | null = null;
   private onErrorCallback: ((error: Event) => void) | null = null;
   private onCloseCallback: ((event: CloseEvent) => void) | null = null;
 
+  // Connect as a player (keeps backwards compatibility)
   connect(
     roomCode: string,
     playerId: string,
@@ -87,19 +88,43 @@ export class WebSocketManager {
     onError?: (error: Event) => void,
     onClose?: (event: CloseEvent) => void
   ): Promise<void> {
+    return this._connectInternal('player', roomCode, playerId, onMessage, onError, onClose);
+  }
+
+  // NEW: Connect as a host
+  connectHost(
+    roomCode: string,
+    hostId: string,
+    onMessage?: (message: WSMessage) => void,
+    onError?: (error: Event) => void,
+    onClose?: (event: CloseEvent) => void
+  ): Promise<void> {
+    return this._connectInternal('host', roomCode, hostId, onMessage, onError, onClose);
+  }
+
+  private _connectInternal(
+    role: 'player' | 'host',
+    roomCode: string,
+    clientId: string,
+    onMessage?: (message: WSMessage) => void,
+    onError?: (error: Event) => void,
+    onClose?: (event: CloseEvent) => void
+  ): Promise<void> {
     this.roomCode = roomCode;
-    this.playerId = playerId;
+    this.clientId = clientId;
+    this.role = role;
     this.onMessageCallback = onMessage || null;
     this.onErrorCallback = onError || null;
     this.onCloseCallback = onClose || null;
 
     return new Promise((resolve, reject) => {
       try {
-        const wsUrl = `${WS_BASE_URL}/api/v1/ws/${encodeURIComponent(roomCode)}/${encodeURIComponent(playerId)}`;
+        const basePath = role === 'host' ? `/api/v1/ws/host` : `/api/v1/ws`;
+        const wsUrl = `${WS_BASE_URL}${basePath}/${encodeURIComponent(roomCode)}/${encodeURIComponent(clientId)}`;
         this.ws = new WebSocket(wsUrl);
 
         this.ws.onopen = () => {
-          console.log("WebSocket connected");
+          console.log("WebSocket connected", { role, roomCode, clientId });
           this.reconnectAttempts = 0;
           resolve();
         };
@@ -108,7 +133,6 @@ export class WebSocketManager {
           try {
             const message: WSMessage = JSON.parse(event.data);
             this.onMessageCallback?.(message);
-            
             const handler = this.messageHandlers.get(message.type);
             if (handler) {
               handler(message.data);
@@ -121,12 +145,17 @@ export class WebSocketManager {
         this.ws.onerror = (error) => {
           console.error("WebSocket error:", error);
           this.onErrorCallback?.(error);
-          reject(error);
+          // Do NOT reject here once connection was already opened previously; only reject the initial connect
+          if (this.reconnectAttempts === 0) {
+            // If it's the initial connection attempt and onerror fires before onopen, reject.
+            reject(error);
+          }
         };
 
         this.ws.onclose = (event) => {
-          console.log("WebSocket closed");
+          console.log("WebSocket closed", { role, roomCode, clientId, code: event.code });
           this.onCloseCallback?.(event);
+          // Try to reconnect automatically (but only for non-intentional closes)
           this.attemptReconnect();
         };
       } catch (error) {
@@ -139,11 +168,12 @@ export class WebSocketManager {
     if (this.reconnectAttempts < this.maxReconnectAttempts) {
       this.reconnectAttempts++;
       console.log(`Attempting to reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts})...`);
-      
+
       setTimeout(() => {
-        this.connect(
+        this._connectInternal(
+          this.role,
           this.roomCode,
-          this.playerId,
+          this.clientId,
           this.onMessageCallback || undefined,
           this.onErrorCallback || undefined,
           this.onCloseCallback || undefined
@@ -151,6 +181,8 @@ export class WebSocketManager {
           console.error("Reconnect failed:", err);
         });
       }, this.reconnectDelay * this.reconnectAttempts);
+    } else {
+      console.warn('Max WebSocket reconnect attempts reached');
     }
   }
 
@@ -472,7 +504,7 @@ export class MockRoomsService {
     };
   }
 
-  static async startGame(roomCode: string): Promise<APIResponse> {
+  static async startGame(roomCode: string): Promise<APIResponse<any>> {
     console.log('🎭 Using MockRoomsService.startGame');
     await new Promise(resolve => setTimeout(resolve, 1000));
     

@@ -93,11 +93,10 @@ const JoinGame = () => {
               <label className="text-white font-medium mb-2 block text-sm">Game PIN</label>
               <Input
                 type="text"
-                placeholder="123456"
+                placeholder="Enter Game PIN"
                 value={gamePin}
                 onChange={(e) => setGamePin(e.target.value.toUpperCase())}
                 className="h-16 text-3xl font-bold text-center tracking-wider bg-white/90"
-                maxLength={6}
                 disabled={isLoading}
               />
             </div>

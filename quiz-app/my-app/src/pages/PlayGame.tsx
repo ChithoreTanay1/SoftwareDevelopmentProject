@@ -1,20 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import { Timer, CheckCircle2 } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Timer, CheckCircle2, Trophy, Users } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import { WebSocketManager, WSMessage } from "@/api/client";
 
 const PlayGame = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
+  
+  // Two managers: One for Player logic, one for Host logic
   const wsManagerRef = useRef<WebSocketManager>(new WebSocketManager());
+  const hostWsRef = useRef<WebSocket | null>(null);
 
   const playerId = localStorage.getItem("playerId");
   const roomCode = localStorage.getItem("roomCode");
+  const hostId = localStorage.getItem("hostId"); // Get Host ID
+  
+  // Check if current user is Host
+  const isHost = location.state?.isHost || localStorage.getItem("isHost") === "true";
 
-  // Initialize state from localStorage
   const [quiz, setQuiz] = useState<any>(() => {
     const stored = localStorage.getItem("quizData");
     return stored ? JSON.parse(stored) : null;
@@ -31,23 +38,25 @@ const PlayGame = () => {
   const [showResult, setShowResult] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
   const [gameStarted, setGameStarted] = useState(!!quiz);
+  
+  const [leaderboardData, setLeaderboardData] = useState<any>(null);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
-  // Initialize timer when quiz loads
+  // Initialize timer
   useEffect(() => {
-    if (quiz && quiz.questions[currentQuestionIndex]) {
+    if (quiz && quiz.questions && quiz.questions[currentQuestionIndex]) {
       setTimeLeft(quiz.questions[currentQuestionIndex].time_limit || 20);
     }
   }, [currentQuestionIndex, quiz]);
 
-  // Redirect if missing required data
+  // Redirect if missing data
   useEffect(() => {
     if (!playerId || !roomCode) {
-      console.error("Missing required data:", { playerId, roomCode });
       navigate("/");
     }
   }, [playerId, roomCode, navigate]);
 
-  // Initialize WebSocket connection
+  // --- 1. PLAYER CONNECTION (Standard) ---
   useEffect(() => {
     if (!roomCode || !playerId) return;
 
@@ -56,313 +65,198 @@ const PlayGame = () => {
 
     const initWebSocket = async () => {
       try {
-        console.log("🎮 PlayGame: Connecting to WebSocket:", { roomCode, playerId });
-
         await manager.connect(
           roomCode,
           playerId,
-          (message: any) => {
+          (message: WSMessage) => {
             if (!mounted) return;
-            console.log("📨 PlayGame: WebSocket message:", message.type, message.data);
-
-            // Handle messages - convert to string for comparison since backend sends enum
-            const messageType = typeof message.type === 'string' ? message.type : String(message.type || '');
-            
-            switch (messageType) {
-              case "game_started":
-              case "GAME_STARTED":
-                // Server confirms the game has started
-                console.log("✅ Game started by server:", message.data);
-                if (message.data?.quiz) {
-                  localStorage.setItem("quizData", JSON.stringify(message.data.quiz));
-                  setQuiz(message.data.quiz);
-                  setCurrentQuestionIndex(message.data.currentQuestionIndex || 0);
-                  setScore(message.data.score || 0);
-                  setGameStarted(true);
-                }
-                break;
-
-              case "question_started":
-              case "QUESTION_STARTED":
-                // Server sends the current question
-                console.log("📝 Received question from server:", message.data);
-                if (message.data?.question_number !== undefined) {
-                  setCurrentQuestionIndex(message.data.question_number - 1);
-                  setSelectedAnswer(null);
-                  setShowResult(false);
-                  setTimeLeft(message.data.data?.time_limit || 20);
-                }
-                break;
-
-              case "leaderboard_update":
-              case "LEADERBOARD_UPDATE":
-                console.log("🏆 Leaderboard updated:", message.data);
-                break;
-
-              case "question_ended":
-              case "QUESTION_ENDED":
-                console.log("⏱️ Question ended:", message.data);
-                if (message.data?.correctAnswer !== undefined) {
-                  // Show correct answer even if player didn't answer
-                  setShowResult(true);
-                }
-                break;
-
-              case "game_ended":
-              case "GAME_ENDED":
-              case "game_completed":
-              case "GAME_COMPLETED":
-                console.log("🏁 Game ended:", message.data);
-                // Get the current player's score from the leaderboard
-                if (message.data?.final_leaderboard?.players) {
-                  const currentPlayerName = localStorage.getItem("playerName") || "You";
-                  const currentPlayer = message.data.final_leaderboard.players.find((p: any) => p.nickname === currentPlayerName);
-                  if (currentPlayer) {
-                    localStorage.setItem("finalScore", currentPlayer.total_score.toString());
-                    console.log("Saved final score:", currentPlayer.total_score);
-                  }
-                } else if (message.data?.room_code) {
-                  // Fallback: if no leaderboard in message, use current score
-                  localStorage.setItem("finalScore", score.toString());
-                  console.log("Game completed, using current score:", score);
-                }
-                navigate("/results");
-                break;
-
-              case "error":
-              case "ERROR":
-                console.error("❌ Server error:", message.data);
-                toast({
-                  title: "Error",
-                  description: message.data?.message || "An error occurred",
-                  variant: "destructive",
-                });
-                break;
-            }
+            handleGameMessage(message); // Unified handler
           },
-          (error) => {
-            if (!mounted) return;
-            console.error("❌ WebSocket error:", error);
-            toast({
-              title: "Connection Error",
-              description: "Lost connection to game server",
-              variant: "destructive",
-            });
-            setWsConnected(false);
-          },
-          (event) => {
-            if (!mounted) return;
-            console.log("WebSocket closed:", event);
-            setWsConnected(false);
-            setGameStarted(false);
-          }
+          (error) => console.error(error),
+          () => setWsConnected(false)
         );
-
-        if (mounted) {
-          setWsConnected(true);
-          console.log("✅ PlayGame WebSocket connected");
-        }
+        if (mounted) setWsConnected(true);
       } catch (error) {
-        if (!mounted) return;
-        console.error("❌ Failed to connect WebSocket:", error);
-        toast({
-          title: "Connection Failed",
-          description: "Could not connect to game server",
-          variant: "destructive",
-        });
+        console.error("Player WS failed:", error);
       }
     };
 
     initWebSocket();
+    return () => { mounted = false; manager.disconnect(); };
+  }, [roomCode, playerId]);
 
-    return () => {
-      mounted = false;
-      manager.disconnect();
-    };
-  }, [roomCode, playerId, navigate, toast]);
-
-  // Timer effect - only runs if game has started
+  // --- 2. HOST CONNECTION (Special Teacher Channel) ---
   useEffect(() => {
-    if (!wsConnected || !gameStarted || !quiz) return;
+    if (!isHost || !hostId || !roomCode) return;
 
-    const currentQuestion = quiz.questions[currentQuestionIndex];
-    if (!currentQuestion || selectedAnswer !== null) return;
+    const apiBase = import.meta.env.VITE_APP_API_BASE_URL || "http://localhost:8003";
+    const wsProtocol = apiBase.startsWith("https") ? "wss" : "ws";
+    // Connect to the SPECIAL Host endpoint
+    const wsUrl = `${wsProtocol}://${apiBase.replace(/^https?:\/\//, "")}/api/v1/ws/host/${roomCode}/${hostId}`;
 
+    console.log("🔗 Connecting Host WS:", wsUrl);
+    const hostWs = new WebSocket(wsUrl);
+
+    hostWs.onmessage = (event) => {
+      try {
+        const message = JSON.parse(event.data);
+        handleGameMessage(message); // Reuse same handler
+      } catch (e) { console.error("Host WS parse error", e); }
+    };
+
+    hostWsRef.current = hostWs;
+
+    return () => { hostWs.close(); };
+  }, [isHost, hostId, roomCode]);
+
+
+  // --- UNIFIED MESSAGE HANDLER ---
+  const handleGameMessage = (message: WSMessage) => {
+    console.log("📨 Msg:", message.type);
+
+    switch (message.type) {
+      case "game_started":
+        if (message.data?.quiz) {
+          setQuiz(message.data.quiz);
+          setGameStarted(true);
+          setShowLeaderboard(false);
+        }
+        break;
+
+      case "question":
+        if (message.data?.questionIndex !== undefined) {
+          setCurrentQuestionIndex(message.data.questionIndex);
+          setSelectedAnswer(null);
+          setShowResult(false);
+          setShowLeaderboard(false);
+          setLeaderboardData(null);
+          setTimeLeft(message.data.timeLimit || 20);
+        }
+        break;
+
+      case "leaderboard_update":
+        console.log("🏆 Leaderboard received!");
+        setLeaderboardData(message.data);
+        setShowLeaderboard(true);
+        break;
+
+      case "question_ended":
+        if (message.data?.correctAnswer !== undefined) {
+          setShowResult(true);
+        }
+        break;
+
+      case "game_ended":
+        console.log("🏁 Game ended - Redirecting!");
+        // Force navigation for everyone
+        window.location.href = "/results"; 
+        break;
+    }
+  };
+
+  // Timer Logic
+  useEffect(() => {
+    if (!gameStarted || !quiz || showLeaderboard) return;
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          handleTimeUp();
-          return currentQuestion.time_limit || 20;
+            if (!isHost) handleTimeUp(); 
+            return 0;
         }
         return prev - 1;
       });
     }, 1000);
-
     return () => clearInterval(timer);
-  }, [currentQuestionIndex, quiz, wsConnected, gameStarted, selectedAnswer]);
+  }, [quiz, gameStarted, showLeaderboard, isHost]);
 
   const handleTimeUp = () => {
     if (selectedAnswer !== null) return;
-    console.log("⏱️ Time up - auto-submitting");
     handleAnswerSelect(-1);
   };
 
   const handleAnswerSelect = (answerIndex: number) => {
+    if (isHost) return;
     if (selectedAnswer !== null || showResult) return;
-    if (!wsManagerRef.current.isConnected()) {
-      toast({
-        title: "Error",
-        description: "Not connected to game server",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!quiz) {
-      toast({
-        title: "Error",
-        description: "Quiz data not loaded",
-        variant: "destructive",
-      });
-      return;
-    }
-
+    
     setSelectedAnswer(answerIndex);
     setShowResult(true);
 
     const currentQuestion = quiz.questions[currentQuestionIndex];
-    const timeTaken = currentQuestion.time_limit - timeLeft;
-    const isCorrect = answerIndex !== -1 && currentQuestion.correctAnswer === answerIndex;
-
-    try {
-      // Get the choice ID from the answers array
-      let choiceId = "";
-      if (answerIndex >= 0 && currentQuestion.answers && currentQuestion.answers[answerIndex]) {
+    const timeTaken = (currentQuestion.time_limit || 20) - timeLeft;
+    
+    let choiceId = "";
+    if (answerIndex >= 0 && currentQuestion.answers[answerIndex]) {
         const answer = currentQuestion.answers[answerIndex];
-        // If answer is an object with id property, use it; otherwise use the text
         choiceId = answer.id || answer;
-      }
-
-      console.log("📤 Submitting answer:", {
-        questionId: currentQuestion.id,
-        choiceId: choiceId,
-        timeTaken: timeTaken,
-        isCorrect: isCorrect
-      });
-
-      wsManagerRef.current.submitAnswer(
-        currentQuestion.id,
-        choiceId,
-        timeTaken
-      );
-
-      if (isCorrect) {
-        const points = Math.round((timeLeft / currentQuestion.time_limit) * 1000);
-        const newScore = score + points;
-        setScore(newScore);
-        localStorage.setItem("score", newScore.toString());
-
-        toast({
-          title: "✅ Correct!",
-          description: `+${points} points!`,
-          variant: "default",
-        });
-      } else if (answerIndex !== -1) {
-        toast({
-          title: "❌ Incorrect",
-          description: "The correct answer was highlighted",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "⏱️ Time's up!",
-          description: "Moving to next question",
-          variant: "default",
-        });
-      }
-    } catch (error: any) {
-      console.error("❌ Failed to submit answer:", error);
-      toast({
-        title: "Error",
-        description: error.message || "Failed to submit answer",
-        variant: "destructive",
-      });
     }
 
-    // Let the server send the next question or game_ended
+    wsManagerRef.current.submitAnswer(currentQuestion.id, choiceId, timeTaken);
+    
+    if (answerIndex !== -1 && currentQuestion.correctAnswer === answerIndex) {
+        const points = Math.round((timeLeft / currentQuestion.time_limit) * 1000);
+        setScore(score + points);
+    }
   };
 
-  // Loading states
-  if (!playerId || !roomCode) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white">Game data missing</h1>
-          <p className="text-purple-200 mt-2">Redirecting...</p>
-          <Button onClick={() => navigate("/")} className="mt-4">
-            Return to Home
-          </Button>
+  // --- HOST VIEW ---
+  if (isHost) {
+     if (!quiz || !quiz.questions) return <div className="text-white text-center p-10">Loading Quiz...</div>;
+     const currentQ = quiz.questions[currentQuestionIndex];
+
+     return (
+        <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 py-8 px-4 flex flex-col items-center">
+           <div className="w-full max-w-6xl flex justify-between items-center mb-8 bg-white/10 p-4 rounded-2xl backdrop-blur-md">
+              <div className="text-white font-bold text-xl">Room: {roomCode}</div>
+              <div className="text-purple-200">Question {currentQuestionIndex + 1} / {quiz.questions.length}</div>
+              <div className="text-white font-bold flex items-center gap-2"><Users className="h-5 w-5"/> Host View</div>
+           </div>
+
+           {showLeaderboard && leaderboardData ? (
+              <div className="w-full max-w-4xl animate-in zoom-in duration-500">
+                 <div className="text-center mb-8">
+                    <Trophy className="h-20 w-20 text-yellow-400 mx-auto mb-4 animate-bounce" />
+                    <h1 className="text-5xl font-black text-white drop-shadow-lg">Leaderboard</h1>
+                 </div>
+                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 space-y-4">
+                    {leaderboardData.players && leaderboardData.players.map((player: any, index: number) => (
+                       <div key={index} className="flex items-center justify-between bg-white/20 p-6 rounded-2xl transition-all hover:scale-105 border border-white/10">
+                          <div className="flex items-center gap-6">
+                             <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold text-white bg-purple-600">#{index + 1}</div>
+                             <span className="text-2xl font-bold text-white">{player.nickname}</span>
+                          </div>
+                          <span className="text-3xl font-black text-white">{player.score} pts</span>
+                       </div>
+                    ))}
+                 </div>
+                 <div className="text-center mt-8 text-white/50 animate-pulse">Waiting for next question...</div>
+              </div>
+           ) : (
+              <div className="w-full max-w-5xl text-center space-y-12 mt-10">
+                 <div className="bg-white/10 backdrop-blur-md rounded-full px-12 py-6 inline-block mb-8">
+                    <span className="text-8xl font-black text-white">{timeLeft}</span>
+                 </div>
+                 <h1 className="text-5xl md:text-6xl font-black text-white leading-tight drop-shadow-xl">{currentQ.question_text}</h1>
+              </div>
+           )}
         </div>
-      </div>
-    );
+     );
   }
 
-  if (!wsConnected || !gameStarted || !quiz) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-300 border-t-white mx-auto mb-4"></div>
-          <h1 className="text-2xl font-bold text-white">
-            {!wsConnected ? "🔌 Connecting to game..." : "⏳ Loading game..."}
-          </h1>
-          <p className="text-purple-200 mt-2">Please wait</p>
-        </div>
-      </div>
-    );
-  }
+  // --- PLAYER VIEW ---
+  if (!playerId || !roomCode) return null;
+  if (!quiz || !quiz.questions) return <div className="text-white text-center p-20">Loading...</div>;
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
-  if (!currentQuestion) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white">Invalid question</h1>
-          <p className="text-purple-200 mt-2">
-            Expected question {currentQuestionIndex + 1}, but quiz only has {quiz.questions.length}
-          </p>
-          <Button onClick={() => navigate("/")} className="mt-4">
-            Return to Home
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
-  const answerColorClasses = [
-    "bg-red-500 border-red-500 hover:bg-red-600",
-    "bg-blue-500 border-blue-500 hover:bg-blue-600",
-    "bg-yellow-500 border-yellow-500 hover:bg-yellow-600",
-    "bg-green-500 border-green-500 hover:bg-green-600",
-  ];
-  const answerShapes = ["◆", "●", "▲", "■"];
   const timeProgress = (timeLeft / (currentQuestion.time_limit || 20)) * 100;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 py-8 px-4">
       <div className="max-w-5xl mx-auto">
-        {/* Header with timer and score */}
         <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 shadow-lg border-2 border-white/20">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 text-2xl font-bold text-white">
-                <Timer className={`h-6 w-6 ${timeLeft <= 5 ? "text-red-500 animate-pulse" : "text-purple-300"}`} />
-                <span className={timeLeft <= 5 ? "text-red-500 animate-pulse" : "text-white"}>
-                  {timeLeft}s
-                </span>
-              </div>
-              <div className="text-sm text-purple-200">
-                Question {currentQuestionIndex + 1} of {quiz.questions.length}
-              </div>
+              <Timer className="h-6 w-6 text-purple-300" />
+              <span className="text-white">{timeLeft}s</span>
             </div>
             <div className="text-right">
               <div className="text-sm text-purple-200">Your Score</div>
@@ -371,40 +265,22 @@ const PlayGame = () => {
           </div>
           <Progress value={timeProgress} className="h-3 bg-purple-900" />
         </div>
-
-        {/* Question */}
-        <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-8 md:p-12 mb-8 shadow-2xl text-center animate-in fade-in slide-in-from-bottom-4">
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-8 md:p-12 mb-8 shadow-2xl text-center">
           <h2 className="text-3xl md:text-5xl font-black text-white">{currentQuestion.question_text}</h2>
         </div>
-
-        {/* Answer Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {currentQuestion.answers.map((answer: any, index: number) => {
-            const answerText = typeof answer === "string" ? answer : answer.text;
-            const isSelected = selectedAnswer === index;
-            const isCorrect = currentQuestion.correctAnswer === index;
-            const showCorrect = showResult && isCorrect;
-            const showIncorrect = showResult && isSelected && !isCorrect;
-
-            return (
+          {currentQuestion.answers.map((answer: any, index: number) => (
               <Button
                 key={index}
                 onClick={() => handleAnswerSelect(index)}
                 disabled={selectedAnswer !== null}
-                className={`h-auto min-h-32 p-8 rounded-3xl text-2xl font-bold transition-all border-4 relative overflow-hidden group ${
-                  showCorrect
-                    ? "bg-green-500 border-green-600 text-white scale-105"
-                    : showIncorrect
-                    ? "bg-red-500 border-red-600 text-white opacity-50"
-                    : `${answerColorClasses[index % 4]} text-white`
+                className={`h-auto min-h-32 p-8 rounded-3xl text-2xl font-bold transition-all border-4 ${
+                  selectedAnswer === index ? "bg-purple-600 border-purple-400" : "bg-white/10 border-white/20 hover:bg-white/20"
                 }`}
               >
-                <span className="text-4xl mr-4">{answerShapes[index % 4]}</span>
-                <span className="flex-1 text-left">{answerText}</span>
-                {showCorrect && <CheckCircle2 className="absolute right-4 h-12 w-12 animate-in zoom-in" />}
+                {typeof answer === "string" ? answer : answer.text}
               </Button>
-            );
-          })}
+            ))}
         </div>
       </div>
     </div>

@@ -74,7 +74,7 @@ const GameLobby = () => {
                 }
                 // Navigation will happen from host WS or this will trigger it
                 if (mounted) {
-                  navigate("/play");
+                  navigate("/play", { state: { isHost: isHost } });
                 }
                 break;
 
@@ -161,7 +161,7 @@ const GameLobby = () => {
                 localStorage.setItem("currentQuestionIndex", message.data.currentQuestionIndex || "0");
                 localStorage.setItem("score", message.data.score || "0");
               }
-              navigate("/play");
+              navigate("/play", { state: { isHost: true } });
               break;
             case "error":
               console.error("Host WS error:", message.data);

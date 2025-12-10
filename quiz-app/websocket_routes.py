@@ -70,7 +70,7 @@ async def websocket_endpoint(websocket: WebSocket, room_code: str, player_id: st
                 )
             elif room.status == "completed":
     # Broadcast GAME_COMPLETED so reconnecting players move to results screen
-                await connection_manager.broadcast(
+                await connection_manager.broadcast_to_all(
                     room_code,
                     WSMessage(
                         type=WSMessageType.GAME_COMPLETED,
