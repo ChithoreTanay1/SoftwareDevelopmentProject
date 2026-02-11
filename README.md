@@ -1,4 +1,4 @@
-# 🎮 Real-Time Quiz & Voting App  
+ Real-Time Quiz & Voting App  
 A FastAPI + WebSocket Kahoot-style quiz system running locally.
 
 This project is a lightweight, real-time quiz and voting platform inspired by Kahoot.  
@@ -7,7 +7,7 @@ The application is designed for **local hosting**, making it ideal for classroom
 
 ---
 
-## 📄 Requirement Specification
+ Requirement Specification
 
 ### Functional Requirements
 - Host can create a quiz room.
@@ -31,19 +31,19 @@ The application is designed for **local hosting**, making it ideal for classroom
 
 ---
 
-## 🚀 Features
+ Features
 
-- ⚡ Real-time multiplayer with WebSockets  
-- 🔒 Secure rooms with unique room codes  
-- 👤 Custom nickname validation  
-- 🧮 Automatic scoring + leaderboard generation  
-- 📊 Post-session statistics  
-- 🗃 Powered by PostgreSQL for persistent storage  
-- 🧩 Single FastAPI backend managing all WebSocket and API flows  
+-  Real-time multiplayer with WebSockets  
+-  Secure rooms with unique room codes  
+-  Custom nickname validation  
+-  Automatic scoring + leaderboard generation  
+-  Post-session statistics  
+-  Powered by PostgreSQL for persistent storage  
+-  Single FastAPI backend managing all WebSocket and API flows  
 
 ---
 
-## 🛠️ Technology Choices and Justification
+##  Technology Choices and Justification
 
 ### FastAPI
 - Asynchronous performance  
@@ -71,7 +71,7 @@ These tools were chosen for their speed, simplicity, and compatibility with real
 ---
 
 
-## 🧠 How the System Works (High-Level)
+##  How the System Works (High-Level)
 
 1. **Host creates a room**  
    - A unique room code is generated  
@@ -99,7 +99,7 @@ The entire workflow runs **locally** on `http://127.0.0.1:8000` unless otherwise
 
 ---
 
-## 🏗 System Architecture
+## System Architecture
 
 ### Backend Components
 
@@ -114,7 +114,7 @@ The entire workflow runs **locally** on `http://127.0.0.1:8000` unless otherwise
 
 ---
 
-## 🧩 Business Logic Overview
+##  Business Logic Overview
 
 ### QuizService
 - Creates quizzes  
@@ -136,7 +136,7 @@ The entire workflow runs **locally** on `http://127.0.0.1:8000` unless otherwise
 
 ---
 
-## 🔄 Game Lifecycle
+##  Game Lifecycle
 
 | State | Trigger | Next |
 |-------|---------|-------|
@@ -146,24 +146,24 @@ The entire workflow runs **locally** on `http://127.0.0.1:8000` unless otherwise
 
 ---
 
-## 🧪 Smoke Test Results
+##  Smoke Test Results
 
 Small-scale manual tests to confirm that all essential components work:
 
 | Test | Result |
 |------|--------|
-| Create room | ✅ Room created, code generated |
-| Player joins | ✅ Nickname validated, WebSocket connected |
-| Host starts game | ✅ All players receive question instantly |
-| Player answer submission | ✅ Successfully stored, score assigned |
-| Next question | ✅ Synced to all clients |
-| End game | ✅ Leaderboard + stats returned |
+| Create room |  Room created, code generated |
+| Player joins |  Nickname validated, WebSocket connected |
+| Host starts game |  All players receive question instantly |
+| Player answer submission |  Successfully stored, score assigned |
+| Next question |  Synced to all clients |
+| End game | Leaderboard + stats returned |
 
 All primary flows behave correctly under normal conditions.
 
 ---
 
-## 🔥 Stress Test Results (Simulated)
+##  Stress Test Results (Simulated)
 
 Simulated using local load test tools (WebSocket + HTTP).
 
@@ -183,11 +183,11 @@ The system remains stable for **small to medium sessions** (<100 players) on a n
 
 ---
 
-## 📆 Development Sprints
+##  Development Sprints
 
 The project was planned and iterated in short, focused sprints.
 
-### 🧩 Sprint 1 – Core Game Loop (2 weeks)
+###  Sprint 1 – Core Game Loop (2 weeks)
 
 **Goal:** Get a minimal, playable quiz session running end-to-end.
 
@@ -205,7 +205,7 @@ The project was planned and iterated in short, focused sprints.
 
 ---
 
-### 🗄️ Sprint 2 – Persistence & Services Layer (2 weeks)
+###  Sprint 2 – Persistence & Services Layer (2 weeks)
 
 **Goal:** Move from in-memory prototype to a persistent, structured backend.
 
@@ -224,7 +224,7 @@ The project was planned and iterated in short, focused sprints.
 
 ---
 
-### 📡 Sprint 3 – Reliability, Validation & Security (1–2 weeks)
+###  Sprint 3 – Reliability, Validation & Security (1–2 weeks)
 
 **Goal:** Make the system safe and robust for classroom/demo usage.
 
@@ -243,7 +243,7 @@ The project was planned and iterated in short, focused sprints.
 
 ---
 
-### 📊 Sprint 4 – Analytics, UX Polish & Load Testing (2 weeks)
+###  Sprint 4 – Analytics, UX Polish & Load Testing (2 weeks)
 
 **Goal:** Add visibility into game performance and validate scalability on a single machine.
 
@@ -264,7 +264,7 @@ The project was planned and iterated in short, focused sprints.
 
 ---
 
-## 🖥️ Local Hosting
+##  Local Hosting
 
 To run the backend locally:
 
